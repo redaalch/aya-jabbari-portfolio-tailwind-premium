@@ -1,0 +1,64 @@
+@import "./fonts.css";
+@import "./tailwind.css";
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    min-width: 320px;
+  }
+
+  body {
+    @apply bg-cream-50 font-sans text-plum-700 antialiased;
+    min-height: 100vh;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display text-plum-900;
+  }
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  ::selection {
+    background-color: var(--color-blush-100);
+    color: var(--color-plum-900);
+  }
+}
+
+@layer components {
+  .eyebrow {
+    @apply text-eyebrow uppercase font-semibold tracking-[0.18em] text-rose-500;
+  }
+
+  .container-default {
+    @apply mx-auto w-full px-6 lg:px-14;
+    max-width: var(--max-width-default);
+  }
+
+  .container-narrow {
+    @apply mx-auto w-full px-6 lg:px-14;
+    max-width: var(--max-width-narrow);
+  }
+
+  .container-wide {
+    @apply mx-auto w-full px-6 lg:px-14;
+    max-width: var(--max-width-wide);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
