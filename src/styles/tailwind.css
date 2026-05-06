@@ -1,7 +1,20 @@
 @import "tailwindcss" source(none);
 @source "../**/*.{js,ts,jsx,tsx}";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
+  /* ── Abyssal Tech dark palette ── */
+  --color-abyssal-base: #050A15;
+  --color-abyssal-surface: #0F172A;
+  --color-abyssal-surface-hover: #1E293B;
+  --color-abyssal-border: #1E293B;
+  --color-abyssal-border-hover: #334155;
+  --color-abyssal-text: #F8FAFC;
+  --color-abyssal-text-muted: #94A3B8;
+  --color-abyssal-text-faint: #475569;
+  --color-abyssal-accent: #38BDF8;
+  --color-abyssal-accent-hover: #0284C7;
   /* ── Colors ── */
   --color-cream-50: #FBF7F2;
   --color-cream-100: #F5EFE7;

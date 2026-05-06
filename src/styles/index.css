@@ -8,15 +8,20 @@
   }
 
   body {
-    @apply bg-cream-50 font-sans text-plum-700 antialiased;
+    @apply bg-cream-50 font-sans text-plum-700 antialiased transition-colors duration-500;
     min-height: 100vh;
+  }
+
+  .dark body {
+    background-color: var(--color-abyssal-base);
+    color: var(--color-abyssal-text);
   }
 
   h1,
   h2,
   h3,
   h4 {
-    @apply font-display text-plum-900;
+    @apply font-display text-plum-900 dark:text-[#F8FAFC];
   }
 
   *,
@@ -28,6 +33,11 @@
   ::selection {
     background-color: var(--color-blush-100);
     color: var(--color-plum-900);
+  }
+
+  .dark ::selection {
+    background-color: var(--color-abyssal-surface-hover);
+    color: var(--color-abyssal-text);
   }
 }
 

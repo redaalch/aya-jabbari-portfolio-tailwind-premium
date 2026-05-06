@@ -73,7 +73,7 @@ export function MobileSheet({ id, open, onClose, links, active, lang, onToggleLa
       <div
         aria-hidden="true"
         onClick={onClose}
-        className={`fixed inset-0 z-40 bg-plum-900/20 backdrop-blur-sm transition-opacity duration-slow ease-standard ${
+        className={`fixed inset-0 z-40 bg-plum-900/20 dark:bg-black/60 backdrop-blur-sm transition-opacity duration-slow ease-standard ${
           open ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         }`}
       />
@@ -85,18 +85,18 @@ export function MobileSheet({ id, open, onClose, links, active, lang, onToggleLa
         role="dialog"
         aria-modal="true"
         aria-label="Navigation menu"
-        className={`fixed inset-y-0 right-0 z-50 flex w-72 flex-col bg-cream-50 shadow-[0_0_60px_rgba(42,27,45,0.14)] transition-transform duration-slow ease-standard ${
+        className={`fixed inset-y-0 right-0 z-50 flex w-72 flex-col bg-cream-50 dark:bg-[#0F172A] shadow-[0_0_60px_rgba(42,27,45,0.14)] dark:shadow-[0_0_60px_rgba(0,0,0,0.5)] transition-all duration-slow ease-standard ${
           open ? "translate-x-0" : "translate-x-full"
         }`}
       >
         {/* Header */}
-        <div className="flex h-16 shrink-0 items-center justify-between border-b border-cream-200 px-6">
-          <span className="font-display text-[18px] font-medium text-plum-900">Menu</span>
+        <div className="flex h-16 shrink-0 items-center justify-between border-b border-cream-200 dark:border-[#1E293B] px-6 transition-colors duration-500">
+          <span className="font-display text-[18px] font-medium text-plum-900 dark:text-[#F8FAFC] transition-colors duration-500">Menu</span>
           <button
             type="button"
             aria-label="Close menu"
             onClick={onClose}
-            className="grid h-10 w-10 place-items-center rounded-full text-plum-700 transition-colors duration-fast hover:bg-blush-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-500 focus-visible:ring-offset-2 focus-visible:ring-offset-cream-50"
+            className="grid h-10 w-10 place-items-center rounded-full text-plum-700 dark:text-[#94A3B8] transition-colors duration-fast hover:bg-blush-50 dark:hover:bg-[#1E293B] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-500 focus-visible:ring-offset-2 focus-visible:ring-offset-cream-50 dark:focus-visible:ring-offset-[#0F172A]"
           >
             <X className="h-5 w-5" aria-hidden="true" />
           </button>
@@ -109,10 +109,10 @@ export function MobileSheet({ id, open, onClose, links, active, lang, onToggleLa
               key={link.href}
               href={link.href}
               onClick={onClose}
-              className={`flex min-h-[48px] items-center rounded-xl px-4 text-[15px] font-medium transition-colors duration-fast focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-500 focus-visible:ring-offset-2 focus-visible:ring-offset-cream-50 ${
+              className={`flex min-h-[48px] items-center rounded-xl px-4 text-[15px] font-medium transition-colors duration-fast focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-500 focus-visible:ring-offset-2 focus-visible:ring-offset-cream-50 dark:focus-visible:ring-offset-[#0F172A] ${
                 active === link.href
-                  ? "bg-blush-50 text-rose-500"
-                  : "text-plum-700 hover:bg-cream-100 hover:text-plum-900"
+                  ? "bg-blush-50 dark:bg-[#1E293B] text-rose-500 dark:text-[#38BDF8]"
+                  : "text-plum-700 dark:text-[#94A3B8] hover:bg-cream-100 dark:hover:bg-[#1E293B] hover:text-plum-900 dark:hover:text-[#F8FAFC]"
               }`}
             >
               {link.label}
@@ -121,12 +121,12 @@ export function MobileSheet({ id, open, onClose, links, active, lang, onToggleLa
         </nav>
 
         {/* Language toggle */}
-        <div className="px-6 pt-2 pb-4 border-t border-cream-200 mt-auto">
+        <div className="px-6 pt-2 pb-4 border-t border-cream-200 dark:border-[#1E293B] mt-auto transition-colors duration-500">
           <button
             type="button"
             onClick={() => { onToggleLang(); onClose(); }}
             aria-label={lang === "en" ? "Switch to French" : "Passer en anglais"}
-            className="flex w-full items-center justify-center gap-2 h-11 rounded-xl border border-cream-200 text-[14px] font-semibold text-plum-700 transition-colors hover:bg-cream-100 hover:text-plum-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-500"
+            className="flex w-full items-center justify-center gap-2 h-11 rounded-xl border border-cream-200 dark:border-[#1E293B] text-[14px] font-semibold text-plum-700 dark:text-[#94A3B8] transition-colors duration-300 hover:bg-cream-100 dark:hover:bg-[#1E293B] hover:text-plum-900 dark:hover:text-[#F8FAFC] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-500"
           >
             <Globe className="h-4 w-4" aria-hidden="true" />
             {lang === "en" ? "Passer en Français" : "Switch to English"}
@@ -138,7 +138,7 @@ export function MobileSheet({ id, open, onClose, links, active, lang, onToggleLa
           <a
             href={`mailto:${profile.email}`}
             onClick={onClose}
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-xl bg-plum-900 px-7 text-[15px] font-semibold text-cream-50 shadow-cta transition-all duration-base ease-standard hover:bg-plum-700 hover:shadow-cta-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-500 focus-visible:ring-offset-2 focus-visible:ring-offset-cream-50"
+            className="flex h-12 w-full items-center justify-center gap-2 rounded-xl bg-plum-900 dark:bg-[#38BDF8] px-7 text-[15px] font-semibold text-cream-50 dark:text-[#050A15] shadow-cta transition-all duration-300 ease-standard hover:bg-plum-700 dark:hover:bg-[#0284C7] hover:shadow-cta-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-500 focus-visible:ring-offset-2 focus-visible:ring-offset-cream-50 dark:focus-visible:ring-offset-[#0F172A]"
           >
             <Mail className="h-4 w-4" aria-hidden="true" />
             Email Aya

@@ -20,26 +20,25 @@ export function ProjectDetail({ projectId }: ProjectDetailProps) {
 
   if (!project) {
     return (
-      <section className="min-h-screen bg-[#FAF7F5] px-6 pb-20 pt-32 text-[#3A2B29] md:px-12 lg:px-24">
+      <section className="min-h-screen bg-[#FAF7F5] dark:bg-[#050A15] px-6 pb-20 pt-32 text-[#3A2B29] dark:text-[#F8FAFC] transition-colors duration-500 md:px-12 lg:px-24">
         <div className="mx-auto flex max-w-3xl flex-col items-start">
           <a
             href="/projects"
-            className="mb-10 inline-flex items-center gap-2 text-sm font-bold uppercase tracking-[0.15em] text-[#8C7A78] transition-colors hover:text-[#3A2B29] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-500"
+            className="mb-10 inline-flex items-center gap-2 text-sm font-bold uppercase tracking-[0.15em] text-[#8C7A78] dark:text-[#94A3B8] transition-colors hover:text-[#3A2B29] dark:hover:text-[#F8FAFC] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-500"
           >
             <ArrowLeft className="h-4 w-4" aria-hidden="true" />
             Back to Project Archive
           </a>
-          <div className="rounded-[2rem] border border-[#E8D5D4] bg-white p-10 shadow-[0_10px_40px_-10px_rgba(225,205,205,0.35)]">
-            <Search className="mb-6 h-8 w-8 text-[#C28C88]" aria-hidden="true" />
-            <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-[#C28C88]">
+          <div className="rounded-[2rem] border border-[#E8D5D4] dark:border-[#1E293B] bg-white dark:bg-[#0F172A] p-10 shadow-[0_10px_40px_-10px_rgba(225,205,205,0.35)] dark:shadow-none transition-colors duration-500">
+            <Search className="mb-6 h-8 w-8 text-[#C28C88] dark:text-[#38BDF8]" aria-hidden="true" />
+            <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-[#C28C88] dark:text-[#38BDF8] transition-colors duration-500">
               Project not found
             </p>
-            <h1 className="font-display text-4xl leading-tight text-[#3A2B29]">
+            <h1 className="font-display text-4xl leading-tight text-[#3A2B29] dark:text-[#F8FAFC] transition-colors duration-500">
               This project page does not exist.
             </h1>
-            <p className="mt-4 text-lg font-light leading-relaxed text-[#5C4D4B]">
-              The archive has the current list of available project detail
-              pages.
+            <p className="mt-4 text-lg font-light leading-relaxed text-[#5C4D4B] dark:text-[#94A3B8] transition-colors duration-500">
+              The archive has the current list of available project detail pages.
             </p>
           </div>
         </div>
@@ -51,11 +50,11 @@ export function ProjectDetail({ projectId }: ProjectDetailProps) {
   const repoUrl = details.repository?.url ?? project.links.repoUrl;
 
   return (
-    <article className="min-h-screen bg-[#FAF7F5] px-6 pb-20 pt-32 text-[#3A2B29] md:px-12 lg:px-24">
+    <article className="min-h-screen bg-[#FAF7F5] dark:bg-[#050A15] px-6 pb-20 pt-32 text-[#3A2B29] dark:text-[#F8FAFC] transition-colors duration-500 md:px-12 lg:px-24">
       <div className="mx-auto max-w-7xl">
         <a
           href="/projects"
-          className="mb-10 inline-flex items-center gap-2 text-sm font-bold uppercase tracking-[0.15em] text-[#8C7A78] transition-colors hover:text-[#3A2B29] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-500"
+          className="mb-10 inline-flex items-center gap-2 text-sm font-bold uppercase tracking-[0.15em] text-[#8C7A78] dark:text-[#94A3B8] transition-colors hover:text-[#3A2B29] dark:hover:text-[#F8FAFC] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-500"
         >
           <ArrowLeft className="h-4 w-4" aria-hidden="true" />
           Back to Project Archive
@@ -63,42 +62,42 @@ export function ProjectDetail({ projectId }: ProjectDetailProps) {
 
         <div className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
           <div>
-            <p className="mb-6 flex items-center gap-4 text-xs font-bold uppercase tracking-[0.2em] text-[#C28C88]">
-              <span className="h-px w-8 bg-[#C28C88]" aria-hidden="true" />
+            <p className="mb-6 flex items-center gap-4 text-xs font-bold uppercase tracking-[0.2em] text-[#C28C88] dark:text-[#38BDF8] transition-colors duration-500">
+              <span className="h-px w-8 bg-[#C28C88] dark:bg-[#38BDF8]" aria-hidden="true" />
               {project.type} Detail
             </p>
 
-            <h1 className="font-display text-5xl leading-[1.04] tracking-tight text-[#3A2B29] md:text-6xl">
+            <h1 className="font-display text-5xl leading-[1.04] tracking-tight text-[#3A2B29] dark:text-[#F8FAFC] transition-colors duration-500 md:text-6xl">
               {project.title}
             </h1>
 
-            <p className="mt-6 max-w-3xl text-xl font-light leading-relaxed text-[#5C4D4B]">
+            <p className="mt-6 max-w-3xl text-xl font-light leading-relaxed text-[#5C4D4B] dark:text-[#94A3B8] transition-colors duration-500">
               {details.overview}
             </p>
 
-            <div className="mt-8 flex flex-wrap gap-3 text-[11px] font-bold uppercase tracking-[0.15em] text-[#A67571]">
-              <span className="rounded-full border border-[#E8D5D4] bg-white px-4 py-2">
+            <div className="mt-8 flex flex-wrap gap-3 text-[11px] font-bold uppercase tracking-[0.15em] text-[#A67571] dark:text-[#94A3B8] transition-colors duration-500">
+              <span className="rounded-full border border-[#E8D5D4] dark:border-[#1E293B] bg-white dark:bg-[#0F172A] px-4 py-2 transition-colors duration-500">
                 {project.period}
               </span>
-              <span className="rounded-full border border-[#E8D5D4] bg-white px-4 py-2">
+              <span className="rounded-full border border-[#E8D5D4] dark:border-[#1E293B] bg-white dark:bg-[#0F172A] px-4 py-2 transition-colors duration-500">
                 {project.category}
               </span>
-              <span className="rounded-full border border-[#E8D5D4] bg-white px-4 py-2">
+              <span className="rounded-full border border-[#E8D5D4] dark:border-[#1E293B] bg-white dark:bg-[#0F172A] px-4 py-2 transition-colors duration-500">
                 {project.role}
               </span>
             </div>
           </div>
 
-          <aside className="overflow-hidden rounded-[2rem] border border-[#E8D5D4] bg-white shadow-[0_10px_40px_-10px_rgba(225,205,205,0.35)]">
+          <aside className="overflow-hidden rounded-[2rem] border border-[#E8D5D4] dark:border-[#1E293B] bg-white dark:bg-[#0F172A] shadow-[0_10px_40px_-10px_rgba(225,205,205,0.35)] dark:shadow-none transition-colors duration-500">
             <img
               src={project.image}
               alt=""
-              className="h-64 w-full object-cover opacity-90"
+              className="h-64 w-full object-cover opacity-90 dark:brightness-90 dark:contrast-110"
               loading="eager"
             />
             <div className="p-6">
               {(project.organization || project.location) && (
-                <p className="mb-6 text-sm font-light italic leading-relaxed text-[#8C7A78]">
+                <p className="mb-6 text-sm font-light italic leading-relaxed text-[#8C7A78] dark:text-[#94A3B8] transition-colors duration-500">
                   {[project.organization, project.location]
                     .filter(Boolean)
                     .join(" · ")}
@@ -109,7 +108,7 @@ export function ProjectDetail({ projectId }: ProjectDetailProps) {
                 {project.stack.map((tag) => (
                   <span
                     key={tag}
-                    className="rounded-full border border-[#E8D5D4] bg-[#FAF7F5] px-3 py-1.5 text-[11px] font-medium text-[#5C4D4B]"
+                    className="rounded-full border border-[#E8D5D4] dark:border-[#1E293B] bg-[#FAF7F5] dark:bg-[#050A15] px-3 py-1.5 text-[11px] font-medium text-[#5C4D4B] dark:text-[#94A3B8] transition-colors duration-500"
                   >
                     {tag}
                   </span>
@@ -120,7 +119,7 @@ export function ProjectDetail({ projectId }: ProjectDetailProps) {
                 {repoUrl ? (
                   <a
                     href={repoUrl}
-                    className="inline-flex items-center gap-2 rounded-full bg-[#3A2B29] px-5 py-3 text-sm font-bold text-white shadow-md transition-colors hover:bg-[#C28C88] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-500"
+                    className="inline-flex items-center gap-2 rounded-full bg-[#3A2B29] dark:bg-[#38BDF8] px-5 py-3 text-sm font-bold text-white dark:text-[#050A15] shadow-md transition-colors hover:bg-[#C28C88] dark:hover:bg-[#0284C7] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-500"
                     target="_blank"
                     rel="noreferrer"
                   >
@@ -128,8 +127,8 @@ export function ProjectDetail({ projectId }: ProjectDetailProps) {
                     View Repository
                   </a>
                 ) : (
-                  <span className="inline-flex items-center gap-2 rounded-full border border-[#E8D5D4] bg-[#FAF7F5] px-5 py-3 text-sm font-bold text-[#5C4D4B]">
-                    <Lock className="h-4 w-4 text-[#A67571]" aria-hidden="true" />
+                  <span className="inline-flex items-center gap-2 rounded-full border border-[#E8D5D4] dark:border-[#1E293B] bg-[#FAF7F5] dark:bg-[#0F172A] px-5 py-3 text-sm font-bold text-[#5C4D4B] dark:text-[#94A3B8] transition-colors duration-500">
+                    <Lock className="h-4 w-4 text-[#A67571] dark:text-[#94A3B8]" aria-hidden="true" />
                     Code available on request
                   </span>
                 )}
@@ -137,7 +136,7 @@ export function ProjectDetail({ projectId }: ProjectDetailProps) {
                 {project.links.demoUrl && (
                   <a
                     href={project.links.demoUrl}
-                    className="inline-flex items-center gap-2 rounded-full border border-[#E8D5D4] bg-[#FAF7F5] px-5 py-3 text-sm font-bold text-[#3A2B29] transition-colors hover:border-[#C28C88] hover:text-[#C28C88] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-500"
+                    className="inline-flex items-center gap-2 rounded-full border border-[#E8D5D4] dark:border-[#1E293B] bg-[#FAF7F5] dark:bg-[#0F172A] px-5 py-3 text-sm font-bold text-[#3A2B29] dark:text-[#F8FAFC] transition-colors hover:border-[#C28C88] dark:hover:border-[#38BDF8] hover:text-[#C28C88] dark:hover:text-[#38BDF8] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-500"
                     target="_blank"
                     rel="noreferrer"
                   >
@@ -148,7 +147,7 @@ export function ProjectDetail({ projectId }: ProjectDetailProps) {
               </div>
 
               {details.repository && (
-                <dl className="mt-8 grid gap-4 border-t border-[#F2EAE9] pt-6 text-sm">
+                <dl className="mt-8 grid gap-4 border-t border-[#F2EAE9] dark:border-[#1E293B] pt-6 text-sm transition-colors duration-500">
                   <DetailMeta label="Repository" value={details.repository.name} />
                   <DetailMeta label="Main Language" value={details.repository.language} />
                   <DetailMeta label="Updated" value={details.repository.updated} />
@@ -159,20 +158,20 @@ export function ProjectDetail({ projectId }: ProjectDetailProps) {
         </div>
 
         <div className="mt-14 grid gap-6 lg:grid-cols-[0.95fr_1.05fr]">
-          <section className="rounded-[2rem] border border-[#E8D5D4] bg-white p-6 shadow-[0_10px_40px_-10px_rgba(225,205,205,0.28)] md:p-8">
-            <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-[#C28C88]">
+          <section className="rounded-[2rem] border border-[#E8D5D4] dark:border-[#1E293B] bg-white dark:bg-[#0F172A] p-6 shadow-[0_10px_40px_-10px_rgba(225,205,205,0.28)] dark:shadow-none transition-colors duration-500 md:p-8">
+            <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-[#C28C88] dark:text-[#38BDF8] transition-colors duration-500">
               Problem
             </p>
-            <p className="text-lg font-light leading-relaxed text-[#5C4D4B]">
+            <p className="text-lg font-light leading-relaxed text-[#5C4D4B] dark:text-[#94A3B8] transition-colors duration-500">
               {project.problem}
             </p>
           </section>
 
-          <section className="rounded-[2rem] border border-[#E8D5D4] bg-white p-6 shadow-[0_10px_40px_-10px_rgba(225,205,205,0.28)] md:p-8">
-            <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-[#C28C88]">
+          <section className="rounded-[2rem] border border-[#E8D5D4] dark:border-[#1E293B] bg-white dark:bg-[#0F172A] p-6 shadow-[0_10px_40px_-10px_rgba(225,205,205,0.28)] dark:shadow-none transition-colors duration-500 md:p-8">
+            <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-[#C28C88] dark:text-[#38BDF8] transition-colors duration-500">
               Built
             </p>
-            <p className="text-lg font-medium leading-relaxed text-[#3A2B29]">
+            <p className="text-lg font-medium leading-relaxed text-[#3A2B29] dark:text-[#F8FAFC] transition-colors duration-500">
               {project.contribution}
             </p>
           </section>
@@ -185,15 +184,15 @@ export function ProjectDetail({ projectId }: ProjectDetailProps) {
           <DetailList title="Outcomes" items={details.outcomes} />
         </div>
 
-        <section className="mt-8 rounded-[2rem] border border-[#E8D5D4] bg-white p-6 shadow-[0_10px_40px_-10px_rgba(225,205,205,0.28)] md:p-8">
-          <p className="mb-6 text-xs font-bold uppercase tracking-[0.2em] text-[#C28C88]">
+        <section className="mt-8 rounded-[2rem] border border-[#E8D5D4] dark:border-[#1E293B] bg-white dark:bg-[#0F172A] p-6 shadow-[0_10px_40px_-10px_rgba(225,205,205,0.28)] dark:shadow-none transition-colors duration-500 md:p-8">
+          <p className="mb-6 text-xs font-bold uppercase tracking-[0.2em] text-[#C28C88] dark:text-[#38BDF8] transition-colors duration-500">
             Next Improvements
           </p>
           <div className="grid gap-4 md:grid-cols-3">
             {details.nextSteps.map((step) => (
               <p
                 key={step}
-                className="rounded-2xl border border-[#F2EAE9] bg-[#FAF7F5] p-4 text-sm font-medium leading-relaxed text-[#5C4D4B]"
+                className="rounded-2xl border border-[#F2EAE9] dark:border-[#1E293B] bg-[#FAF7F5] dark:bg-[#050A15] p-4 text-sm font-medium leading-relaxed text-[#5C4D4B] dark:text-[#94A3B8] transition-colors duration-500"
               >
                 {step}
               </p>
@@ -208,25 +207,25 @@ export function ProjectDetail({ projectId }: ProjectDetailProps) {
 function DetailMeta({ label, value }: { label: string; value: string }) {
   return (
     <div className="flex items-center justify-between gap-4">
-      <dt className="text-xs font-bold uppercase tracking-[0.15em] text-[#A67571]">
+      <dt className="text-xs font-bold uppercase tracking-[0.15em] text-[#A67571] dark:text-[#94A3B8] transition-colors duration-500">
         {label}
       </dt>
-      <dd className="text-right font-semibold text-[#3A2B29]">{value}</dd>
+      <dd className="text-right font-semibold text-[#3A2B29] dark:text-[#F8FAFC] transition-colors duration-500">{value}</dd>
     </div>
   );
 }
 
 function DetailList({ title, items }: { title: string; items: string[] }) {
   return (
-    <section className="rounded-[2rem] border border-[#E8D5D4] bg-white p-6 shadow-[0_10px_40px_-10px_rgba(225,205,205,0.28)] md:p-8">
-      <p className="mb-6 text-xs font-bold uppercase tracking-[0.2em] text-[#C28C88]">
+    <section className="rounded-[2rem] border border-[#E8D5D4] dark:border-[#1E293B] bg-white dark:bg-[#0F172A] p-6 shadow-[0_10px_40px_-10px_rgba(225,205,205,0.28)] dark:shadow-none transition-colors duration-500 md:p-8">
+      <p className="mb-6 text-xs font-bold uppercase tracking-[0.2em] text-[#C28C88] dark:text-[#38BDF8] transition-colors duration-500">
         {title}
       </p>
       <ul className="space-y-4">
         {items.map((item) => (
-          <li key={item} className="flex gap-4 text-sm leading-relaxed text-[#5C4D4B]">
+          <li key={item} className="flex gap-4 text-sm leading-relaxed text-[#5C4D4B] dark:text-[#94A3B8] transition-colors duration-500">
             <span
-              className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#C28C88]"
+              className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#C28C88] dark:bg-[#38BDF8] transition-colors duration-500"
               aria-hidden="true"
             />
             <span>{item}</span>
