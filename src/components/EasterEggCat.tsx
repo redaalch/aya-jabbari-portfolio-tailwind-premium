@@ -35,7 +35,15 @@ export function EasterEggCat() {
   }, [isHovered, forceShow]);
 
   const handleClick = () => {
-    setMessage(DEFAULT_MESSAGES[Math.floor(Math.random() * DEFAULT_MESSAGES.length)]);
+    const next = DEFAULT_MESSAGES[Math.floor(Math.random() * DEFAULT_MESSAGES.length)];
+    setMessage(next);
+    if (!isHovered && !forceShow) {
+      setForceShow(true);
+      setTimeout(() => {
+        setForceShow(false);
+        setMessage("Meow!");
+      }, 4000);
+    }
   };
 
   const transform =
