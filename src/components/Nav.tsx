@@ -17,7 +17,7 @@ export function Nav() {
   const [sheetOpen, setSheetOpen] = useState(false);
   const isProjectArchive =
     typeof window !== "undefined" &&
-    window.location.pathname.replace(/\/$/, "") === "/projects";
+    window.location.pathname.replace(/\/$/, "").startsWith("/projects");
   const navLinks = links.map((link) => ({
     ...link,
     href: isProjectArchive ? `/${link.href}` : link.href,

@@ -206,7 +206,7 @@ function PanoramaCard({ item }: { item: WorkItem }) {
       </div>
 
       <a
-        href={`/projects#${item.id}`}
+        href={`/projects/${item.id}`}
         className="group/image mb-5 block h-32 shrink-0 overflow-hidden rounded-2xl border border-[#F2EAE9] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-500 lg:mb-6 lg:h-40"
         aria-label={`View details for ${item.title}`}
       >
@@ -264,7 +264,7 @@ function PanoramaCard({ item }: { item: WorkItem }) {
         </div>
 
         <a
-          href={`/projects#${item.id}`}
+          href={`/projects/${item.id}`}
           className="flex w-full items-center justify-center gap-2 rounded-full bg-[#3A2B29] px-6 py-2.5 text-xs font-bold tracking-wide text-white shadow-md transition-all duration-300 hover:bg-[#C28C88] hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-500 lg:py-3.5 lg:text-sm"
         >
           View Details

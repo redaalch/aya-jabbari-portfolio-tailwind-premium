@@ -24,6 +24,28 @@ export type WorkItem = {
 };
 
 const privateLinks: LinkDef = { repoUrl: null, demoUrl: null };
+const repoLinks = {
+  snmpSupervision: {
+    repoUrl: "https://github.com/aya-jabbari/snmp-supervision",
+    demoUrl: null,
+  },
+  insuranceDoc: {
+    repoUrl: "https://github.com/aya-jabbari/insurance-doc",
+    demoUrl: null,
+  },
+  swappify: {
+    repoUrl: "https://github.com/aya-jabbari/swappify-learning-matcher",
+    demoUrl: null,
+  },
+  technicalSupportChatbot: {
+    repoUrl: "https://github.com/aya-jabbari/technical-support-chatbot",
+    demoUrl: null,
+  },
+  miniCicdApi: {
+    repoUrl: "https://github.com/aya-jabbari/mini-cicd-api",
+    demoUrl: null,
+  },
+};
 
 export const selectedWorkOrder = [
   "onda-snmp-dashboard",
@@ -53,7 +75,7 @@ export const workItems: WorkItem[] = [
     role: "IT Intern",
     organization: "Office National Des Aéroports — ONDA",
     location: "Fès, Morocco",
-    links: privateLinks,
+    links: repoLinks.snmpSupervision,
     image:
       "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop",
     stack: ["PHP", "SNMP", "JavaScript", "HTML", "CSS"],
@@ -71,7 +93,7 @@ export const workItems: WorkItem[] = [
     period: "January 2026",
     role: "Built AI document workflow",
     organization: "Capgemini Hackathon",
-    links: privateLinks,
+    links: repoLinks.insuranceDoc,
     image:
       "https://images.unsplash.com/photo-1554224155-6726b3ff858f?q=80&w=800&auto=format&fit=crop",
     stack: ["Python", "PDF parsing", "Image analysis", "Anomaly detection"],
@@ -106,7 +128,7 @@ export const workItems: WorkItem[] = [
     tier: "selected",
     period: "2025",
     role: "Built peer-to-peer learning platform",
-    links: privateLinks,
+    links: repoLinks.swappify,
     image:
       "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=800&auto=format&fit=crop",
     stack: ["React", "Laravel", "REST APIs", "MySQL"],
@@ -123,7 +145,7 @@ export const workItems: WorkItem[] = [
     tier: "selected",
     period: "2025",
     role: "Built Spring Boot backend",
-    links: privateLinks,
+    links: repoLinks.technicalSupportChatbot,
     image:
       "https://images.unsplash.com/photo-1531746790731-6c087fecd65a?q=80&w=800&auto=format&fit=crop",
     stack: ["Java", "Spring Boot", "JSON", "REST APIs"],
@@ -140,7 +162,7 @@ export const workItems: WorkItem[] = [
     tier: "selected",
     period: "2025",
     role: "Built CI/CD pipeline",
-    links: privateLinks,
+    links: repoLinks.miniCicdApi,
     image:
       "https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?q=80&w=800&auto=format&fit=crop",
     stack: ["GitHub Actions", "Terraform", "Ansible"],

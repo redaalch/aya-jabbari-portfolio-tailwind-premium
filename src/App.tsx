@@ -4,10 +4,21 @@ import { About } from "./components/About";
 import { Capabilities } from "./components/sections/Capabilities";
 import { Work } from "./components/sections/Work";
 import { Certifications } from "./components/sections/Certifications";
-import { Background } from "./components/sections/Background";
 import { Contact, Footer } from "./components/Contact";
+import { ProjectArchive } from "./components/pages/ProjectArchive";
+import { ProjectDetail } from "./components/pages/ProjectDetail";
 
 export default function App() {
+  const currentPath =
+    typeof window === "undefined"
+      ? "/"
+      : window.location.pathname.replace(/\/$/, "") || "/";
+  const isProjectArchive = currentPath === "/projects";
+  const projectDetailMatch = currentPath.match(/^\/projects\/([^/]+)$/);
+  const projectId = projectDetailMatch
+    ? decodeURIComponent(projectDetailMatch[1])
+    : null;
+
   return (
     <>
       {/* Skip to main content — accessibility requirement */}
@@ -21,13 +32,20 @@ export default function App() {
       <Nav />
 
       <main id="main-content">
-        <Hero />
-        <About />
-        <Capabilities />
-        <Work />
-        <Certifications />
-        <Background />
-        <Contact />
+        {projectId ? (
+          <ProjectDetail projectId={projectId} />
+        ) : isProjectArchive ? (
+          <ProjectArchive />
+        ) : (
+          <>
+            <Hero />
+            <About />
+            <Capabilities />
+            <Work />
+            <Certifications />
+            <Contact />
+          </>
+        )}
       </main>
 
       <Footer />
