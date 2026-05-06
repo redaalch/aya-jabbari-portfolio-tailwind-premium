@@ -30,8 +30,8 @@ export const profile = {
   headshotUrl,
   resumeUrl,
   socials: {
-    github: null as string | null,
-    linkedin: null as string | null,
+    github: "https://github.com/aya-jabbari" as string | null,
+    linkedin: "https://www.linkedin.com/in/aya-jabbari" as string | null,
   },
 };
 

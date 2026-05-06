@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Mail, Menu, Moon, Globe } from "lucide-react";
 import { MobileSheet } from "./nav/MobileSheet";
 import logo from "../assets/logo.png";
+import { profile } from "../data/profile";
 
 const links = [
   { href: "#about", label: "About" },
@@ -93,7 +94,7 @@ export function Nav() {
 
             {/* Email Aya CTA */}
             <a
-              href="mailto:ayajabbari81@gmail.com"
+              href={`mailto:${profile.email}`}
               className="hidden lg:inline-flex items-center gap-1.5 rounded-full bg-[#36172A] px-5 py-2.5 text-[13px] font-semibold text-white shadow-[0_10px_24px_rgba(54,23,42,0.22)] transition-all duration-base ease-standard hover:-translate-y-0.5 hover:bg-[#4A2340] hover:shadow-[0_14px_30px_rgba(54,23,42,0.28)] active:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-500"
             >
               <Mail className="h-3.5 w-3.5" aria-hidden="true" />
@@ -120,7 +121,7 @@ export function Nav() {
             {/* Mobile: email pill + hamburger */}
             <div className="flex items-center gap-2 lg:hidden">
               <a
-                href="mailto:ayajabbari81@gmail.com"
+                href={`mailto:${profile.email}`}
                 className="rounded-full bg-[#36172A] px-4 py-2 text-[13px] font-semibold text-white shadow-[0_6px_16px_rgba(54,23,42,0.20)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-500"
               >
                 Email

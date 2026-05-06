@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import { X, Mail } from "lucide-react";
+import { profile } from "../../data/profile";
 
 type Link = { href: string; label: string };
 
@@ -122,7 +123,7 @@ export function MobileSheet({ id, open, onClose, links, active }: MobileSheetPro
         {/* Email CTA pinned to bottom */}
         <div className="mt-auto px-6 pb-8">
           <a
-            href="mailto:ayajabbari81@gmail.com"
+            href={`mailto:${profile.email}`}
             onClick={onClose}
             className="flex h-12 w-full items-center justify-center gap-2 rounded-xl bg-plum-900 px-7 text-[15px] font-semibold text-cream-50 shadow-cta transition-all duration-base ease-standard hover:bg-plum-700 hover:shadow-cta-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-500 focus-visible:ring-offset-2 focus-visible:ring-offset-cream-50"
           >
