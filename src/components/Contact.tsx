@@ -4,6 +4,7 @@ import {
   ArrowUpRight, Download, Linkedin, Github, CalendarDays,
 } from "lucide-react";
 import { profile } from "../data/profile";
+import { useLanguage } from "../contexts/LanguageContext";
 import logoUrl from "../assets/logo.png";
 
 type FormStatus = "idle" | "submitting" | "success" | "error";
@@ -19,6 +20,7 @@ function useCopyToClipboard() {
 }
 
 export function Contact() {
+  const { t } = useLanguage();
   const [isRevealed, setIsRevealed] = useState(false);
   const [formStatus, setFormStatus] = useState<FormStatus>("idle");
   const [formMessage, setFormMessage] = useState("");
@@ -51,7 +53,7 @@ export function Contact() {
 
     if (!web3FormsKey) {
       setFormStatus("error");
-      setFormMessage("The contact form is not configured yet.");
+      setFormMessage(t("contact.err_not_configured"));
       return;
     }
 
@@ -81,10 +83,10 @@ export function Contact() {
       }
 
       setFormStatus("error");
-      setFormMessage(result.message ?? "Message could not be sent. Please try again.");
+      setFormMessage(result.message ?? t("contact.err_generic"));
     } catch {
       setFormStatus("error");
-      setFormMessage("Network error. Please try again or email me directly.");
+      setFormMessage(t("contact.err_network"));
     }
   }
 
@@ -108,16 +110,16 @@ export function Contact() {
             <Hand size={32} strokeWidth={1.5} />
           </div>
           <h2 className="font-display text-5xl md:text-7xl lg:text-8xl text-[#3A2B29] mb-6 tracking-tight">
-            Let's connect.
+            {t("contact.cta_heading")}
           </h2>
           <p className="text-[#5C4D4B] text-lg md:text-xl font-light mb-12 max-w-xl mx-auto leading-relaxed">
-            Open to end-of-studies (PFE) internship opportunities, project collaborations, and technical conversations.
+            {t("contact.cta_desc")}
           </p>
           <button
             onClick={() => setIsRevealed(true)}
             className="group bg-[#3A2B29] text-white px-10 py-5 rounded-full text-lg font-bold flex items-center gap-3 mx-auto hover:bg-[#C28C88] transition-all duration-300 shadow-xl shadow-[#3A2B29]/10 hover:-translate-y-1"
           >
-            Start a Conversation{" "}
+            {t("contact.cta_btn")}
             <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
           </button>
         </div>
@@ -135,7 +137,7 @@ export function Contact() {
               onClick={() => setIsRevealed(false)}
               className="flex items-center gap-2 text-[#8C7A78] text-xs font-bold uppercase tracking-[0.15em] hover:text-[#C28C88] transition-colors"
             >
-              <X size={16} /> Close Form
+              <X size={16} /> {t("contact.close")}
             </button>
           </div>
 
@@ -144,16 +146,18 @@ export function Contact() {
             {/* Left: Form */}
             <div className="w-full lg:w-[60%] flex flex-col">
               <p className="text-[#C28C88] font-bold tracking-[0.2em] text-[10px] uppercase mb-4">
-                Direct Message
+                {t("contact.form_eyebrow")}
               </p>
-              <h3 className="font-display text-4xl md:text-5xl text-[#3A2B29] mb-12">Reach out.</h3>
+              <h3 className="font-display text-4xl md:text-5xl text-[#3A2B29] mb-12">
+                {t("contact.form_heading")}
+              </h3>
 
               <form className="space-y-10" onSubmit={handleSubmit}>
                 <input type="hidden" name="botcheck" className="hidden" />
 
                 <div className="flex flex-col sm:flex-row gap-10">
-                  <FloatingField id="name" name="name" type="text" label="Your Name" />
-                  <FloatingField id="email" name="email" type="email" label="Email Address" />
+                  <FloatingField id="name" name="name" type="text" label={t("contact.name_label")} />
+                  <FloatingField id="email" name="email" type="email" label={t("contact.email_label")} />
                 </div>
 
                 <div className="relative pt-4">
@@ -161,7 +165,7 @@ export function Contact() {
                     id="message"
                     name="message"
                     required
-                    placeholder="Message"
+                    placeholder={t("contact.message_label")}
                     rows={3}
                     className="peer w-full py-2 bg-transparent border-b border-[#E8D5D4] text-base outline-none focus:border-[#C28C88] transition-colors resize-none placeholder-transparent text-[#3A2B29]"
                   />
@@ -172,7 +176,7 @@ export function Contact() {
                                peer-placeholder-shown:top-6 peer-placeholder-shown:text-base peer-placeholder-shown:font-light peer-placeholder-shown:normal-case peer-placeholder-shown:tracking-normal peer-placeholder-shown:text-[#8C7A78]/70
                                peer-focus:top-0 peer-focus:text-[10px] peer-focus:font-bold peer-focus:tracking-[0.2em] peer-focus:uppercase peer-focus:text-[#C28C88]"
                   >
-                    Tell me about your project or opportunity...
+                    {t("contact.message_label")}
                   </label>
                 </div>
 
@@ -197,40 +201,44 @@ export function Contact() {
                     ${formStatus === "success" ? "bg-success-600 text-white" : ""}
                   `}
                 >
-                  {formStatus === "submitting" && <><Loader2 size={16} className="animate-spin" /> Sending...</>}
-                  {formStatus === "success" && <><Check size={16} /> Message Sent!</>}
-                  {(formStatus === "idle" || formStatus === "error") && <><Send size={16} /> Send Message</>}
+                  {formStatus === "submitting" && <><Loader2 size={16} className="animate-spin" /> {t("contact.sending")}</>}
+                  {formStatus === "success" && <><Check size={16} /> {t("contact.sent")}</>}
+                  {(formStatus === "idle" || formStatus === "error") && <><Send size={16} /> {t("contact.send")}</>}
                 </button>
               </form>
             </div>
 
             {/* Right: Details */}
             <div className="w-full lg:w-[40%] flex flex-col pt-2 border-t lg:border-t-0 lg:border-l border-[#E8D5D4] lg:pl-16">
-              <h3 className="text-lg font-display mb-10 text-[#3A2B29]">Contact Details</h3>
+              <h3 className="text-lg font-display mb-10 text-[#3A2B29]">
+                {t("contact.details_heading")}
+              </h3>
 
               <div className="space-y-10 flex-1">
-                <DetailRow icon={<Mail size={20} strokeWidth={1.5} />} label="Email">
+                <DetailRow icon={<Mail size={20} strokeWidth={1.5} />} label={t("contact.email_section")}>
                   <p className="text-sm font-medium mb-3 text-[#3A2B29]">{profile.email}</p>
                   <button
                     onClick={() => copy(profile.email)}
                     className="group flex items-center gap-1.5 text-[10px] font-bold text-[#C28C88] uppercase tracking-[0.15em] hover:text-[#3A2B29] transition-colors"
                   >
                     <Copy size={12} className="group-hover:scale-110 transition-transform" />
-                    {copied ? "Copied!" : "Copy Email"}
+                    {copied ? t("contact.copied") : t("contact.copy_email")}
                   </button>
                 </DetailRow>
 
-                <DetailRow icon={<CalendarDays size={20} strokeWidth={1.5} />} label="Meeting">
-                  <p className="text-sm font-medium text-[#3A2B29]">Schedule a call</p>
+                <DetailRow icon={<CalendarDays size={20} strokeWidth={1.5} />} label={t("contact.meeting_section")}>
+                  <p className="text-sm font-medium text-[#3A2B29]">{t("contact.schedule")}</p>
                 </DetailRow>
 
-                <DetailRow icon={<MapPin size={20} strokeWidth={1.5} />} label="Location">
+                <DetailRow icon={<MapPin size={20} strokeWidth={1.5} />} label={t("contact.location_section")}>
                   <p className="text-sm font-medium text-[#3A2B29]">{profile.location}</p>
                 </DetailRow>
               </div>
 
               <div className="mt-12 pt-8 border-t border-[#E8D5D4]">
-                <h3 className="text-lg font-display mb-6 text-[#3A2B29]">Socials</h3>
+                <h3 className="text-lg font-display mb-6 text-[#3A2B29]">
+                  {t("contact.socials_heading")}
+                </h3>
                 <div className="flex items-center gap-8">
                   {profile.socials.linkedin ? (
                     <SocialLink href={profile.socials.linkedin} icon={<Linkedin size={18} />} label="LinkedIn" />
@@ -239,7 +247,7 @@ export function Contact() {
                     <SocialLink href={profile.socials.github} icon={<Github size={18} />} label="GitHub" />
                   ) : null}
                   {!profile.socials.linkedin && !profile.socials.github && (
-                    <p className="text-sm text-[#8C7A78] italic">Links pending confirmation.</p>
+                    <p className="text-sm text-[#8C7A78] italic">{t("contact.links_pending")}</p>
                   )}
                 </div>
               </div>
@@ -260,10 +268,8 @@ export function Contact() {
           <div className="space-y-6">
             <img src={logoUrl} alt="Aya Jabbari" className="h-10 md:h-12 w-auto object-contain" />
             <div className="space-y-2">
-              <p className="text-sm md:text-base text-[#5C4D4B] font-light">{profile.role}</p>
-              <p className="text-sm md:text-base text-[#5C4D4B] font-light">
-                Software Engineering, Data, and Applied AI
-              </p>
+              <p className="text-sm md:text-base text-[#5C4D4B] font-light">{t("profile.role")}</p>
+              <p className="text-sm md:text-base text-[#5C4D4B] font-light">{t("footer.skills")}</p>
               <p className="text-sm md:text-base text-[#5C4D4B] font-light">{profile.location}</p>
             </div>
             <a
@@ -282,7 +288,7 @@ export function Contact() {
                 download
                 className="group flex items-center gap-3 text-xs md:text-sm font-bold text-[#3A2B29] hover:text-[#C28C88] transition-colors"
               >
-                <span className="uppercase tracking-[0.15em]">Download CV</span>
+                <span className="uppercase tracking-[0.15em]">{t("footer.download_cv")}</span>
                 <Download size={16} className="group-hover:-translate-y-1 group-hover:scale-110 transition-all duration-300" />
               </a>
             )}
@@ -290,10 +296,10 @@ export function Contact() {
             <div className="flex flex-col items-start md:items-end gap-3 md:mt-12">
               <div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.2em] text-[#A67571] bg-white/50 backdrop-blur-sm px-3 py-1.5 rounded-full border border-[#E8D5D4]">
                 <div className="w-1.5 h-1.5 rounded-full bg-success-600 animate-pulse" />
-                {time ? `Local Time — ${time}` : "Fès, Morocco"}
+                {time ? `${t("footer.local_time")} — ${time}` : "Fès, Morocco"}
               </div>
               <p className="text-[10px] md:text-[11px] text-[#8C7A78] font-medium tracking-widest uppercase mt-2">
-                © {new Date().getFullYear()} Aya Jabbari. Built with React & Tailwind.
+                © {new Date().getFullYear()} Aya Jabbari. {t("footer.built")}
               </p>
             </div>
           </div>

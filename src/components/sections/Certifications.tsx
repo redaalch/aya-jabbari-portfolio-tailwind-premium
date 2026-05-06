@@ -17,26 +17,7 @@ import {
   type CertificationIcon,
   type CommunityIcon,
 } from "../../data/background";
-
-type SectionIntro = {
-  label: string;
-  headline: string;
-  subheadline: string;
-};
-
-const certificationsIntro: SectionIntro = {
-  label: "Certifications",
-  headline: "Recognized learning and credentials.",
-  subheadline:
-    "Grouped by issuer to highlight continuous, focused learning paths in databases, AI, and foundations.",
-};
-
-const communityIntro: SectionIntro = {
-  label: "Community",
-  headline: "Community involvement.",
-  subheadline:
-    "Volunteering and student community work outside the main technical portfolio.",
-};
+import { useLanguage } from "../../contexts/LanguageContext";
 
 const certificationIcons: Record<CertificationIcon, LucideIcon> = {
   database: Database,
@@ -52,44 +33,32 @@ const communityIcons: Record<CommunityIcon, LucideIcon> = {
   heart: Heart,
 };
 
-function SectionHeader({
-  intro,
-  headingId,
-}: {
-  intro: SectionIntro;
-  headingId: string;
-}) {
-  return (
-    <div className="mb-12 md:mb-16">
-      <p className="mb-4 flex items-center gap-4 text-[12px] font-bold uppercase tracking-[0.2em] text-[#C28C88]">
-        <span className="h-px w-8 bg-[#C28C88]" aria-hidden="true" />
-        {intro.label}
-      </p>
-      <h2
-        id={headingId}
-        className="mb-4 font-display text-4xl font-medium leading-tight text-[#3A2B29] md:text-5xl"
-      >
-        {intro.headline}
-      </h2>
-      <p className="max-w-2xl border-l-2 border-[#E8D5D4] pl-5 text-lg font-light leading-relaxed text-[#8C7A78]">
-        {intro.subheadline}
-      </p>
-    </div>
-  );
-}
-
 export function Certifications() {
+  const { t } = useLanguage();
+
   return (
     <section
       id="certifications"
       className="bg-[#FAF7F5] px-6 py-16 text-[#3A2B29] md:px-12 md:py-24 lg:px-24"
     >
       <div className="mx-auto flex max-w-7xl flex-col gap-24">
+        {/* Certifications */}
         <section aria-labelledby="certifications-heading">
-          <SectionHeader
-            intro={certificationsIntro}
-            headingId="certifications-heading"
-          />
+          <div className="mb-12 md:mb-16">
+            <p className="mb-4 flex items-center gap-4 text-[12px] font-bold uppercase tracking-[0.2em] text-[#C28C88]">
+              <span className="h-px w-8 bg-[#C28C88]" aria-hidden="true" />
+              {t("certs.eyebrow")}
+            </p>
+            <h2
+              id="certifications-heading"
+              className="mb-4 font-display text-4xl font-medium leading-tight text-[#3A2B29] md:text-5xl"
+            >
+              {t("certs.heading")}
+            </h2>
+            <p className="max-w-2xl border-l-2 border-[#E8D5D4] pl-5 text-lg font-light leading-relaxed text-[#8C7A78]">
+              {t("certs.desc")}
+            </p>
+          </div>
 
           <div className="group/wallet mx-auto flex w-full max-w-4xl flex-col pb-12 pt-4">
             {certificationIssuers.map((issuer, index) => {
@@ -99,9 +68,7 @@ export function Certifications() {
                 <article
                   key={issuer.id}
                   className={`group relative overflow-hidden rounded-3xl border border-[#E8D5D4] bg-white p-8 shadow-[0_-10px_30px_-15px_rgba(225,205,205,0.4)] transition-all duration-500 ease-out hover:!translate-y-[-8px] hover:z-50 hover:border-[#C28C88] hover:shadow-[0_20px_50px_-10px_rgba(225,205,205,0.6)] ${
-                    index !== 0
-                      ? "mt-4 md:-mt-24 md:group-hover/wallet:-mt-4"
-                      : "mt-0"
+                    index !== 0 ? "mt-4 md:-mt-24 md:group-hover/wallet:-mt-4" : "mt-0"
                   }`}
                   style={{ zIndex: index + 1 }}
                 >
@@ -123,16 +90,13 @@ export function Certifications() {
                         {issuer.name}
                       </div>
                       <p className="mt-auto hidden text-[10px] font-bold uppercase tracking-widest text-[#8C7A78] md:block">
-                        {issuer.certs.length} records found
+                        {t("certs.records", { count: issuer.certs.length })}
                       </p>
                     </div>
 
                     <div className="flex flex-col justify-center gap-6 md:w-2/3">
                       {issuer.certs.map((cert) => (
-                        <div
-                          key={cert.title}
-                          className="group/cert flex items-start justify-between gap-4"
-                        >
+                        <div key={cert.title} className="group/cert flex items-start justify-between gap-4">
                           <div>
                             <h3 className="mb-1 font-display text-xl font-medium text-[#3A2B29] transition-colors group-hover/cert:text-[#C28C88]">
                               {cert.title}
@@ -153,7 +117,7 @@ export function Certifications() {
 
           <p className="mt-4 hidden items-center justify-center gap-2 text-center text-[10px] font-bold uppercase tracking-widest text-[#A67571] opacity-50 md:flex">
             <Layers className="h-3.5 w-3.5" aria-hidden="true" />
-            Hover stack to expand
+            {t("certs.stack_hint")}
           </p>
         </section>
 
@@ -162,13 +126,29 @@ export function Certifications() {
           aria-hidden="true"
         />
 
+        {/* Community */}
         <section id="community" aria-labelledby="community-heading">
-          <SectionHeader intro={communityIntro} headingId="community-heading" />
+          <div className="mb-12 md:mb-16">
+            <p className="mb-4 flex items-center gap-4 text-[12px] font-bold uppercase tracking-[0.2em] text-[#C28C88]">
+              <span className="h-px w-8 bg-[#C28C88]" aria-hidden="true" />
+              {t("certs.community_eyebrow")}
+            </p>
+            <h2
+              id="community-heading"
+              className="mb-4 font-display text-4xl font-medium leading-tight text-[#3A2B29] md:text-5xl"
+            >
+              {t("certs.community_heading")}
+            </h2>
+            <p className="max-w-2xl border-l-2 border-[#E8D5D4] pl-5 text-lg font-light leading-relaxed text-[#8C7A78]">
+              {t("certs.community_desc")}
+            </p>
+          </div>
 
           <div className="mx-auto mt-8 w-full max-w-6xl">
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
               {communityItems.map((item) => {
                 const Icon = communityIcons[item.icon];
+                const context = t(`community.${item.id}.context`);
 
                 return (
                   <article
@@ -182,7 +162,7 @@ export function Certifications() {
                       {item.org}
                     </h3>
                     <p className="text-sm font-light leading-relaxed text-[#8C7A78]">
-                      {item.context}
+                      {context}
                     </p>
                   </article>
                 );

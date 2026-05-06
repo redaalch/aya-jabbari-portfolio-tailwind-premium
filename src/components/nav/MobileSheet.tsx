@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
-import { X, Mail } from "lucide-react";
+import { X, Mail, Globe } from "lucide-react";
 import { profile } from "../../data/profile";
+import type { Lang } from "../../i18n/translations";
 
 type Link = { href: string; label: string };
 
@@ -10,9 +11,11 @@ type MobileSheetProps = {
   onClose: () => void;
   links: Link[];
   active: string;
+  lang: Lang;
+  onToggleLang: () => void;
 };
 
-export function MobileSheet({ id, open, onClose, links, active }: MobileSheetProps) {
+export function MobileSheet({ id, open, onClose, links, active, lang, onToggleLang }: MobileSheetProps) {
   const panelRef = useRef<HTMLDivElement>(null);
   const previousFocusRef = useRef<HTMLElement | null>(null);
 
@@ -52,13 +55,10 @@ export function MobileSheet({ id, open, onClose, links, active }: MobileSheetPro
         }
       };
 
-      // Ensure focus cannot escape sheet via clicks outside when aria-hidden prevents the backdrop click handler
       document.addEventListener("keydown", handleKeyDown);
-      // document.body.style.overflow = "hidden"; // optional: prevent scroll under sheet
 
       return () => {
         document.removeEventListener("keydown", handleKeyDown);
-        // document.body.style.overflow = "";
       };
     } else {
       if (previousFocusRef.current) {
@@ -120,8 +120,21 @@ export function MobileSheet({ id, open, onClose, links, active }: MobileSheetPro
           ))}
         </nav>
 
-        {/* Email CTA pinned to bottom */}
-        <div className="mt-auto px-6 pb-8">
+        {/* Language toggle */}
+        <div className="px-6 pt-2 pb-4 border-t border-cream-200 mt-auto">
+          <button
+            type="button"
+            onClick={() => { onToggleLang(); onClose(); }}
+            aria-label={lang === "en" ? "Switch to French" : "Passer en anglais"}
+            className="flex w-full items-center justify-center gap-2 h-11 rounded-xl border border-cream-200 text-[14px] font-semibold text-plum-700 transition-colors hover:bg-cream-100 hover:text-plum-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-500"
+          >
+            <Globe className="h-4 w-4" aria-hidden="true" />
+            {lang === "en" ? "Passer en Français" : "Switch to English"}
+          </button>
+        </div>
+
+        {/* Email CTA */}
+        <div className="px-6 pb-8">
           <a
             href={`mailto:${profile.email}`}
             onClick={onClose}

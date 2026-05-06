@@ -8,21 +8,7 @@ import {
 import type { ReactNode } from "react";
 import { education, languages } from "../data/background";
 import { profile } from "../data/profile";
-
-const focusAreas = [
-  {
-    label: "Full-stack systems",
-    description: "React, Laravel, Spring Boot, and REST API architectures.",
-  },
-  {
-    label: "Data dashboards",
-    description: "Turning structured datasets and ETL workflows into actionable UI.",
-  },
-  {
-    label: "Applied AI workflows",
-    description: "Document validation, extraction logic, and automation for real products.",
-  },
-];
+import { useLanguage } from "../contexts/LanguageContext";
 
 const languageGreetings: Record<string, string> = {
   Arabic: "مرحبا",
@@ -31,6 +17,20 @@ const languageGreetings: Record<string, string> = {
 };
 
 export function About() {
+  const { t } = useLanguage();
+
+  const focusAreas = [
+    { label: t("about.focus_1_label"), description: t("about.focus_1_desc") },
+    { label: t("about.focus_2_label"), description: t("about.focus_2_desc") },
+    { label: t("about.focus_3_label"), description: t("about.focus_3_desc") },
+  ];
+
+  const proficiencyLabel = (p: string) => {
+    if (p === "Native") return t("about.native");
+    if (p === "Advanced") return t("about.advanced");
+    return p;
+  };
+
   return (
     <section
       id="about"
@@ -47,16 +47,16 @@ export function About() {
             <div className="mb-8 flex items-center gap-4">
               <span className="h-px w-12 bg-[#C28C88]" aria-hidden="true" />
               <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#C28C88]">
-                About
+                {t("about.eyebrow")}
               </p>
             </div>
 
             <h2 className="mb-8 font-display text-[clamp(3.5rem,5vw,5.8rem)] leading-[0.98] tracking-tight text-[#3A2B29]">
-              Building practical software, end to end.
+              {t("about.heading")}
             </h2>
 
             <p className="mb-12 max-w-[520px] text-xl font-light leading-relaxed text-[#5C4D4B]">
-              {profile.summary}
+              {t("profile.summary")}
             </p>
 
             <ul className="space-y-5 border-l border-[#E8D5D4] py-2 pl-6 text-sm text-[#5C4D4B]">
@@ -66,9 +66,7 @@ export function About() {
                   strokeWidth={1.5}
                   aria-hidden="true"
                 />
-                <span className="font-medium tracking-wide">
-                  {profile.location}
-                </span>
+                <span className="font-medium tracking-wide">{profile.location}</span>
               </li>
               <li className="group flex items-center gap-4">
                 <Briefcase
@@ -76,9 +74,7 @@ export function About() {
                   strokeWidth={1.5}
                   aria-hidden="true"
                 />
-                <span className="font-medium tracking-wide">
-                  Available for PFE · 2026
-                </span>
+                <span className="font-medium tracking-wide">{t("profile.availability")}</span>
               </li>
             </ul>
           </div>
@@ -89,7 +85,7 @@ export function About() {
                 id="about-focus-heading"
                 icon={<Target className="h-4 w-4" strokeWidth={1.5} />}
               >
-                Current Focus
+                {t("about.focus_eyebrow")}
               </SectionTitle>
 
               <div className="flex flex-col gap-10">
@@ -116,7 +112,7 @@ export function About() {
                 id="about-education-heading"
                 icon={<GraduationCap className="h-4 w-4" strokeWidth={1.5} />}
               >
-                Education
+                {t("about.education_eyebrow")}
               </SectionTitle>
 
               <div className="relative ml-2 space-y-12 border-l border-[#E8D5D4] pb-2">
@@ -126,7 +122,6 @@ export function About() {
                       className="absolute -left-[5px] top-2 h-2.5 w-2.5 rounded-full border-2 border-[#C28C88] bg-[#FAF7F5] transition-colors group-hover:bg-[#C28C88]"
                       aria-hidden="true"
                     />
-
                     <p className="mb-2 text-xs font-bold uppercase tracking-[0.1em] text-[#C28C88]">
                       {item.date}
                     </p>
@@ -146,7 +141,7 @@ export function About() {
                 id="about-languages-heading"
                 icon={<LanguagesIcon className="h-4 w-4" strokeWidth={1.5} />}
               >
-                Languages
+                {t("about.languages_eyebrow")}
               </SectionTitle>
 
               <div className="grid grid-cols-1 gap-8 sm:grid-cols-2">
@@ -161,11 +156,8 @@ export function About() {
                       </p>
                     </div>
                     <p className="flex items-center gap-2 text-sm font-semibold uppercase tracking-wide text-[#A67571]">
-                      <span
-                        className="h-1 w-1 rounded-full bg-[#C28C88]"
-                        aria-hidden="true"
-                      />
-                      {item.proficiency}
+                      <span className="h-1 w-1 rounded-full bg-[#C28C88]" aria-hidden="true" />
+                      {proficiencyLabel(item.proficiency)}
                     </p>
                   </div>
                 ))}

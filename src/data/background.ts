@@ -98,6 +98,7 @@ export const certifications = [
 export type CommunityIcon = "globe" | "users" | "message" | "book" | "heart";
 
 export type CommunityItem = {
+  id: string;
   org: string;
   icon: CommunityIcon;
   context: string;
@@ -105,30 +106,35 @@ export type CommunityItem = {
 
 export const communityItems: CommunityItem[] = [
   {
+    id: "ieee",
     org: "IEEE Region 8 & IEEE Junior",
     icon: "globe",
     context:
       "Organized technical workshops and mentored junior engineering students.",
   },
   {
+    id: "jcmp",
     org: "JCMP & Community Service",
     icon: "users",
     context:
       "Participated in local community outreach and student initiatives.",
   },
   {
+    id: "debate",
     org: "Star Debate",
     icon: "message",
     context:
       "Developed public speaking, critical thinking, and structured argumentation.",
   },
   {
+    id: "english",
     org: "English Teaching Volunteer",
     icon: "book",
     context:
       "Volunteered to teach basic English to local youth at the library.",
   },
   {
+    id: "iklyl",
     org: "Iklyl Cultural Center",
     icon: "heart",
     context:

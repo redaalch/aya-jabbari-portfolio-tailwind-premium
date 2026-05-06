@@ -3,6 +3,7 @@ import { Mail, Menu, Moon, Globe } from "lucide-react";
 import { MobileSheet } from "./nav/MobileSheet";
 import logo from "../assets/logo.png";
 import { profile } from "../data/profile";
+import { useLanguage } from "../contexts/LanguageContext";
 
 const links = [
   { href: "#about", label: "About" },
@@ -16,6 +17,8 @@ export function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [active, setActive] = useState("");
   const [sheetOpen, setSheetOpen] = useState(false);
+  const { lang, setLang, t } = useLanguage();
+
   const isProjectArchive =
     typeof window !== "undefined" &&
     window.location.pathname.replace(/\/$/, "").startsWith("/projects");
@@ -50,12 +53,14 @@ export function Nav() {
     };
   }, [sheetOpen]);
 
+  function toggleLang() {
+    setLang(lang === "en" ? "fr" : "en");
+  }
+
   return (
     <>
       <header className="fixed inset-x-0 top-0 z-50 px-6 pt-5">
-        <div
-          className="relative flex w-full items-center justify-between"
-        >
+        <div className="relative flex w-full items-center justify-between">
           {/* ── Far left: Logo ── */}
           <a
             href={isProjectArchive ? "/" : "#top"}
@@ -98,22 +103,25 @@ export function Nav() {
               className="hidden lg:inline-flex items-center gap-1.5 rounded-full bg-[#36172A] px-5 py-2.5 text-[13px] font-semibold text-white shadow-[0_10px_24px_rgba(54,23,42,0.22)] transition-all duration-base ease-standard hover:-translate-y-0.5 hover:bg-[#4A2340] hover:shadow-[0_14px_30px_rgba(54,23,42,0.28)] active:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-500"
             >
               <Mail className="h-3.5 w-3.5" aria-hidden="true" />
-              Email Aya
+              {t("nav.email")}
             </a>
 
-            {/* Language pill */}
+            {/* Language toggle */}
             <button
+              type="button"
+              onClick={toggleLang}
+              aria-label={lang === "en" ? "Switch to French" : "Passer en anglais"}
               className="hidden lg:inline-flex h-10 items-center gap-1.5 rounded-full border border-white/35 bg-white/20 px-3 text-[12px] font-semibold text-[#4A3B45] shadow-[0_8px_24px_rgba(31,23,42,0.08)] backdrop-blur-xl transition-all duration-fast hover:bg-white/35 hover:text-[#2F1730] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-500"
-              aria-label="Switch language"
             >
               <Globe className="h-3.5 w-3.5" aria-hidden="true" />
-              EN
+              {lang.toUpperCase()}
             </button>
 
-            {/* Theme toggle */}
+            {/* Theme toggle (reserved) */}
             <button
-              className="hidden lg:grid h-10 w-10 place-items-center rounded-full border border-white/35 bg-white/20 text-[#4A3B45] shadow-[0_8px_24px_rgba(31,23,42,0.08)] backdrop-blur-xl transition-all duration-fast hover:bg-white/35 hover:text-[#2F1730] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-500"
+              type="button"
               aria-label="Toggle theme"
+              className="hidden lg:grid h-10 w-10 place-items-center rounded-full border border-white/35 bg-white/20 text-[#4A3B45] shadow-[0_8px_24px_rgba(31,23,42,0.08)] backdrop-blur-xl transition-all duration-fast hover:bg-white/35 hover:text-[#2F1730] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-500"
             >
               <Moon className="h-4 w-4" aria-hidden="true" />
             </button>
@@ -148,6 +156,8 @@ export function Nav() {
         onClose={() => setSheetOpen(false)}
         links={navLinks}
         active={isProjectArchive ? "" : active}
+        lang={lang}
+        onToggleLang={toggleLang}
       />
     </>
   );

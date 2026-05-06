@@ -14,28 +14,26 @@ import {
   type WorkItem,
   type WorkType,
 } from "../../data/work";
+import { useLanguage } from "../../contexts/LanguageContext";
 
 type WorkFilter = "all" | WorkType;
 
-const filters: Array<{ id: WorkFilter; label: string }> = [
-  { id: "all", label: "All Work" },
-  { id: "Internship", label: "Internships" },
-  { id: "Hackathon", label: "Hackathons" },
-  { id: "Project", label: "Projects" },
-];
-
 export function Work() {
+  const { t } = useLanguage();
   const [activeFilter, setActiveFilter] = useState<WorkFilter>("all");
   const scrollContainerRef = useRef<HTMLDivElement>(null);
+
+  const filters: Array<{ id: WorkFilter; label: string }> = [
+    { id: "all", label: t("work.filter_all") },
+    { id: "Internship", label: t("work.filter_internship") },
+    { id: "Hackathon", label: t("work.filter_hackathon") },
+    { id: "Project", label: t("work.filter_project") },
+  ];
 
   const selectedWork = useMemo(() => {
     return workItems
       .filter((item) => item.tier === "selected")
-      .sort((a, b) => {
-        const idxA = selectedWorkOrder.indexOf(a.id);
-        const idxB = selectedWorkOrder.indexOf(b.id);
-        return idxA - idxB;
-      });
+      .sort((a, b) => selectedWorkOrder.indexOf(a.id) - selectedWorkOrder.indexOf(b.id));
   }, []);
 
   const filteredWork = selectedWork.filter((item) =>
@@ -45,7 +43,6 @@ export function Work() {
   const scroll = (direction: "left" | "right") => {
     const container = scrollContainerRef.current;
     if (!container) return;
-
     const scrollAmount = window.innerWidth > 768 ? 480 : 320;
     container.scrollBy({
       left: direction === "left" ? -scrollAmount : scrollAmount,
@@ -64,16 +61,15 @@ export function Work() {
         <div className="flex shrink-0 flex-col pt-4 lg:sticky lg:top-32 lg:w-1/3">
           <p className="mb-6 flex items-center gap-4 text-xs font-bold uppercase tracking-[0.2em] text-[#C28C88]">
             <span className="h-px w-8 bg-[#C28C88]" aria-hidden="true" />
-            Selected Work
+            {t("work.eyebrow")}
           </p>
 
           <h2 className="mb-6 font-display text-4xl leading-[1.1] tracking-tight text-[#3A2B29] md:text-5xl lg:text-5xl">
-            One timeline of internships, hackathons, and projects.
+            {t("work.heading")}
           </h2>
 
           <p className="mb-10 text-lg font-light leading-relaxed text-[#8C7A78]">
-            Each item appears once, with its context shown as a label instead
-            of being repeated in separate sections.
+            {t("work.desc")}
           </p>
 
           <div
@@ -90,10 +86,7 @@ export function Work() {
                   aria-pressed={isActive}
                   onClick={() => {
                     setActiveFilter(filter.id);
-                    scrollContainerRef.current?.scrollTo({
-                      left: 0,
-                      behavior: "smooth",
-                    });
+                    scrollContainerRef.current?.scrollTo({ left: 0, behavior: "smooth" });
                   }}
                   className={`flex w-32 items-center justify-center rounded-full border py-2.5 text-xs font-bold tracking-wide transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-500 ${
                     isActive
@@ -125,7 +118,7 @@ export function Work() {
               <ChevronRight className="h-5 w-5" aria-hidden="true" />
             </button>
             <span className="ml-2 text-xs font-bold uppercase tracking-[0.2em] text-[#A67571]">
-              Explore Timeline
+              {t("work.explore")}
             </span>
           </div>
 
@@ -134,7 +127,7 @@ export function Work() {
               href="/projects"
               className="group flex items-center gap-3 text-sm font-bold uppercase tracking-[0.15em] text-[#3A2B29] transition-colors hover:text-[#C28C88] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-500"
             >
-              View Full Project Archive
+              {t("work.archive")}
               <ArrowRight
                 className="h-4 w-4 transition-transform group-hover:translate-x-1"
                 aria-hidden="true"
@@ -156,9 +149,7 @@ export function Work() {
           {filteredWork.length === 0 && (
             <div className="flex h-[600px] w-[85vw] shrink-0 flex-col items-center justify-center rounded-3xl border-2 border-dashed border-[#E8D5D4] bg-white/50 p-12 text-center text-[#A67571] sm:w-[420px] lg:h-[680px]">
               <Terminal className="mb-4 h-8 w-8 opacity-50" aria-hidden="true" />
-              <p className="font-display text-xl">
-                No projects found for this category.
-              </p>
+              <p className="font-display text-xl">{t("work.empty")}</p>
             </div>
           )}
         </div>
@@ -169,7 +160,7 @@ export function Work() {
           href="/projects"
           className="group flex w-full items-center justify-center gap-3 rounded-full border border-[#E8D5D4] bg-white px-8 py-4 text-sm font-bold uppercase tracking-[0.15em] text-[#3A2B29] shadow-sm transition-colors hover:text-[#C28C88] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-500"
         >
-          View Full Project Archive
+          {t("work.archive")}
           <ArrowRight
             className="h-4 w-4 transition-transform group-hover:translate-x-1"
             aria-hidden="true"
@@ -178,20 +169,16 @@ export function Work() {
       </div>
 
       <style>{`
-        .hide-scrollbar::-webkit-scrollbar {
-          display: none;
-        }
-
-        .hide-scrollbar {
-          -ms-overflow-style: none;
-          scrollbar-width: none;
-        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
       `}</style>
     </section>
   );
 }
 
 function PanoramaCard({ item }: { item: WorkItem }) {
+  const { t } = useLanguage();
+
   return (
     <article
       className="flex h-[600px] w-[85vw] shrink-0 snap-start flex-col rounded-[2rem] border border-[#E8D5D4] bg-white p-6 shadow-[0_10px_40px_-10px_rgba(225,205,205,0.3)] transition-all duration-500 ease-out hover:opacity-100 hover:shadow-[0_20px_50px_-10px_rgba(225,205,205,0.5)] sm:w-[420px] lg:h-[680px] lg:rounded-3xl lg:p-8 lg:hover:-translate-y-2 lg:group-hover/track:opacity-40 lg:hover:!opacity-100"
@@ -222,9 +209,7 @@ function PanoramaCard({ item }: { item: WorkItem }) {
         <h3 className="mb-1.5 font-display text-xl leading-tight text-[#3A2B29] lg:mb-2 lg:text-2xl">
           {item.title}
         </h3>
-        <p className="mb-1 text-xs font-medium text-[#3A2B29] lg:text-sm">
-          {item.role}
-        </p>
+        <p className="mb-1 text-xs font-medium text-[#3A2B29] lg:text-sm">{item.role}</p>
         {(item.organization || item.location) && (
           <p className="text-xs font-light italic text-[#8C7A78] lg:text-sm">
             {[item.organization, item.location].filter(Boolean).join(" · ")}
@@ -235,7 +220,7 @@ function PanoramaCard({ item }: { item: WorkItem }) {
       <div className="hide-scrollbar mb-4 flex-1 space-y-4 overflow-y-auto lg:mb-6">
         <div className="border-l-2 border-[#F2EAE9] pl-3 lg:pl-4">
           <span className="mb-1 block text-[9px] font-bold uppercase tracking-wider text-[#A67571] lg:text-[10px]">
-            The Problem
+            {t("work.problem")}
           </span>
           <span className="text-xs leading-relaxed text-[#5C4D4B] lg:text-sm">
             {item.problem}
@@ -243,7 +228,7 @@ function PanoramaCard({ item }: { item: WorkItem }) {
         </div>
         <div className="border-l-2 border-[#C28C88] pl-3 lg:pl-4">
           <span className="mb-1 block text-[9px] font-bold uppercase tracking-wider text-[#A67571] lg:text-[10px]">
-            What I Built
+            {t("work.built")}
           </span>
           <span className="text-xs font-medium leading-relaxed text-[#3A2B29] lg:text-sm">
             {item.contribution}
@@ -267,7 +252,7 @@ function PanoramaCard({ item }: { item: WorkItem }) {
           href={`/projects/${item.id}`}
           className="flex w-full items-center justify-center gap-2 rounded-full bg-[#3A2B29] px-6 py-2.5 text-xs font-bold tracking-wide text-white shadow-md transition-all duration-300 hover:bg-[#C28C88] hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-500 lg:py-3.5 lg:text-sm"
         >
-          View Details
+          {t("work.view_details")}
           <ArrowRight className="h-4 w-4" aria-hidden="true" />
         </a>
 
@@ -280,7 +265,7 @@ function PanoramaCard({ item }: { item: WorkItem }) {
               rel="noreferrer"
             >
               <Github className="h-3.5 w-3.5 text-[#3A2B29]" aria-hidden="true" />
-              View Repository
+              {t("work.view_repo")}
             </a>
           ) : item.links.demoUrl ? (
             <a
@@ -289,16 +274,13 @@ function PanoramaCard({ item }: { item: WorkItem }) {
               target="_blank"
               rel="noreferrer"
             >
-              <ExternalLink
-                className="h-3.5 w-3.5 text-[#3A2B29]"
-                aria-hidden="true"
-              />
-              View Live Demo
+              <ExternalLink className="h-3.5 w-3.5 text-[#3A2B29]" aria-hidden="true" />
+              {t("work.view_demo")}
             </a>
           ) : (
             <>
               <Lock className="h-3.5 w-3.5 text-[#A67571]" aria-hidden="true" />
-              Code available on request
+              {t("work.private")}
             </>
           )}
         </div>
