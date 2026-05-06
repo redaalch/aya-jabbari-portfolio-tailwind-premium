@@ -204,7 +204,7 @@ Goal: explain who Aya is in under 5 seconds.
 Suggested hero copy:
 
 Status pill:
-**Open to internship / PFE opportunities — 2026**
+**Open to internship / PFA opportunities — 2026**
 Exact availability needs confirmation.
 
 H1:
@@ -653,7 +653,7 @@ Heading:
 
 Suggested copy:
 
-**I’m open to internship and PFE opportunities in full-stack development, backend/API engineering, data/BI, applied AI, automation, and software engineering.**
+**I’m open to internship and PFA opportunities in full-stack development, backend/API engineering, data/BI, applied AI, automation, and software engineering.**
 
 Direct contact:
 
@@ -917,7 +917,7 @@ Critical:
 GitHub profile URL
 LinkedIn profile URL
 Final CV PDF
-Exact internship / PFE availability dates
+Exact internship / PFA availability dates
 Project repository links
 Project screenshots for top projects
 
@@ -988,4 +988,4 @@ Build this as a polished single-page React + Tailwind portfolio with a warm edit
 
 The final impression should be:
 
-**Aya is polished, credible, technically capable, and ready for internship or PFE opportunities in full-stack development, backend/API engineering, applied AI, data/BI, automation, and software engineering.**
+**Aya is polished, credible, technically capable, and ready for internship or PFA opportunities in full-stack development, backend/API engineering, applied AI, data/BI, automation, and software engineering.**

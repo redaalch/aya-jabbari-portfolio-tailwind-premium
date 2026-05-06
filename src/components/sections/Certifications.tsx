@@ -67,8 +67,8 @@ export function Certifications() {
               return (
                 <article
                   key={issuer.id}
-                  className={`group relative overflow-hidden rounded-3xl border border-[#E8D5D4] dark:border-[#1E293B] bg-white dark:bg-[#0F172A] p-8 shadow-[0_-10px_30px_-15px_rgba(225,205,205,0.4)] dark:shadow-none transition-[transform,border-color,box-shadow] duration-300 ease-out hover:-translate-y-2 hover:z-50 hover:border-[#C28C88] dark:hover:border-[#38BDF8] hover:shadow-[0_20px_50px_-10px_rgba(225,205,205,0.6)] dark:hover:shadow-[0_20px_50px_-10px_rgba(56,189,248,0.08)] ${
-                    index !== 0 ? "mt-4 md:-mt-24" : "mt-0"
+                  className={`group relative overflow-hidden rounded-3xl border border-[#E8D5D4] dark:border-[#1E293B] bg-white dark:bg-[#0F172A] p-8 shadow-[0_-10px_30px_-15px_rgba(225,205,205,0.4)] dark:shadow-none transition-all duration-500 ease-out hover:!translate-y-[-8px] hover:!z-50 hover:border-[#C28C88] dark:hover:border-[#38BDF8] hover:shadow-[0_20px_50px_-10px_rgba(225,205,205,0.6)] dark:hover:shadow-[0_20px_50px_-10px_rgba(56,189,248,0.08)] ${
+                    index !== 0 ? "mt-4 md:-mt-24 md:group-hover/wallet:-mt-4" : "mt-0"
                   }`}
                   style={{ zIndex: index + 1 }}
                 >

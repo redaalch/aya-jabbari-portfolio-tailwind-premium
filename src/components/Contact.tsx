@@ -270,7 +270,7 @@ export function Contact() {
             <img
               src={logoUrl}
               alt="Aya Jabbari"
-              className="h-10 md:h-12 w-auto object-contain transition-all duration-500 dark:invert"
+              className="h-10 md:h-12 w-auto object-contain transition-all duration-500 dark:brightness-0 dark:invert"
             />
             <div className="space-y-2">
               <p className="text-sm md:text-base text-[#5C4D4B] dark:text-[#94A3B8] font-light transition-colors duration-500">{t("profile.role")}</p>

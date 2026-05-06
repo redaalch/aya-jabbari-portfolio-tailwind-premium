@@ -18,7 +18,7 @@ Feminine without losing authority
 Premium personal portfolio, not a generic developer template
 The brand statement:
 Quietly confident engineering, presented with editorial warmth.
-The site should communicate that Aya is a serious computer engineering student with practical project experience, applied AI exposure, and strong potential for internships, PFE opportunities, full-stack work, backend/API work, data/AI projects, and automation projects.
+The site should communicate that Aya is a serious computer engineering student with practical project experience, applied AI exposure, and strong potential for internships, PFA opportunities, full-stack work, backend/API work, data/AI projects, and automation projects.
 Avoid:
 Glossy gradients
 Neon colors
@@ -206,7 +206,7 @@ Location: Fès, Morocco
 CTA row
 Trust row: ENSA Fès · ONDA · Ramadan AI · Capgemini
 Status pill:
-<span className="inline-flex h-8 items-center gap-2 rounded-full border border-[rgba(42,27,45,0.08)] bg-cream-100 pl-2.5 pr-3.5 text-body-xs text-plum-700">  <span className="h-1.5 w-1.5 rounded-full bg-success-600" aria-hidden="true" />  Open to internship / PFE — 2026</span>
+<span className="inline-flex h-8 items-center gap-2 rounded-full border border-[rgba(42,27,45,0.08)] bg-cream-100 pl-2.5 pr-3.5 text-body-xs text-plum-700">  <span className="h-1.5 w-1.5 rounded-full bg-success-600" aria-hidden="true" />  Open to internship / PFA — 2026</span>
 Hero background:
 Cream base with one soft blush decorative blob. Avoid multiple competing gradients.
 <section className="relative overflow-hidden bg-cream-50 pt-24 pb-16 md:pt-32 md:pb-24">  <div className="pointer-events-none absolute -right-32 -top-32 h-[32rem] w-[32rem] rounded-full bg-blush-100/50 blur-[64px]" /></section>
@@ -579,4 +579,4 @@ The final portfolio should feel like:
 Soft visual identity + strong technical proof + recruiter-first clarity.
 It should not look like a generic developer template. It should not look like a fashion portfolio. It should look like a refined engineering portfolio for a serious early-career candidate.
 The final impression should be:
-Aya is polished, credible, technically capable, and ready for internship or PFE opportunities in full-stack development, applied AI, data, and automation.  
+Aya is polished, credible, technically capable, and ready for internship or PFA opportunities in full-stack development, applied AI, data, and automation.

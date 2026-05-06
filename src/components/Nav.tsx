@@ -72,7 +72,7 @@ export function Nav() {
             <img
               src={logo}
               alt="Aya Jabbari"
-              className="h-12 w-auto mix-blend-multiply transition-all duration-500 dark:mix-blend-normal dark:invert"
+              className="h-12 w-auto mix-blend-multiply transition-all duration-500 dark:mix-blend-normal dark:brightness-0 dark:invert"
             />
           </a>
 

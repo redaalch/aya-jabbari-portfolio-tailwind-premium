@@ -19,8 +19,8 @@ export const profile = {
   location: "Fès, Morocco",
   email: "ayajabbari81@gmail.com",
   phone: "+212 637 57 56 62",
-  availability: "Open to end-of-studies (PFE) internship opportunities",
-  availabilityBadge: "Open to Internship · PFE 2026",
+  availability: "Open to PFA internship opportunities",
+  availabilityBadge: "Open to Internship · PFA 2026",
   stackLine:
     "Building practical systems across full-stack development, data, and applied AI.",
   headline:

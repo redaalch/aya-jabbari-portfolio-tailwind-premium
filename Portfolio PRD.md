@@ -11,7 +11,7 @@ This product is a polished, single-page personal portfolio website for Aya Jabba
 
 The portfolio should position Aya as a credible early-career computer engineer with practical experience in full-stack development, applied AI, data-oriented systems, automation, and software engineering foundations.
 
-The website should help recruiters, internship coordinators, technical reviewers, and collaborators quickly understand who Aya is, what she can build, which technologies she uses, and why she is a strong candidate for internships, PFE opportunities, junior technical roles, hackathons, and technical collaborations.
+The website should help recruiters, internship coordinators, technical reviewers, and collaborators quickly understand who Aya is, what she can build, which technologies she uses, and why she is a strong candidate for internships, PFA opportunities, junior technical roles, hackathons, and technical collaborations.
 
 The portfolio should feel elegant, warm, professional, and technical. The visual direction should use a soft cream, pink, and plum palette, serif headings, modern cards, clean spacing, and a polished but human aesthetic.
 
@@ -37,7 +37,7 @@ Computer Engineering Student · Full-Stack Development · Applied AI · Data-Ori
 
 The primary audience is recruiters, hiring managers, and internship coordinators looking for interns or junior profiles in software development, full-stack engineering, backend development, data, applied AI, automation, or technical consulting.
 
-The secondary audience is technical reviewers, engineers, PFE supervisors, hackathon evaluators, and academic mentors who want to assess Aya’s real technical depth through project evidence.
+The secondary audience is technical reviewers, engineers, PFA supervisors, hackathon evaluators, and academic mentors who want to assess Aya’s real technical depth through project evidence.
 
 The tertiary audience is professional communities, IEEE members, hackathon scouts, student clubs, collaborators, and peers who may invite Aya to participate in projects, competitions, or technical initiatives.
 
@@ -107,7 +107,7 @@ The visitor looks for proof of Ramadan AI and Capgemini Hackathon participation,
 
 Design implication: hackathons should be a dedicated section, not buried inside projects.
 
-Journey D — PFE supervisor or professor, 2 minutes
+Journey D — PFA supervisor or professor, 2 minutes
 
 The visitor reads the profile, checks education, scans project breadth, notices volunteering and IEEE/community involvement, and evaluates whether Aya is serious and well-rounded.
 
@@ -143,7 +143,7 @@ Short hero paragraph:
 
 Availability tag:
 
-Open to internship / PFE opportunities — 2026
+Open to internship / PFA opportunities — 2026
 Needs confirmation for exact availability dates.
 
 Hero details:

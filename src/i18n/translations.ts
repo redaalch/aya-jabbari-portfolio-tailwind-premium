@@ -19,8 +19,8 @@ const en = {
     "I build usable software systems — from responsive web applications and backend services to automation workflows, data dashboards, and applied AI tools.",
   "profile.summary":
     "Computer engineering student at ENSA Fès with practical experience in full-stack development, automation, data-oriented systems, and generative AI applications.",
-  "profile.availability": "Available for PFE · 2026",
-  "profile.availabilityBadge": "Open to Internship · PFE 2026",
+  "profile.availability": "Available for PFA · 2026",
+  "profile.availabilityBadge": "Open to Internship · PFA 2026",
 
   /* ── Hero ── */
   "hero.cta_work": "View Projects",
@@ -119,7 +119,7 @@ const en = {
   /* ── Contact ── */
   "contact.cta_heading": "Let's connect.",
   "contact.cta_desc":
-    "Open to end-of-studies (PFE) internship opportunities, project collaborations, and technical conversations.",
+    "Open to PFA internship opportunities, project collaborations, and technical conversations.",
   "contact.cta_btn": "Start a Conversation",
   "contact.close": "Close Form",
   "contact.form_eyebrow": "Direct Message",
@@ -196,8 +196,8 @@ const fr: typeof en = {
     "Je conçois des solutions logicielles utiles : applications web responsives, services backend, automatisations, tableaux de bord et outils d'IA appliquée.",
   "profile.summary":
     "Étudiante ingénieure à l'ENSA Fès, avec une expérience concrète en développement full-stack, automatisation, systèmes orientés données et applications d'IA générative.",
-  "profile.availability": "Disponible pour un stage PFE · 2026",
-  "profile.availabilityBadge": "Disponible pour un stage PFE · 2026",
+  "profile.availability": "Disponible pour un stage PFA · 2026",
+  "profile.availabilityBadge": "Disponible pour un stage PFA · 2026",
 
   /* ── Hero ── */
   "hero.cta_work": "Voir mes projets",
@@ -297,7 +297,7 @@ const fr: typeof en = {
   /* ── Contact ── */
   "contact.cta_heading": "Prenons contact.",
   "contact.cta_desc":
-    "Ouverte aux stages de fin d'études (PFE), aux collaborations projet et aux échanges techniques.",
+    "Ouverte aux stages PFA, aux collaborations projet et aux échanges techniques.",
   "contact.cta_btn": "Me contacter",
   "contact.close": "Fermer le formulaire",
   "contact.form_eyebrow": "Message direct",

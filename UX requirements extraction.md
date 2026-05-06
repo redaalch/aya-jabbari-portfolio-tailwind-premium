@@ -37,7 +37,7 @@ Aya Jabbari
 Computer Engineering Student
 Full-Stack Development · Applied AI · Data · Automation
 Fès, Morocco
-Open to internship / PFE opportunities — 2026 — exact availability needs confirmation.
+Open to internship / PFA opportunities — 2026 — exact availability needs confirmation.
 
 Primary CTA: Email Aya
 Secondary CTA: View Projects
@@ -304,7 +304,7 @@ Aya is a 4th-year Computer Engineering student.
 
 She is based in Fès, Morocco.
 
-She is open to internship / PFE opportunities.
+She is open to internship / PFA opportunities.
 
 She works across full-stack development, applied AI, data, automation, and software engineering.
 
