@@ -15,6 +15,13 @@ export function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [active, setActive] = useState("");
   const [sheetOpen, setSheetOpen] = useState(false);
+  const isProjectArchive =
+    typeof window !== "undefined" &&
+    window.location.pathname.replace(/\/$/, "") === "/projects";
+  const navLinks = links.map((link) => ({
+    ...link,
+    href: isProjectArchive ? `/${link.href}` : link.href,
+  }));
 
   useEffect(() => {
     const onScroll = () => {
@@ -50,7 +57,7 @@ export function Nav() {
         >
           {/* ── Far left: Logo ── */}
           <a
-            href="#top"
+            href={isProjectArchive ? "/" : "#top"}
             className="flex-shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-500 focus-visible:ring-offset-2"
           >
             <img src={logo} alt="Aya Jabbari" className="h-12 w-auto mix-blend-multiply" />
@@ -63,8 +70,8 @@ export function Nav() {
               scrolled ? "bg-white/25" : "bg-white/18"
             }`}
           >
-            {links.map((link) => {
-              const isActive = active === link.href;
+            {navLinks.map((link, index) => {
+              const isActive = !isProjectArchive && active === links[index].href;
               return (
                 <a
                   key={link.href}
@@ -138,8 +145,8 @@ export function Nav() {
         id="mobile-sheet"
         open={sheetOpen}
         onClose={() => setSheetOpen(false)}
-        links={links}
-        active={active}
+        links={navLinks}
+        active={isProjectArchive ? "" : active}
       />
     </>
   );

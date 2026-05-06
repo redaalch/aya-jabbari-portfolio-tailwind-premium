@@ -20,6 +20,7 @@ export type WorkItem = {
   contribution: string;
   stack: string[];
   links: LinkDef;
+  image: string;
 };
 
 const privateLinks: LinkDef = { repoUrl: null, demoUrl: null };
@@ -53,6 +54,8 @@ export const workItems: WorkItem[] = [
     organization: "Office National Des Aéroports — ONDA",
     location: "Fès, Morocco",
     links: privateLinks,
+    image:
+      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop",
     stack: ["PHP", "SNMP", "JavaScript", "HTML", "CSS"],
     problem:
       "Manual switch checks for health and port status were slow and error-prone.",
@@ -69,6 +72,8 @@ export const workItems: WorkItem[] = [
     role: "Built AI document workflow",
     organization: "Capgemini Hackathon",
     links: privateLinks,
+    image:
+      "https://images.unsplash.com/photo-1554224155-6726b3ff858f?q=80&w=800&auto=format&fit=crop",
     stack: ["Python", "PDF parsing", "Image analysis", "Anomaly detection"],
     problem:
       "Automatically validate insurance files from PDF and image documents.",
@@ -85,6 +90,8 @@ export const workItems: WorkItem[] = [
     role: "Built AI document workflow",
     organization: "Ramadan AI Hackathon · Ministry of Digital Transition",
     links: privateLinks,
+    image:
+      "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?q=80&w=800&auto=format&fit=crop",
     stack: ["Python", "OCR", "Document extraction", "Validation rules"],
     problem:
       "Automate CNSS file analysis and validation across structured, unstructured, scanned, and handwritten documents.",
@@ -100,6 +107,8 @@ export const workItems: WorkItem[] = [
     period: "2025",
     role: "Built peer-to-peer learning platform",
     links: privateLinks,
+    image:
+      "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=800&auto=format&fit=crop",
     stack: ["React", "Laravel", "REST APIs", "MySQL"],
     problem:
       "Learners needed a structured way to find peer educators with complementary skills.",
@@ -115,6 +124,8 @@ export const workItems: WorkItem[] = [
     period: "2025",
     role: "Built Spring Boot backend",
     links: privateLinks,
+    image:
+      "https://images.unsplash.com/photo-1531746790731-6c087fecd65a?q=80&w=800&auto=format&fit=crop",
     stack: ["Java", "Spring Boot", "JSON", "REST APIs"],
     problem:
       "Tech support agents spent too much time on repetitive triage flows.",
@@ -130,6 +141,8 @@ export const workItems: WorkItem[] = [
     period: "2025",
     role: "Built CI/CD pipeline",
     links: privateLinks,
+    image:
+      "https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?q=80&w=800&auto=format&fit=crop",
     stack: ["GitHub Actions", "Terraform", "Ansible"],
     problem:
       "Manual code delivery slowed down reliable testing and staging deployments.",
@@ -145,6 +158,8 @@ export const workItems: WorkItem[] = [
     period: "2025",
     role: "Built Kubernetes deployment",
     links: privateLinks,
+    image:
+      "https://images.unsplash.com/photo-1667372393119-3d4c48d07fc9?q=80&w=800&auto=format&fit=crop",
     stack: ["Flask", "Docker", "Kubernetes", "Minikube", "YAML"],
     problem:
       "Needed a repeatable reference for running multi-container services locally.",
@@ -160,6 +175,8 @@ export const workItems: WorkItem[] = [
     period: "2025",
     role: "Built ETL pipeline",
     links: privateLinks,
+    image:
+      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop",
     stack: ["Talend ETL", "Power BI", "Data Modeling"],
     problem:
       "Raw transit data lacked clear reporting interfaces for business intelligence.",
@@ -175,6 +192,8 @@ export const workItems: WorkItem[] = [
     period: "2025",
     role: "Built graph-based recommender",
     links: privateLinks,
+    image:
+      "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?q=80&w=800&auto=format&fit=crop",
     stack: ["Python", "Collaborative Filtering", "scikit-learn"],
     problem:
       "Users needed personalized content suggestions based on past interactions.",
@@ -190,6 +209,8 @@ export const workItems: WorkItem[] = [
     period: "2025",
     role: "Built generative-image pipeline",
     links: privateLinks,
+    image:
+      "https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=800&auto=format&fit=crop",
     stack: ["Python", "Stable Diffusion", "Hugging Face"],
     problem: "Exploration of prompt-based image generation workflows.",
     contribution:
@@ -204,6 +225,8 @@ export const workItems: WorkItem[] = [
     period: "2024",
     role: "Built WinForms desktop app",
     links: privateLinks,
+    image:
+      "https://images.unsplash.com/photo-1559925393-8be0ec4767c8?q=80&w=800&auto=format&fit=crop",
     stack: ["C#", "WinForms", "SQL Server"],
     problem: "Small shops relied on paper tracking for orders and billing.",
     contribution:
