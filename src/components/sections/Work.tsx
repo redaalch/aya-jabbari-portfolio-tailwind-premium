@@ -53,7 +53,7 @@ export function Work() {
   return (
     <section
       id="work"
-      className="relative bg-[#FAF7F5] dark:bg-[#050A15] py-16 text-[#3A2B29] dark:text-[#F8FAFC] transition-colors duration-500 md:py-24"
+      className="relative bg-transparent py-16 text-[#3A2B29] dark:text-[#F8FAFC] transition-colors duration-500 md:py-24"
     >
       <span id="projects" className="absolute -top-24" aria-hidden="true" />
 
@@ -183,6 +183,7 @@ export function Work() {
 
 function PanoramaCard({ item }: { item: WorkItem }) {
   const { t } = useLanguage();
+  const typeLabel = getWorkTypeLabel(t, item.type);
 
   return (
     <article
@@ -190,7 +191,7 @@ function PanoramaCard({ item }: { item: WorkItem }) {
       aria-label={item.title}
     >
       <div className="mb-4 flex shrink-0 flex-wrap items-center gap-2 text-[9px] font-bold uppercase tracking-[0.15em] text-[#A67571] dark:text-[#94A3B8] transition-colors duration-500 lg:mb-5 lg:text-[10px]">
-        <span>{item.type}</span>
+        <span>{typeLabel}</span>
         <span className="h-1 w-1 rounded-full bg-[#E8D5D4] dark:bg-[#1E293B]" aria-hidden="true" />
         <span>{item.period}</span>
         <span className="h-1 w-1 rounded-full bg-[#E8D5D4] dark:bg-[#1E293B]" aria-hidden="true" />
@@ -292,4 +293,10 @@ function PanoramaCard({ item }: { item: WorkItem }) {
       </div>
     </article>
   );
+}
+
+function getWorkTypeLabel(t: (key: string) => string, type: WorkType) {
+  if (type === "Internship") return t("work.type_internship");
+  if (type === "Hackathon") return t("work.type_hackathon");
+  return t("work.type_project");
 }

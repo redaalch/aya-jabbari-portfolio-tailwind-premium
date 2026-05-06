@@ -6,6 +6,8 @@ import { Work } from "./components/sections/Work";
 import { Certifications } from "./components/sections/Certifications";
 import { Contact } from "./components/Contact";
 import { EasterEggCat } from "./components/EasterEggCat";
+import { MeshAurora } from "./components/MeshAurora";
+import { WatercolorMesh } from "./components/WatercolorMesh";
 import { ProjectArchive } from "./components/pages/ProjectArchive";
 import { ProjectDetail } from "./components/pages/ProjectDetail";
 
@@ -40,11 +42,15 @@ export default function App() {
         ) : (
           <>
             <Hero />
-            <About />
-            <Capabilities />
-            <Work />
-            <Certifications />
-            <Contact />
+            <div className="relative bg-[#FAF7F5] dark:bg-[#050A15]">
+              <WatercolorMesh />
+              <MeshAurora />
+              <About />
+              <Capabilities />
+              <Work />
+              <Certifications />
+              <Contact />
+            </div>
           </>
         )}
       </main>

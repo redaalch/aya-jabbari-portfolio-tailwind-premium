@@ -13,20 +13,21 @@ import {
   type WorkItem,
   type WorkType,
 } from "../../data/work";
+import { useLanguage } from "../../contexts/LanguageContext";
 
 type ArchiveFilter = "all" | WorkType;
-
-const filters: Array<{ id: ArchiveFilter; label: string }> = [
-  { id: "all", label: "All Work" },
-  { id: "Internship", label: "Internships" },
-  { id: "Hackathon", label: "Hackathons" },
-  { id: "Project", label: "Projects" },
-];
 
 const workOrder = [...selectedWorkOrder, ...archiveWorkOrder];
 
 export function ProjectArchive() {
+  const { t } = useLanguage();
   const [activeFilter, setActiveFilter] = useState<ArchiveFilter>("all");
+  const filters: Array<{ id: ArchiveFilter; label: string }> = [
+    { id: "all", label: t("work.filter_all") },
+    { id: "Internship", label: t("work.filter_internship") },
+    { id: "Hackathon", label: t("work.filter_hackathon") },
+    { id: "Project", label: t("work.filter_project") },
+  ];
 
   const orderedWork = useMemo(() => {
     return [...workItems].sort((a, b) => {
@@ -59,30 +60,29 @@ export function ProjectArchive() {
           className="mb-10 inline-flex items-center gap-2 text-sm font-bold uppercase tracking-[0.15em] text-[#8C7A78] dark:text-[#94A3B8] transition-colors hover:text-[#3A2B29] dark:hover:text-[#F8FAFC] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-500"
         >
           <ArrowLeft className="h-4 w-4" aria-hidden="true" />
-          Back to Portfolio
+          {t("archive.back")}
         </a>
 
         <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
           <div>
             <p className="mb-6 flex items-center gap-4 text-xs font-bold uppercase tracking-[0.2em] text-[#C28C88] dark:text-[#38BDF8] transition-colors duration-500">
               <span className="h-px w-8 bg-[#C28C88] dark:bg-[#38BDF8]" aria-hidden="true" />
-              Project Archive
+              {t("archive.eyebrow")}
             </p>
             <h1 className="font-display text-5xl leading-[1.05] tracking-tight text-[#3A2B29] dark:text-[#F8FAFC] transition-colors duration-500 md:text-6xl">
-              All projects in one browsable place.
+              {t("archive.heading")}
             </h1>
           </div>
 
           <p className="max-w-2xl border-l-2 border-[#E8D5D4] dark:border-[#1E293B] pl-6 text-lg font-light leading-relaxed text-[#5C4D4B] dark:text-[#94A3B8] transition-colors duration-500">
-            A complete archive of technical work, including project builds,
-            internships, and hackathons, with each entry tagged by context.
+            {t("archive.desc")}
           </p>
         </div>
 
         <div
           className="mt-12 flex flex-wrap gap-3"
           role="group"
-          aria-label="Filter project archive"
+          aria-label={t("archive.filter_label")}
         >
           {filters.map((filter) => {
             const isActive = activeFilter === filter.id;
@@ -115,7 +115,7 @@ export function ProjectArchive() {
           {filteredWork.length === 0 && (
             <div className="col-span-full flex min-h-[280px] flex-col items-center justify-center rounded-3xl border-2 border-dashed border-[#E8D5D4] dark:border-[#1E293B] bg-white/60 dark:bg-[#0F172A]/60 p-12 text-center text-[#A67571] dark:text-[#94A3B8] transition-colors duration-500">
               <Search className="mb-4 h-8 w-8 opacity-50" aria-hidden="true" />
-              <p className="font-display text-2xl">No matching work found.</p>
+              <p className="font-display text-2xl">{t("archive.empty")}</p>
             </div>
           )}
         </div>
@@ -125,6 +125,9 @@ export function ProjectArchive() {
 }
 
 function ArchiveCard({ item }: { item: WorkItem }) {
+  const { t } = useLanguage();
+  const typeLabel = getWorkTypeLabel(t, item.type);
+
   return (
     <article
       id={item.id}
@@ -133,7 +136,7 @@ function ArchiveCard({ item }: { item: WorkItem }) {
       <a
         href={`/projects/${item.id}`}
         className="block h-48 overflow-hidden border-b border-[#F2EAE9] dark:border-[#1E293B] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-500 transition-colors duration-500"
-        aria-label={`View details for ${item.title}`}
+        aria-label={`${t("work.view_details")} ${item.title}`}
       >
         <img
           src={item.image}
@@ -145,7 +148,7 @@ function ArchiveCard({ item }: { item: WorkItem }) {
 
       <div className="flex min-h-[430px] flex-col p-6">
         <div className="mb-4 flex flex-wrap items-center gap-2 text-[10px] font-bold uppercase tracking-[0.15em] text-[#A67571] dark:text-[#94A3B8] transition-colors duration-500">
-          <span>{item.type}</span>
+          <span>{typeLabel}</span>
           <span className="h-1 w-1 rounded-full bg-[#E8D5D4] dark:bg-[#1E293B]" aria-hidden="true" />
           <span>{item.period}</span>
           <span className="h-1 w-1 rounded-full bg-[#E8D5D4] dark:bg-[#1E293B]" aria-hidden="true" />
@@ -170,7 +173,7 @@ function ArchiveCard({ item }: { item: WorkItem }) {
         <div className="mt-6 space-y-4">
           <div className="border-l-2 border-[#F2EAE9] dark:border-[#1E293B] pl-4 transition-colors duration-500">
             <span className="mb-1 block text-[10px] font-bold uppercase tracking-wider text-[#A67571] dark:text-[#94A3B8] transition-colors duration-500">
-              The Problem
+              {t("work.problem")}
             </span>
             <p className="text-sm leading-relaxed text-[#5C4D4B] dark:text-[#94A3B8] transition-colors duration-500">
               {item.problem}
@@ -178,7 +181,7 @@ function ArchiveCard({ item }: { item: WorkItem }) {
           </div>
           <div className="border-l-2 border-[#C28C88] dark:border-[#38BDF8] pl-4 transition-colors duration-500">
             <span className="mb-1 block text-[10px] font-bold uppercase tracking-wider text-[#A67571] dark:text-[#94A3B8] transition-colors duration-500">
-              What I Built
+              {t("work.built")}
             </span>
             <p className="text-sm font-medium leading-relaxed text-[#3A2B29] dark:text-[#F8FAFC] transition-colors duration-500">
               {item.contribution}
@@ -202,7 +205,7 @@ function ArchiveCard({ item }: { item: WorkItem }) {
             href={`/projects/${item.id}`}
             className="inline-flex items-center gap-2 rounded-full bg-[#3A2B29] dark:bg-[#38BDF8] px-4 py-2 text-sm font-bold text-white dark:text-[#050A15] transition-colors hover:bg-[#C28C88] dark:hover:bg-[#0284C7] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-500"
           >
-            View Details
+            {t("work.view_details")}
           </a>
 
           {item.links.repoUrl ? (
@@ -213,7 +216,7 @@ function ArchiveCard({ item }: { item: WorkItem }) {
               rel="noreferrer"
             >
               <Github className="h-4 w-4" aria-hidden="true" />
-              View Repository
+              {t("work.view_repo")}
             </a>
           ) : item.links.demoUrl ? (
             <a
@@ -223,16 +226,22 @@ function ArchiveCard({ item }: { item: WorkItem }) {
               rel="noreferrer"
             >
               <ExternalLink className="h-4 w-4" aria-hidden="true" />
-              View Live Demo
+              {t("work.view_demo")}
             </a>
           ) : (
             <span className="inline-flex items-center gap-2 rounded-full border border-[#E8D5D4] dark:border-[#1E293B] bg-[#FAF7F5] dark:bg-[#0F172A] px-4 py-2 text-sm font-bold text-[#5C4D4B] dark:text-[#94A3B8] transition-colors duration-500">
               <Lock className="h-4 w-4 text-[#A67571] dark:text-[#94A3B8]" aria-hidden="true" />
-              Code available on request
+              {t("work.private")}
             </span>
           )}
         </div>
       </div>
     </article>
   );
+}
+
+function getWorkTypeLabel(t: (key: string) => string, type: WorkType) {
+  if (type === "Internship") return t("work.type_internship");
+  if (type === "Hackathon") return t("work.type_hackathon");
+  return t("work.type_project");
 }

@@ -9,13 +9,15 @@ import {
   projectDetails,
   type ProjectDetailContent,
 } from "../../data/projectDetails";
-import { workItems, type WorkItem } from "../../data/work";
+import { workItems, type WorkItem, type WorkType } from "../../data/work";
+import { useLanguage } from "../../contexts/LanguageContext";
 
 type ProjectDetailProps = {
   projectId: string;
 };
 
 export function ProjectDetail({ projectId }: ProjectDetailProps) {
+  const { t } = useLanguage();
   const project = workItems.find((item) => item.id === projectId);
 
   if (!project) {
@@ -27,18 +29,18 @@ export function ProjectDetail({ projectId }: ProjectDetailProps) {
             className="mb-10 inline-flex items-center gap-2 text-sm font-bold uppercase tracking-[0.15em] text-[#8C7A78] dark:text-[#94A3B8] transition-colors hover:text-[#3A2B29] dark:hover:text-[#F8FAFC] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-500"
           >
             <ArrowLeft className="h-4 w-4" aria-hidden="true" />
-            Back to Project Archive
+            {t("detail.back")}
           </a>
           <div className="rounded-[2rem] border border-[#E8D5D4] dark:border-[#1E293B] bg-white dark:bg-[#0F172A] p-10 shadow-[0_10px_40px_-10px_rgba(225,205,205,0.35)] dark:shadow-none transition-colors duration-500">
             <Search className="mb-6 h-8 w-8 text-[#C28C88] dark:text-[#38BDF8]" aria-hidden="true" />
             <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-[#C28C88] dark:text-[#38BDF8] transition-colors duration-500">
-              Project not found
+              {t("detail.not_found_eyebrow")}
             </p>
             <h1 className="font-display text-4xl leading-tight text-[#3A2B29] dark:text-[#F8FAFC] transition-colors duration-500">
-              This project page does not exist.
+              {t("detail.not_found_heading")}
             </h1>
             <p className="mt-4 text-lg font-light leading-relaxed text-[#5C4D4B] dark:text-[#94A3B8] transition-colors duration-500">
-              The archive has the current list of available project detail pages.
+              {t("detail.not_found_desc")}
             </p>
           </div>
         </div>
@@ -48,6 +50,7 @@ export function ProjectDetail({ projectId }: ProjectDetailProps) {
 
   const details = projectDetails[project.id] ?? createFallbackDetails(project);
   const repoUrl = details.repository?.url ?? project.links.repoUrl;
+  const typeLabel = getWorkTypeLabel(t, project.type);
 
   return (
     <article className="min-h-screen bg-[#FAF7F5] dark:bg-[#050A15] px-6 pb-20 pt-32 text-[#3A2B29] dark:text-[#F8FAFC] transition-colors duration-500 md:px-12 lg:px-24">
@@ -57,14 +60,14 @@ export function ProjectDetail({ projectId }: ProjectDetailProps) {
           className="mb-10 inline-flex items-center gap-2 text-sm font-bold uppercase tracking-[0.15em] text-[#8C7A78] dark:text-[#94A3B8] transition-colors hover:text-[#3A2B29] dark:hover:text-[#F8FAFC] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-500"
         >
           <ArrowLeft className="h-4 w-4" aria-hidden="true" />
-          Back to Project Archive
+          {t("detail.back")}
         </a>
 
         <div className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
           <div>
             <p className="mb-6 flex items-center gap-4 text-xs font-bold uppercase tracking-[0.2em] text-[#C28C88] dark:text-[#38BDF8] transition-colors duration-500">
               <span className="h-px w-8 bg-[#C28C88] dark:bg-[#38BDF8]" aria-hidden="true" />
-              {project.type} Detail
+              {typeLabel} {t("detail.eyebrow_suffix")}
             </p>
 
             <h1 className="font-display text-5xl leading-[1.04] tracking-tight text-[#3A2B29] dark:text-[#F8FAFC] transition-colors duration-500 md:text-6xl">
@@ -124,12 +127,12 @@ export function ProjectDetail({ projectId }: ProjectDetailProps) {
                     rel="noreferrer"
                   >
                     <Github className="h-4 w-4" aria-hidden="true" />
-                    View Repository
+                    {t("work.view_repo")}
                   </a>
                 ) : (
                   <span className="inline-flex items-center gap-2 rounded-full border border-[#E8D5D4] dark:border-[#1E293B] bg-[#FAF7F5] dark:bg-[#0F172A] px-5 py-3 text-sm font-bold text-[#5C4D4B] dark:text-[#94A3B8] transition-colors duration-500">
                     <Lock className="h-4 w-4 text-[#A67571] dark:text-[#94A3B8]" aria-hidden="true" />
-                    Code available on request
+                    {t("work.private")}
                   </span>
                 )}
 
@@ -141,16 +144,16 @@ export function ProjectDetail({ projectId }: ProjectDetailProps) {
                     rel="noreferrer"
                   >
                     <ExternalLink className="h-4 w-4" aria-hidden="true" />
-                    Live Demo
+                    {t("detail.live_demo")}
                   </a>
                 )}
               </div>
 
               {details.repository && (
                 <dl className="mt-8 grid gap-4 border-t border-[#F2EAE9] dark:border-[#1E293B] pt-6 text-sm transition-colors duration-500">
-                  <DetailMeta label="Repository" value={details.repository.name} />
-                  <DetailMeta label="Main Language" value={details.repository.language} />
-                  <DetailMeta label="Updated" value={details.repository.updated} />
+                  <DetailMeta label={t("detail.meta_repository")} value={details.repository.name} />
+                  <DetailMeta label={t("detail.meta_language")} value={details.repository.language} />
+                  <DetailMeta label={t("detail.meta_updated")} value={details.repository.updated} />
                 </dl>
               )}
             </div>
@@ -160,7 +163,7 @@ export function ProjectDetail({ projectId }: ProjectDetailProps) {
         <div className="mt-14 grid gap-6 lg:grid-cols-[0.95fr_1.05fr]">
           <section className="rounded-[2rem] border border-[#E8D5D4] dark:border-[#1E293B] bg-white dark:bg-[#0F172A] p-6 shadow-[0_10px_40px_-10px_rgba(225,205,205,0.28)] dark:shadow-none transition-colors duration-500 md:p-8">
             <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-[#C28C88] dark:text-[#38BDF8] transition-colors duration-500">
-              Problem
+              {t("detail.problem")}
             </p>
             <p className="text-lg font-light leading-relaxed text-[#5C4D4B] dark:text-[#94A3B8] transition-colors duration-500">
               {project.problem}
@@ -169,7 +172,7 @@ export function ProjectDetail({ projectId }: ProjectDetailProps) {
 
           <section className="rounded-[2rem] border border-[#E8D5D4] dark:border-[#1E293B] bg-white dark:bg-[#0F172A] p-6 shadow-[0_10px_40px_-10px_rgba(225,205,205,0.28)] dark:shadow-none transition-colors duration-500 md:p-8">
             <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-[#C28C88] dark:text-[#38BDF8] transition-colors duration-500">
-              Built
+              {t("detail.built")}
             </p>
             <p className="text-lg font-medium leading-relaxed text-[#3A2B29] dark:text-[#F8FAFC] transition-colors duration-500">
               {project.contribution}
@@ -178,15 +181,15 @@ export function ProjectDetail({ projectId }: ProjectDetailProps) {
         </div>
 
         <div className="mt-8 grid gap-6 lg:grid-cols-2">
-          <DetailList title="Key Features" items={details.highlights} />
-          <DetailList title="Workflow" items={details.workflow} />
-          <DetailList title="Technical Decisions" items={details.decisions} />
-          <DetailList title="Outcomes" items={details.outcomes} />
+          <DetailList title={t("detail.features")} items={details.highlights} />
+          <DetailList title={t("detail.workflow")} items={details.workflow} />
+          <DetailList title={t("detail.decisions")} items={details.decisions} />
+          <DetailList title={t("detail.outcomes")} items={details.outcomes} />
         </div>
 
         <section className="mt-8 rounded-[2rem] border border-[#E8D5D4] dark:border-[#1E293B] bg-white dark:bg-[#0F172A] p-6 shadow-[0_10px_40px_-10px_rgba(225,205,205,0.28)] dark:shadow-none transition-colors duration-500 md:p-8">
           <p className="mb-6 text-xs font-bold uppercase tracking-[0.2em] text-[#C28C88] dark:text-[#38BDF8] transition-colors duration-500">
-            Next Improvements
+            {t("detail.next")}
           </p>
           <div className="grid gap-4 md:grid-cols-3">
             {details.nextSteps.map((step) => (
@@ -234,6 +237,12 @@ function DetailList({ title, items }: { title: string; items: string[] }) {
       </ul>
     </section>
   );
+}
+
+function getWorkTypeLabel(t: (key: string) => string, type: WorkType) {
+  if (type === "Internship") return t("work.type_internship");
+  if (type === "Hackathon") return t("work.type_hackathon");
+  return t("work.type_project");
 }
 
 function createFallbackDetails(project: WorkItem): ProjectDetailContent {

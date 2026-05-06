@@ -89,7 +89,7 @@ export function Capabilities() {
   return (
     <section
       id="capabilities"
-      className="bg-[#FAF7F5] dark:bg-[#050A15] px-6 py-16 text-[#3A2B29] dark:text-[#F8FAFC] transition-colors duration-500 md:px-12 md:py-32 lg:px-24"
+      className="relative bg-transparent px-6 py-16 text-[#3A2B29] dark:text-[#F8FAFC] transition-colors duration-500 md:px-12 md:py-32 lg:px-24"
     >
       <div className="mx-auto max-w-7xl">
         <div className="mb-12 md:mb-24">
@@ -251,7 +251,7 @@ export function Capabilities() {
           0%, 100% { transform: translateY(0); }
           50% { transform: translateY(-8px); }
         }
-        .skills-float { animation: skills-float 4s ease-in-out infinite; }
+        .skills-float { animation: skills-float 4s ease-in-out infinite; will-change: transform; }
       `}</style>
     </section>
   );

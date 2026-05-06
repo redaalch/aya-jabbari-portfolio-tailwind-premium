@@ -34,7 +34,7 @@ export function About() {
   return (
     <section
       id="about"
-      className="relative min-h-screen bg-[#FAF7F5] dark:bg-[#050A15] px-6 py-24 text-[#3A2B29] dark:text-[#F8FAFC] transition-colors duration-500 md:px-12 md:py-32 lg:px-20"
+      className="relative min-h-screen bg-transparent px-6 py-24 text-[#3A2B29] dark:text-[#F8FAFC] transition-colors duration-500 md:px-12 md:py-32 lg:px-20"
     >
       <div
         className="absolute left-0 top-0 h-px w-full bg-gradient-to-r from-transparent via-[#E8D5D4] dark:via-[#1E293B] to-transparent opacity-70 transition-colors duration-500"

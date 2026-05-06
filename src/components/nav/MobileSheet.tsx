@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import { X, Mail, Globe } from "lucide-react";
 import { profile } from "../../data/profile";
-import type { Lang } from "../../i18n/translations";
+import { useLanguage } from "../../contexts/LanguageContext";
 
 type Link = { href: string; label: string };
 
@@ -11,11 +11,11 @@ type MobileSheetProps = {
   onClose: () => void;
   links: Link[];
   active: string;
-  lang: Lang;
   onToggleLang: () => void;
 };
 
-export function MobileSheet({ id, open, onClose, links, active, lang, onToggleLang }: MobileSheetProps) {
+export function MobileSheet({ id, open, onClose, links, active, onToggleLang }: MobileSheetProps) {
+  const { t } = useLanguage();
   const panelRef = useRef<HTMLDivElement>(null);
   const previousFocusRef = useRef<HTMLElement | null>(null);
 
@@ -125,11 +125,11 @@ export function MobileSheet({ id, open, onClose, links, active, lang, onToggleLa
           <button
             type="button"
             onClick={() => { onToggleLang(); onClose(); }}
-            aria-label={lang === "en" ? "Switch to French" : "Passer en anglais"}
+            aria-label={t("nav.switch_language")}
             className="flex w-full items-center justify-center gap-2 h-11 rounded-xl border border-cream-200 dark:border-[#1E293B] text-[14px] font-semibold text-plum-700 dark:text-[#94A3B8] transition-colors duration-300 hover:bg-cream-100 dark:hover:bg-[#1E293B] hover:text-plum-900 dark:hover:text-[#F8FAFC] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-500"
           >
             <Globe className="h-4 w-4" aria-hidden="true" />
-            {lang === "en" ? "Passer en Français" : "Switch to English"}
+            {t("nav.switch_language")}
           </button>
         </div>
 
@@ -141,7 +141,7 @@ export function MobileSheet({ id, open, onClose, links, active, lang, onToggleLa
             className="flex h-12 w-full items-center justify-center gap-2 rounded-xl bg-plum-900 dark:bg-[#38BDF8] px-7 text-[15px] font-semibold text-cream-50 dark:text-[#050A15] shadow-cta transition-all duration-300 ease-standard hover:bg-plum-700 dark:hover:bg-[#0284C7] hover:shadow-cta-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-500 focus-visible:ring-offset-2 focus-visible:ring-offset-cream-50 dark:focus-visible:ring-offset-[#0F172A]"
           >
             <Mail className="h-4 w-4" aria-hidden="true" />
-            Email Aya
+            {t("nav.email")}
           </a>
         </div>
       </div>

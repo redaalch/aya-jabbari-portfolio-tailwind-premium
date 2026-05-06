@@ -119,7 +119,7 @@ export function Nav() {
             <button
               type="button"
               onClick={toggleLang}
-              aria-label={lang === "en" ? "Switch to French" : "Passer en anglais"}
+              aria-label={t("nav.switch_language")}
               className="hidden lg:inline-flex h-10 items-center gap-1.5 rounded-full border border-white/35 dark:border-white/10 bg-white/20 dark:bg-[#0F172A]/60 px-3 text-[12px] font-semibold text-[#4A3B45] dark:text-[#94A3B8] shadow-[0_8px_24px_rgba(31,23,42,0.08)] backdrop-blur-xl transition-all duration-fast hover:bg-white/35 dark:hover:bg-[#0F172A]/80 hover:text-[#2F1730] dark:hover:text-[#F8FAFC] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-500"
             >
               <Globe className="h-3.5 w-3.5" aria-hidden="true" />
@@ -146,7 +146,7 @@ export function Nav() {
                 href={`mailto:${profile.email}`}
                 className="rounded-full bg-[#36172A] dark:bg-[#38BDF8] px-4 py-2 text-[13px] font-semibold text-white dark:text-[#050A15] shadow-[0_6px_16px_rgba(54,23,42,0.20)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-500"
               >
-                Email
+                {t("nav.email_short")}
               </a>
               <button
                 type="button"
@@ -170,7 +170,6 @@ export function Nav() {
         onClose={() => setSheetOpen(false)}
         links={navLinks}
         active={isProjectArchive ? "" : active}
-        lang={lang}
         onToggleLang={toggleLang}
       />
     </>

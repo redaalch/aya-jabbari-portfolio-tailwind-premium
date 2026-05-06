@@ -94,7 +94,7 @@ export function Contact() {
   return (
     <section
       id="contact"
-      className="min-h-screen bg-[#FAF7F5] dark:bg-[#050A15] flex flex-col font-sans selection:bg-rose-300 text-[#3A2B29] dark:text-[#F8FAFC] overflow-hidden transition-colors duration-500"
+      className="relative min-h-screen bg-transparent flex flex-col font-sans selection:bg-rose-300 text-[#3A2B29] dark:text-[#F8FAFC] overflow-hidden transition-colors duration-500"
     >
       {/* ── Contact Section ── */}
       <div className="flex-1 w-full max-w-7xl mx-auto flex flex-col justify-center px-6 md:px-12 lg:px-24 py-20 relative z-10">

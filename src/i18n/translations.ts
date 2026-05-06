@@ -3,6 +3,8 @@ export type Lang = "en" | "fr";
 const en = {
   /* ── Nav ── */
   "nav.email": "Email Aya",
+  "nav.email_short": "Email",
+  "nav.switch_language": "Switch to French",
   "nav.about": "About",
   "nav.capabilities": "Capabilities",
   "nav.work": "Work",
@@ -88,6 +90,9 @@ const en = {
   "work.private": "Code available on request",
   "work.empty": "No projects found for this category.",
   "work.swipe_hint": "Swipe to explore",
+  "work.type_internship": "Internship",
+  "work.type_hackathon": "Hackathon",
+  "work.type_project": "Project",
 
   /* ── Certifications ── */
   "certs.eyebrow": "Certifications",
@@ -144,155 +149,212 @@ const en = {
   "footer.download_cv": "Download CV",
   "footer.local_time": "Local Time",
   "footer.built": "Built with React & Tailwind.",
+
+  /* ── Archive & Detail pages ── */
+  "archive.back": "Back to Portfolio",
+  "archive.eyebrow": "Project Archive",
+  "archive.heading": "All projects in one browsable place.",
+  "archive.desc":
+    "A complete archive of technical work, including project builds, internships, and hackathons, with each entry tagged by context.",
+  "archive.filter_label": "Filter project archive",
+  "archive.empty": "No matching work found.",
+  "detail.back": "Back to Project Archive",
+  "detail.not_found_eyebrow": "Project not found",
+  "detail.not_found_heading": "This project page does not exist.",
+  "detail.not_found_desc":
+    "The archive has the current list of available project detail pages.",
+  "detail.eyebrow_suffix": "Detail",
+  "detail.live_demo": "Live Demo",
+  "detail.meta_repository": "Repository",
+  "detail.meta_language": "Main Language",
+  "detail.meta_updated": "Updated",
+  "detail.problem": "Problem",
+  "detail.built": "Built",
+  "detail.features": "Key Features",
+  "detail.workflow": "Workflow",
+  "detail.decisions": "Technical Decisions",
+  "detail.outcomes": "Outcomes",
+  "detail.next": "Next Improvements",
 };
 
 const fr: typeof en = {
   /* ── Nav ── */
-  "nav.email": "Contacter Aya",
+  "nav.email": "Écrire à Aya",
+  "nav.email_short": "E-mail",
+  "nav.switch_language": "Passer en anglais",
   "nav.about": "À propos",
   "nav.capabilities": "Compétences",
-  "nav.work": "Travaux",
+  "nav.work": "Réalisations",
   "nav.certifications": "Certifications",
   "nav.contact": "Contact",
 
   /* ── Profile strings ── */
-  "profile.role": "Étudiante en Génie Informatique",
+  "profile.role": "Étudiante ingénieure en informatique",
   "profile.stackLine":
-    "Développement de systèmes pratiques : full-stack, données et IA appliquée.",
+    "Je conçois des solutions concrètes en développement full-stack, données et IA appliquée.",
   "profile.headline":
-    "Je développe des systèmes logiciels utilisables — des applications web réactives et services backend aux workflows d'automatisation, tableaux de bord data et outils d'IA appliquée.",
+    "Je conçois des solutions logicielles utiles : applications web responsives, services backend, automatisations, tableaux de bord et outils d'IA appliquée.",
   "profile.summary":
-    "Étudiante en génie informatique à l'ENSA Fès, avec une expérience pratique en développement full-stack, automatisation, systèmes orientés données et applications d'IA générative.",
-  "profile.availability": "Disponible pour PFE · 2026",
-  "profile.availabilityBadge": "Ouverte au stage · PFE 2026",
+    "Étudiante ingénieure à l'ENSA Fès, avec une expérience concrète en développement full-stack, automatisation, systèmes orientés données et applications d'IA générative.",
+  "profile.availability": "Disponible pour un stage PFE · 2026",
+  "profile.availabilityBadge": "Disponible pour un stage PFE · 2026",
 
   /* ── Hero ── */
-  "hero.cta_work": "Voir les projets",
+  "hero.cta_work": "Voir mes projets",
   "hero.cta_cv": "Télécharger le CV",
   "hero.proof_ensa": "ENSA Fès",
-  "hero.proof_onda": "Stage ONDA",
+  "hero.proof_onda": "Stage à l'ONDA",
   "hero.proof_hackathons": "Hackathons IA",
   "hero.proof_projects": "Projets full-stack",
   "hero.highlight_onda_desc": "Supervision SNMP",
-  "hero.highlight_ai_desc": "Validation CNSS & assurance",
-  "hero.highlight_tech_desc": "Full-stack · Data · IA",
+  "hero.highlight_ai_desc": "Validation CNSS et assurance",
+  "hero.highlight_tech_desc": "Full-stack · Données · IA",
 
   /* ── About ── */
   "about.eyebrow": "À propos",
-  "about.heading": "Développer des logiciels pratiques, de bout en bout.",
-  "about.focus_eyebrow": "Domaines actuels",
+  "about.heading": "Concevoir des solutions utiles, de bout en bout.",
+  "about.focus_eyebrow": "Axes de travail",
   "about.education_eyebrow": "Formation",
   "about.languages_eyebrow": "Langues",
-  "about.focus_1_label": "Systèmes full-stack",
+  "about.focus_1_label": "Applications full-stack",
   "about.focus_1_desc": "React, Laravel, Spring Boot et architectures d'API REST.",
-  "about.focus_2_label": "Tableaux de bord data",
+  "about.focus_2_label": "Tableaux de bord et données",
   "about.focus_2_desc":
-    "Transformer des datasets structurés et des workflows ETL en interfaces actionnables.",
-  "about.focus_3_label": "Workflows d'IA appliquée",
+    "Transformer des données structurées et des flux ETL en interfaces utiles à la décision.",
+  "about.focus_3_label": "Processus d'IA appliquée",
   "about.focus_3_desc":
-    "Validation de documents, logique d'extraction et automatisation pour des produits réels.",
-  "about.native": "Maternelle",
+    "Validation documentaire, extraction d'information et automatisation pour des cas d'usage réels.",
+  "about.native": "Langue maternelle",
   "about.advanced": "Avancé",
 
   /* ── Capabilities ── */
   "cap.eyebrow": "Compétences",
   "cap.heading":
-    "Compétences pratiques, regroupées par ce qu'elles permettent de construire.",
+    "Des compétences pratiques, structurées autour de ce qu'elles permettent de livrer.",
   "cap.desc":
-    "Une vue plus claire des domaines techniques derrière les travaux du portfolio, sans répéter chaque outil dans chaque section.",
-  "cap.hover_hint": "Survoler pour voir les outils",
-  "cap.tap_reveal": "Appuyer pour voir les outils",
-  "cap.tap_close": "Fermer",
+    "Une lecture plus claire des domaines techniques mobilisés dans les projets, sans répéter chaque outil dans chaque section.",
+  "cap.hover_hint": "Survolez pour afficher les outils",
+  "cap.tap_reveal": "Afficher les outils",
+  "cap.tap_close": "Masquer les outils",
   "cap.1.title": "Applications web full-stack",
   "cap.1.desc":
-    "Applications de bout en bout avec interfaces réactives, services backend, flux API et parcours utilisateurs basés sur les rôles.",
-  "cap.2.title": "Tableaux de bord Data & BI",
+    "Applications de bout en bout avec interfaces responsives, services backend, flux API et parcours utilisateurs par rôle.",
+  "cap.2.title": "Tableaux de bord data & BI",
   "cap.2.desc":
-    "Datasets structurés, workflows ETL, modélisation de bases de données et tableaux de bord métier pour la visibilité opérationnelle.",
+    "Données structurées, flux ETL, modélisation de bases de données et tableaux de bord métier pour suivre l'activité opérationnelle.",
   "cap.3.title": "Automatisation & DevOps",
   "cap.3.desc":
-    "Workflows de déploiement, environnements conteneurisés, automatisation d'infrastructure et pipelines de livraison fiables.",
-  "cap.4.title": "Workflows d'IA appliquée",
+    "Déploiements, environnements conteneurisés, automatisation d'infrastructure et pipelines de livraison fiables.",
+  "cap.4.title": "Processus d'IA appliquée",
   "cap.4.desc":
-    "Validation de documents, logique d'extraction, détection d'anomalies et scripts pour des systèmes d'IA pratiques.",
+    "Validation documentaire, extraction d'information, détection d'anomalies et scripts pour des systèmes d'IA concrets.",
 
   /* ── Work ── */
-  "work.eyebrow": "Travaux sélectionnés",
-  "work.heading": "Une chronologie de stages, hackathons et projets.",
+  "work.eyebrow": "Réalisations sélectionnées",
+  "work.heading": "Un parcours entre stages, hackathons et projets.",
   "work.desc":
-    "Chaque élément apparaît une fois, avec son contexte indiqué en étiquette au lieu d'être répété dans des sections séparées.",
+    "Chaque réalisation est présentée une seule fois, avec son contexte indiqué par une étiquette plutôt que répété dans plusieurs sections.",
   "work.filter_all": "Tout",
   "work.filter_internship": "Stages",
   "work.filter_hackathon": "Hackathons",
   "work.filter_project": "Projets",
-  "work.explore": "Explorer",
-  "work.archive": "Voir l'archive complète",
-  "work.problem": "Le Problème",
-  "work.built": "Ce que j'ai développé",
-  "work.view_details": "Voir les détails",
-  "work.view_repo": "Voir le dépôt",
+  "work.explore": "Parcourir",
+  "work.archive": "Voir l'archive complète des projets",
+  "work.problem": "Problématique",
+  "work.built": "Réalisation",
+  "work.view_details": "Voir le projet",
+  "work.view_repo": "Voir le dépôt GitHub",
   "work.view_demo": "Voir la démo",
   "work.private": "Code disponible sur demande",
-  "work.empty": "Aucun projet trouvé pour cette catégorie.",
-  "work.swipe_hint": "Glisser pour explorer",
+  "work.empty": "Aucune réalisation dans cette catégorie.",
+  "work.swipe_hint": "Faites glisser pour parcourir",
+  "work.type_internship": "Stage",
+  "work.type_hackathon": "Hackathon",
+  "work.type_project": "Projet",
 
   /* ── Certifications ── */
   "certs.eyebrow": "Certifications",
-  "certs.heading": "Formations reconnues et certifications.",
+  "certs.heading": "Certifications et apprentissages reconnus.",
   "certs.desc":
-    "Regroupées par organisme pour mettre en avant des parcours d'apprentissage continus et ciblés en bases de données, IA et fondamentaux.",
-  "certs.records": "{{count}} certifications",
-  "certs.stack_hint": "Survoler pour développer",
+    "Regroupées par organisme pour valoriser des parcours d'apprentissage ciblés en bases de données, IA et fondamentaux du développement.",
+  "certs.records": "Certifications : {{count}}",
+  "certs.stack_hint": "Survolez les cartes pour les déployer",
   "certs.community_eyebrow": "Communauté",
-  "certs.community_heading": "Engagement communautaire.",
+  "certs.community_heading": "Engagement associatif et étudiant.",
   "certs.community_desc":
-    "Bénévolat et engagement étudiant en dehors du portfolio technique.",
+    "Bénévolat et initiatives étudiantes en complément du portfolio technique.",
   "community.ieee.context":
-    "Organisé des ateliers techniques et encadré des étudiants en ingénierie juniors.",
+    "Organisation d'ateliers techniques et accompagnement d'étudiants ingénieurs juniors.",
   "community.jcmp.context":
-    "Participé à des actions de terrain locales et des initiatives étudiantes.",
+    "Participation à des actions locales de solidarité et à des initiatives étudiantes.",
   "community.debate.context":
-    "Développé l'éloquence, la pensée critique et l'argumentation structurée.",
+    "Développement de la prise de parole, de l'esprit critique et de l'argumentation structurée.",
   "community.english.context":
-    "Bénévolat pour enseigner l'anglais de base aux jeunes locaux à la bibliothèque.",
+    "Animation bénévole de cours d'anglais de base pour des jeunes à la bibliothèque.",
   "community.iklyl.context":
-    "Soutenu des événements culturels et la logistique organisationnelle des rassemblements.",
+    "Soutien à l'organisation d'événements culturels et à la logistique des rencontres.",
 
   /* ── Contact ── */
-  "contact.cta_heading": "Connectons-nous.",
+  "contact.cta_heading": "Prenons contact.",
   "contact.cta_desc":
-    "Ouverte aux opportunités de stage de fin d'études (PFE), collaborations sur des projets et conversations techniques.",
-  "contact.cta_btn": "Démarrer une conversation",
-  "contact.close": "Fermer",
-  "contact.form_eyebrow": "Message Direct",
-  "contact.form_heading": "Contactez-moi.",
-  "contact.name_label": "Votre Nom",
-  "contact.email_label": "Adresse Email",
-  "contact.message_label": "Parlez-moi de votre projet ou opportunité...",
-  "contact.send": "Envoyer le message",
-  "contact.sending": "Envoi en cours...",
-  "contact.sent": "Message envoyé !",
+    "Ouverte aux stages de fin d'études (PFE), aux collaborations projet et aux échanges techniques.",
+  "contact.cta_btn": "Me contacter",
+  "contact.close": "Fermer le formulaire",
+  "contact.form_eyebrow": "Message direct",
+  "contact.form_heading": "Écrivez-moi.",
+  "contact.name_label": "Votre nom",
+  "contact.email_label": "Adresse e-mail",
+  "contact.message_label": "Parlez-moi de votre projet ou de votre opportunité...",
+  "contact.send": "Envoyer",
+  "contact.sending": "Envoi...",
+  "contact.sent": "Message envoyé",
   "contact.details_heading": "Coordonnées",
-  "contact.email_section": "Email",
-  "contact.meeting_section": "Réunion",
+  "contact.email_section": "E-mail",
+  "contact.meeting_section": "Rendez-vous",
   "contact.schedule": "Planifier un appel",
   "contact.location_section": "Localisation",
   "contact.socials_heading": "Réseaux",
-  "contact.copy_email": "Copier l'email",
-  "contact.copied": "Copié !",
+  "contact.copy_email": "Copier l'e-mail",
+  "contact.copied": "Copié",
   "contact.links_pending": "Liens en cours de confirmation.",
   "contact.err_not_configured":
     "Le formulaire de contact n'est pas encore configuré.",
   "contact.err_generic":
-    "Le message n'a pas pu être envoyé. Veuillez réessayer.",
+    "Le message n'a pas pu être envoyé. Merci de réessayer.",
   "contact.err_network":
-    "Erreur réseau. Réessayez ou écrivez-moi directement.",
+    "Erreur réseau. Réessayez ou écrivez-moi directement par e-mail.",
 
   /* ── Footer ── */
-  "footer.skills": "Génie Logiciel, Données et IA Appliquée",
+  "footer.skills": "Génie logiciel, données et IA appliquée",
   "footer.download_cv": "Télécharger le CV",
-  "footer.local_time": "Heure Locale",
-  "footer.built": "Développé avec React & Tailwind.",
+  "footer.local_time": "Heure locale",
+  "footer.built": "Développé avec React et Tailwind.",
+
+  /* ── Archive & Detail pages ── */
+  "archive.back": "Retour au portfolio",
+  "archive.eyebrow": "Archive des projets",
+  "archive.heading": "Tous les projets au même endroit.",
+  "archive.desc":
+    "Une archive complète des réalisations techniques, projets, stages et hackathons, avec chaque entrée contextualisée.",
+  "archive.filter_label": "Filtrer l'archive des projets",
+  "archive.empty": "Aucune réalisation ne correspond à ce filtre.",
+  "detail.back": "Retour à l'archive des projets",
+  "detail.not_found_eyebrow": "Projet introuvable",
+  "detail.not_found_heading": "Cette page projet n'existe pas.",
+  "detail.not_found_desc":
+    "L'archive contient la liste actuelle des fiches projet disponibles.",
+  "detail.eyebrow_suffix": "en détail",
+  "detail.live_demo": "Démo en ligne",
+  "detail.meta_repository": "Dépôt",
+  "detail.meta_language": "Langage principal",
+  "detail.meta_updated": "Mis à jour",
+  "detail.problem": "Problématique",
+  "detail.built": "Réalisation",
+  "detail.features": "Fonctionnalités clés",
+  "detail.workflow": "Déroulement",
+  "detail.decisions": "Choix techniques",
+  "detail.outcomes": "Résultats",
+  "detail.next": "Améliorations prévues",
 };
 
 export const translations: Record<Lang, typeof en> = { en, fr };
