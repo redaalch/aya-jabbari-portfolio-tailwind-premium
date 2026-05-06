@@ -3,7 +3,7 @@ import { Hero } from "./components/Hero";
 import { About } from "./components/About";
 import { Capabilities } from "./components/sections/Capabilities";
 import { Work } from "./components/sections/Work";
-import { ProjectArchive } from "./components/sections/ProjectArchive";
+import { Certifications } from "./components/sections/Certifications";
 import { Background } from "./components/sections/Background";
 import { Contact, Footer } from "./components/Contact";
 
@@ -25,7 +25,7 @@ export default function App() {
         <About />
         <Capabilities />
         <Work />
-        <ProjectArchive />
+        <Certifications />
         <Background />
         <Contact />
       </main>
