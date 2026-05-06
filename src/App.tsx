@@ -1,3 +1,4 @@
+import { currentAppPath } from "./utils/paths";
 import { Nav } from "./components/Nav";
 import { Hero } from "./components/Hero";
 import { About } from "./components/About";
@@ -12,10 +13,7 @@ import { ProjectArchive } from "./components/pages/ProjectArchive";
 import { ProjectDetail } from "./components/pages/ProjectDetail";
 
 export default function App() {
-  const currentPath =
-    typeof window === "undefined"
-      ? "/"
-      : window.location.pathname.replace(/\/$/, "") || "/";
+  const currentPath = currentAppPath().replace(/\/$/, "") || "/";
   const isProjectArchive = currentPath === "/projects";
   const projectDetailMatch = currentPath.match(/^\/projects\/([^/]+)$/);
   const projectId = projectDetailMatch

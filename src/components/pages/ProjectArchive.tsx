@@ -14,6 +14,7 @@ import {
   type WorkType,
 } from "../../data/work";
 import { useLanguage } from "../../contexts/LanguageContext";
+import { toHref } from "../../utils/paths";
 
 type ArchiveFilter = "all" | WorkType;
 
@@ -56,7 +57,7 @@ export function ProjectArchive() {
     <section className="min-h-screen bg-[#FAF7F5] dark:bg-[#050A15] px-6 pb-20 pt-32 text-[#3A2B29] dark:text-[#F8FAFC] transition-colors duration-500 md:px-12 lg:px-24">
       <div className="mx-auto max-w-7xl">
         <a
-          href="/#work"
+          href={toHref("/#work")}
           className="mb-10 inline-flex items-center gap-2 text-sm font-bold uppercase tracking-[0.15em] text-[#8C7A78] dark:text-[#94A3B8] transition-colors hover:text-[#3A2B29] dark:hover:text-[#F8FAFC] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-500"
         >
           <ArrowLeft className="h-4 w-4" aria-hidden="true" />
@@ -156,7 +157,7 @@ function ArchiveCard({ item }: { item: WorkItem }) {
 
         <h2 className="font-display text-2xl leading-tight text-[#3A2B29] dark:text-[#F8FAFC] transition-colors duration-500">
           <a
-            href={`/projects/${item.id}`}
+            href={toHref(`/projects/${item.id}`)}
             aria-hidden="true"
             tabIndex={-1}
             className="transition-colors hover:text-[#C28C88] dark:hover:text-[#38BDF8]"
@@ -203,7 +204,7 @@ function ArchiveCard({ item }: { item: WorkItem }) {
 
         <div className="mt-auto flex flex-wrap gap-3 pt-8">
           <a
-            href={`/projects/${item.id}`}
+            href={toHref(`/projects/${item.id}`)}
             aria-label={`${t("work.view_details")}: ${item.title}`}
             className="inline-flex items-center gap-2 rounded-full bg-[#3A2B29] dark:bg-[#38BDF8] px-4 py-2 text-sm font-bold text-white dark:text-[#050A15] transition-colors hover:bg-[#C28C88] dark:hover:bg-[#0284C7] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-500"
           >

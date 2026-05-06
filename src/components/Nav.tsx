@@ -5,6 +5,7 @@ import logo from "../assets/logo.png";
 import { profile } from "../data/profile";
 import { useLanguage } from "../contexts/LanguageContext";
 import { useTheme } from "../contexts/ThemeContext";
+import { currentAppPath, toHref } from "../utils/paths";
 
 const linkDefs = [
   { href: "#about", labelKey: "nav.about" },
@@ -21,13 +22,11 @@ export function Nav() {
   const { lang, setLang, t } = useLanguage();
   const { theme, toggleTheme } = useTheme();
 
-  const isProjectArchive =
-    typeof window !== "undefined" &&
-    window.location.pathname.replace(/\/$/, "").startsWith("/projects");
+  const isProjectArchive = currentAppPath().replace(/\/$/, "").startsWith("/projects");
   const links = linkDefs.map((link) => ({ href: link.href, label: t(link.labelKey) }));
   const navLinks = links.map((link) => ({
     ...link,
-    href: isProjectArchive ? `/${link.href}` : link.href,
+    href: isProjectArchive ? toHref(`/${link.href}`) : link.href,
   }));
 
   useEffect(() => {
@@ -66,7 +65,7 @@ export function Nav() {
         <div className="relative flex w-full items-center justify-between">
           {/* ── Far left: Logo ── */}
           <a
-            href={isProjectArchive ? "/" : "#top"}
+            href={isProjectArchive ? toHref("/") : "#top"}
             className="flex-shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-500 focus-visible:ring-offset-2"
           >
             <img

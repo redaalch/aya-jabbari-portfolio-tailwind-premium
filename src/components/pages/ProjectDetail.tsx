@@ -11,6 +11,7 @@ import {
 } from "../../data/projectDetails";
 import { workItems, type WorkItem, type WorkType } from "../../data/work";
 import { useLanguage } from "../../contexts/LanguageContext";
+import { toHref } from "../../utils/paths";
 
 type ProjectDetailProps = {
   projectId: string;
@@ -25,7 +26,7 @@ export function ProjectDetail({ projectId }: ProjectDetailProps) {
       <section className="min-h-screen bg-[#FAF7F5] dark:bg-[#050A15] px-6 pb-20 pt-32 text-[#3A2B29] dark:text-[#F8FAFC] transition-colors duration-500 md:px-12 lg:px-24">
         <div className="mx-auto flex max-w-3xl flex-col items-start">
           <a
-            href="/projects"
+            href={toHref("/projects")}
             className="mb-10 inline-flex items-center gap-2 text-sm font-bold uppercase tracking-[0.15em] text-[#8C7A78] dark:text-[#94A3B8] transition-colors hover:text-[#3A2B29] dark:hover:text-[#F8FAFC] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-500"
           >
             <ArrowLeft className="h-4 w-4" aria-hidden="true" />
@@ -56,7 +57,7 @@ export function ProjectDetail({ projectId }: ProjectDetailProps) {
     <article className="min-h-screen bg-[#FAF7F5] dark:bg-[#050A15] px-6 pb-20 pt-32 text-[#3A2B29] dark:text-[#F8FAFC] transition-colors duration-500 md:px-12 lg:px-24">
       <div className="mx-auto max-w-7xl">
         <a
-          href="/projects"
+          href={toHref("/projects")}
           className="mb-10 inline-flex items-center gap-2 text-sm font-bold uppercase tracking-[0.15em] text-[#8C7A78] dark:text-[#94A3B8] transition-colors hover:text-[#3A2B29] dark:hover:text-[#F8FAFC] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-500"
         >
           <ArrowLeft className="h-4 w-4" aria-hidden="true" />
@@ -207,7 +208,7 @@ export function ProjectDetail({ projectId }: ProjectDetailProps) {
       {/* Sticky bottom back button — mobile only */}
       <div className="sticky bottom-0 z-20 mt-8 border-t border-[#E8D5D4] dark:border-[#1E293B] bg-[#FAF7F5]/90 dark:bg-[#050A15]/90 px-6 py-4 backdrop-blur-md transition-colors duration-500 lg:hidden">
         <a
-          href="/projects"
+          href={toHref("/projects")}
           className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-[0.15em] text-[#8C7A78] dark:text-[#94A3B8] transition-colors hover:text-[#3A2B29] dark:hover:text-[#F8FAFC] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-500"
         >
           <ArrowLeft className="h-4 w-4" aria-hidden="true" />

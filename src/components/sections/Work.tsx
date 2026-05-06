@@ -8,6 +8,7 @@ import {
   Lock,
   Terminal,
 } from "lucide-react";
+import { toHref } from "../../utils/paths";
 import {
   selectedWorkOrder,
   workItems,
@@ -124,7 +125,7 @@ export function Work() {
 
           <div className="mt-auto hidden shrink-0 border-t border-[#E8D5D4] dark:border-[#1E293B] pt-8 lg:mr-8 lg:block transition-colors duration-500">
             <a
-              href="/projects"
+              href={toHref("/projects")}
               className="group flex items-center gap-3 text-sm font-bold uppercase tracking-[0.15em] text-[#3A2B29] dark:text-[#F8FAFC] transition-colors hover:text-[#C28C88] dark:hover:text-[#38BDF8] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-500"
             >
               {t("work.archive")}
@@ -162,7 +163,7 @@ export function Work() {
 
       <div className="mt-4 flex w-full justify-center px-6 pb-8 lg:hidden">
         <a
-          href="/projects"
+          href={toHref("/projects")}
           className="group flex w-full items-center justify-center gap-3 rounded-full border border-[#E8D5D4] dark:border-[#1E293B] bg-white dark:bg-[#0F172A] px-8 py-4 text-sm font-bold uppercase tracking-[0.15em] text-[#3A2B29] dark:text-[#F8FAFC] shadow-sm transition-colors duration-300 hover:text-[#C28C88] dark:hover:text-[#38BDF8] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-500"
         >
           {t("work.archive")}
