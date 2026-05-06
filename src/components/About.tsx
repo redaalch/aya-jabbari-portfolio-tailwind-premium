@@ -1,16 +1,18 @@
 import { motion } from "motion/react";
-import { Briefcase, GraduationCap, MapPin, Sparkles } from "lucide-react";
+import {
+  Briefcase,
+  GraduationCap,
+  Languages as LanguagesIcon,
+  MapPin,
+  Sparkles,
+} from "lucide-react";
+import { education, languages } from "../data/background";
 import { profile } from "../data/profile";
 import { Card } from "./primitives/Card";
 import { Chip } from "./primitives/Chip";
 
 const facts = [
   { icon: MapPin, label: "Location", value: profile.location },
-  {
-    icon: GraduationCap,
-    label: "Studies",
-    value: "Computer Engineering, ENSA Fès",
-  },
   { icon: Briefcase, label: "Availability", value: profile.availability },
 ];
 
@@ -85,6 +87,71 @@ export function About() {
                     </Chip>
                   ))}
                 </div>
+              </div>
+            </Card>
+          </motion.div>
+        </div>
+
+        <div className="mt-8 grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.45, delay: 0.12, ease: [0.2, 0, 0, 1] }}
+          >
+            <Card as="article" variant="default" className="h-full bg-[#FBF7F1]/80">
+              <div className="mb-5 flex items-center gap-2 text-[#8B3A55]">
+                <span className="grid h-8 w-8 place-items-center rounded-full bg-white shadow-sm">
+                  <GraduationCap className="h-4 w-4" aria-hidden="true" />
+                </span>
+                <p className="text-[12px] font-bold uppercase tracking-[0.18em]">
+                  Education
+                </p>
+              </div>
+
+              <div className="grid gap-4">
+                {education.map((item) => (
+                  <div
+                    key={`${item.title}-${item.date}`}
+                    className="flex flex-col gap-2 border-b border-[#36172A]/10 pb-4 last:border-b-0 last:pb-0 sm:flex-row sm:items-start sm:justify-between"
+                  >
+                    <div>
+                      <h3 className="font-display text-[20px] font-medium leading-[1.25] text-[#2F1730]">
+                        {item.title}
+                      </h3>
+                      <p className="mt-1 text-[14px] font-medium text-[#5B2A45]">
+                        {item.school}
+                      </p>
+                    </div>
+                    <Chip variant="ghost">{item.date}</Chip>
+                  </div>
+                ))}
+              </div>
+            </Card>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.45, delay: 0.16, ease: [0.2, 0, 0, 1] }}
+          >
+            <Card as="article" variant="default" className="h-full bg-[#FBF7F1]/80">
+              <div className="mb-5 flex items-center gap-2 text-[#8B3A55]">
+                <span className="grid h-8 w-8 place-items-center rounded-full bg-white shadow-sm">
+                  <LanguagesIcon className="h-4 w-4" aria-hidden="true" />
+                </span>
+                <p className="text-[12px] font-bold uppercase tracking-[0.18em]">
+                  Languages
+                </p>
+              </div>
+
+              <div className="flex flex-wrap gap-2">
+                {languages.map((item) => (
+                  <Chip key={item.language} variant="ghost">
+                    {item.language} · {item.proficiency}
+                  </Chip>
+                ))}
               </div>
             </Card>
           </motion.div>

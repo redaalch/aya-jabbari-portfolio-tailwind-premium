@@ -7,6 +7,8 @@ type ProjectFiltersProps = {
   allLabel?: string;
   ariaLabel?: string;
   controlsId?: string;
+  labels?: Record<string, string>;
+  className?: string;
 };
 
 export function ProjectFilters({
@@ -16,12 +18,14 @@ export function ProjectFilters({
   allLabel = "All Projects",
   ariaLabel = "Filter projects by category",
   controlsId = "projects-grid",
+  labels = {},
+  className = "mb-8 flex flex-wrap items-center gap-2 md:mb-12",
 }: ProjectFiltersProps) {
   return (
     <div
       role="group"
       aria-label={ariaLabel}
-      className="mb-8 flex flex-wrap items-center gap-2 md:mb-12"
+      className={className}
     >
       <button
         aria-pressed={activeCategory === null}
@@ -45,7 +49,7 @@ export function ProjectFilters({
           type="button"
         >
           <Chip variant={activeCategory === cat ? "solid" : "ghost"}>
-            {cat}
+            {labels[cat] ?? cat}
           </Chip>
         </button>
       ))}
