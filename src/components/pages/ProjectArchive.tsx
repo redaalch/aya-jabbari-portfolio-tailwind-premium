@@ -133,14 +133,18 @@ function ArchiveCard({ item }: { item: WorkItem }) {
       id={item.id}
       className="scroll-mt-28 overflow-hidden rounded-[2rem] border border-[#E8D5D4] bg-white shadow-[0_10px_40px_-10px_rgba(225,205,205,0.3)] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_20px_50px_-10px_rgba(225,205,205,0.48)]"
     >
-      <div className="h-48 overflow-hidden border-b border-[#F2EAE9]">
+      <a
+        href={`/projects/${item.id}`}
+        className="block h-48 overflow-hidden border-b border-[#F2EAE9] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-500"
+        aria-label={`View details for ${item.title}`}
+      >
         <img
           src={item.image}
           alt=""
           className="h-full w-full object-cover opacity-90 transition-transform duration-700 hover:scale-105"
           loading="lazy"
         />
-      </div>
+      </a>
 
       <div className="flex min-h-[430px] flex-col p-6">
         <div className="mb-4 flex flex-wrap items-center gap-2 text-[10px] font-bold uppercase tracking-[0.15em] text-[#A67571]">
@@ -152,7 +156,12 @@ function ArchiveCard({ item }: { item: WorkItem }) {
         </div>
 
         <h2 className="font-display text-2xl leading-tight text-[#3A2B29]">
-          {item.title}
+          <a
+            href={`/projects/${item.id}`}
+            className="transition-colors hover:text-[#C28C88] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-500"
+          >
+            {item.title}
+          </a>
         </h2>
         <p className="mt-2 text-sm font-semibold text-[#3A2B29]">{item.role}</p>
         {(item.organization || item.location) && (
@@ -191,7 +200,14 @@ function ArchiveCard({ item }: { item: WorkItem }) {
           ))}
         </div>
 
-        <div className="mt-auto pt-8">
+        <div className="mt-auto flex flex-wrap gap-3 pt-8">
+          <a
+            href={`/projects/${item.id}`}
+            className="inline-flex items-center gap-2 rounded-full bg-[#3A2B29] px-4 py-2 text-sm font-bold text-white transition-colors hover:bg-[#C28C88] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-500"
+          >
+            View Details
+          </a>
+
           {item.links.repoUrl ? (
             <a
               href={item.links.repoUrl}

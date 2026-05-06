@@ -1,0 +1,266 @@
+import {
+  ArrowLeft,
+  ExternalLink,
+  Github,
+  Lock,
+  Search,
+} from "lucide-react";
+import {
+  projectDetails,
+  type ProjectDetailContent,
+} from "../../data/projectDetails";
+import { workItems, type WorkItem } from "../../data/work";
+
+type ProjectDetailProps = {
+  projectId: string;
+};
+
+export function ProjectDetail({ projectId }: ProjectDetailProps) {
+  const project = workItems.find((item) => item.id === projectId);
+
+  if (!project) {
+    return (
+      <section className="min-h-screen bg-[#FAF7F5] px-6 pb-20 pt-32 text-[#3A2B29] md:px-12 lg:px-24">
+        <div className="mx-auto flex max-w-3xl flex-col items-start">
+          <a
+            href="/projects"
+            className="mb-10 inline-flex items-center gap-2 text-sm font-bold uppercase tracking-[0.15em] text-[#8C7A78] transition-colors hover:text-[#3A2B29] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-500"
+          >
+            <ArrowLeft className="h-4 w-4" aria-hidden="true" />
+            Back to Project Archive
+          </a>
+          <div className="rounded-[2rem] border border-[#E8D5D4] bg-white p-10 shadow-[0_10px_40px_-10px_rgba(225,205,205,0.35)]">
+            <Search className="mb-6 h-8 w-8 text-[#C28C88]" aria-hidden="true" />
+            <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-[#C28C88]">
+              Project not found
+            </p>
+            <h1 className="font-display text-4xl leading-tight text-[#3A2B29]">
+              This project page does not exist.
+            </h1>
+            <p className="mt-4 text-lg font-light leading-relaxed text-[#5C4D4B]">
+              The archive has the current list of available project detail
+              pages.
+            </p>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  const details = projectDetails[project.id] ?? createFallbackDetails(project);
+  const repoUrl = details.repository?.url ?? project.links.repoUrl;
+
+  return (
+    <article className="min-h-screen bg-[#FAF7F5] px-6 pb-20 pt-32 text-[#3A2B29] md:px-12 lg:px-24">
+      <div className="mx-auto max-w-7xl">
+        <a
+          href="/projects"
+          className="mb-10 inline-flex items-center gap-2 text-sm font-bold uppercase tracking-[0.15em] text-[#8C7A78] transition-colors hover:text-[#3A2B29] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-500"
+        >
+          <ArrowLeft className="h-4 w-4" aria-hidden="true" />
+          Back to Project Archive
+        </a>
+
+        <div className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
+          <div>
+            <p className="mb-6 flex items-center gap-4 text-xs font-bold uppercase tracking-[0.2em] text-[#C28C88]">
+              <span className="h-px w-8 bg-[#C28C88]" aria-hidden="true" />
+              {project.type} Detail
+            </p>
+
+            <h1 className="font-display text-5xl leading-[1.04] tracking-tight text-[#3A2B29] md:text-6xl">
+              {project.title}
+            </h1>
+
+            <p className="mt-6 max-w-3xl text-xl font-light leading-relaxed text-[#5C4D4B]">
+              {details.overview}
+            </p>
+
+            <div className="mt-8 flex flex-wrap gap-3 text-[11px] font-bold uppercase tracking-[0.15em] text-[#A67571]">
+              <span className="rounded-full border border-[#E8D5D4] bg-white px-4 py-2">
+                {project.period}
+              </span>
+              <span className="rounded-full border border-[#E8D5D4] bg-white px-4 py-2">
+                {project.category}
+              </span>
+              <span className="rounded-full border border-[#E8D5D4] bg-white px-4 py-2">
+                {project.role}
+              </span>
+            </div>
+          </div>
+
+          <aside className="overflow-hidden rounded-[2rem] border border-[#E8D5D4] bg-white shadow-[0_10px_40px_-10px_rgba(225,205,205,0.35)]">
+            <img
+              src={project.image}
+              alt=""
+              className="h-64 w-full object-cover opacity-90"
+              loading="eager"
+            />
+            <div className="p-6">
+              {(project.organization || project.location) && (
+                <p className="mb-6 text-sm font-light italic leading-relaxed text-[#8C7A78]">
+                  {[project.organization, project.location]
+                    .filter(Boolean)
+                    .join(" · ")}
+                </p>
+              )}
+
+              <div className="mb-6 flex flex-wrap gap-2">
+                {project.stack.map((tag) => (
+                  <span
+                    key={tag}
+                    className="rounded-full border border-[#E8D5D4] bg-[#FAF7F5] px-3 py-1.5 text-[11px] font-medium text-[#5C4D4B]"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+
+              <div className="flex flex-wrap gap-3">
+                {repoUrl ? (
+                  <a
+                    href={repoUrl}
+                    className="inline-flex items-center gap-2 rounded-full bg-[#3A2B29] px-5 py-3 text-sm font-bold text-white shadow-md transition-colors hover:bg-[#C28C88] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-500"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <Github className="h-4 w-4" aria-hidden="true" />
+                    View Repository
+                  </a>
+                ) : (
+                  <span className="inline-flex items-center gap-2 rounded-full border border-[#E8D5D4] bg-[#FAF7F5] px-5 py-3 text-sm font-bold text-[#5C4D4B]">
+                    <Lock className="h-4 w-4 text-[#A67571]" aria-hidden="true" />
+                    Code available on request
+                  </span>
+                )}
+
+                {project.links.demoUrl && (
+                  <a
+                    href={project.links.demoUrl}
+                    className="inline-flex items-center gap-2 rounded-full border border-[#E8D5D4] bg-[#FAF7F5] px-5 py-3 text-sm font-bold text-[#3A2B29] transition-colors hover:border-[#C28C88] hover:text-[#C28C88] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-500"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <ExternalLink className="h-4 w-4" aria-hidden="true" />
+                    Live Demo
+                  </a>
+                )}
+              </div>
+
+              {details.repository && (
+                <dl className="mt-8 grid gap-4 border-t border-[#F2EAE9] pt-6 text-sm">
+                  <DetailMeta label="Repository" value={details.repository.name} />
+                  <DetailMeta label="Main Language" value={details.repository.language} />
+                  <DetailMeta label="Updated" value={details.repository.updated} />
+                </dl>
+              )}
+            </div>
+          </aside>
+        </div>
+
+        <div className="mt-14 grid gap-6 lg:grid-cols-[0.95fr_1.05fr]">
+          <section className="rounded-[2rem] border border-[#E8D5D4] bg-white p-6 shadow-[0_10px_40px_-10px_rgba(225,205,205,0.28)] md:p-8">
+            <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-[#C28C88]">
+              Problem
+            </p>
+            <p className="text-lg font-light leading-relaxed text-[#5C4D4B]">
+              {project.problem}
+            </p>
+          </section>
+
+          <section className="rounded-[2rem] border border-[#E8D5D4] bg-white p-6 shadow-[0_10px_40px_-10px_rgba(225,205,205,0.28)] md:p-8">
+            <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-[#C28C88]">
+              Built
+            </p>
+            <p className="text-lg font-medium leading-relaxed text-[#3A2B29]">
+              {project.contribution}
+            </p>
+          </section>
+        </div>
+
+        <div className="mt-8 grid gap-6 lg:grid-cols-2">
+          <DetailList title="Key Features" items={details.highlights} />
+          <DetailList title="Workflow" items={details.workflow} />
+          <DetailList title="Technical Decisions" items={details.decisions} />
+          <DetailList title="Outcomes" items={details.outcomes} />
+        </div>
+
+        <section className="mt-8 rounded-[2rem] border border-[#E8D5D4] bg-white p-6 shadow-[0_10px_40px_-10px_rgba(225,205,205,0.28)] md:p-8">
+          <p className="mb-6 text-xs font-bold uppercase tracking-[0.2em] text-[#C28C88]">
+            Next Improvements
+          </p>
+          <div className="grid gap-4 md:grid-cols-3">
+            {details.nextSteps.map((step) => (
+              <p
+                key={step}
+                className="rounded-2xl border border-[#F2EAE9] bg-[#FAF7F5] p-4 text-sm font-medium leading-relaxed text-[#5C4D4B]"
+              >
+                {step}
+              </p>
+            ))}
+          </div>
+        </section>
+      </div>
+    </article>
+  );
+}
+
+function DetailMeta({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="flex items-center justify-between gap-4">
+      <dt className="text-xs font-bold uppercase tracking-[0.15em] text-[#A67571]">
+        {label}
+      </dt>
+      <dd className="text-right font-semibold text-[#3A2B29]">{value}</dd>
+    </div>
+  );
+}
+
+function DetailList({ title, items }: { title: string; items: string[] }) {
+  return (
+    <section className="rounded-[2rem] border border-[#E8D5D4] bg-white p-6 shadow-[0_10px_40px_-10px_rgba(225,205,205,0.28)] md:p-8">
+      <p className="mb-6 text-xs font-bold uppercase tracking-[0.2em] text-[#C28C88]">
+        {title}
+      </p>
+      <ul className="space-y-4">
+        {items.map((item) => (
+          <li key={item} className="flex gap-4 text-sm leading-relaxed text-[#5C4D4B]">
+            <span
+              className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#C28C88]"
+              aria-hidden="true"
+            />
+            <span>{item}</span>
+          </li>
+        ))}
+      </ul>
+    </section>
+  );
+}
+
+function createFallbackDetails(project: WorkItem): ProjectDetailContent {
+  return {
+    overview: project.contribution,
+    highlights: project.stack.map((tool) => `${tool} was part of the build.`),
+    workflow: [
+      "Define the project problem and expected users.",
+      "Design the main technical flow.",
+      "Build the core implementation.",
+      "Review the result against the original need.",
+    ],
+    decisions: [
+      "Kept the implementation scoped to the project objective.",
+      "Focused on a practical working result.",
+      "Used the available stack to keep the build maintainable.",
+    ],
+    outcomes: [
+      "Created a concrete technical project.",
+      "Practiced implementation and problem decomposition.",
+      "Added a portfolio-ready reference.",
+    ],
+    nextSteps: [
+      "Add tests.",
+      "Improve documentation.",
+      "Publish a more detailed repository when available.",
+    ],
+  };
+}
