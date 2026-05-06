@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { X, Mail, Globe } from "lucide-react";
+import { X, Mail, Globe, Sun, Moon } from "lucide-react";
 import { profile } from "../../data/profile";
 import { useLanguage } from "../../contexts/LanguageContext";
 
@@ -12,9 +12,11 @@ type MobileSheetProps = {
   links: Link[];
   active: string;
   onToggleLang: () => void;
+  onToggleTheme: () => void;
+  theme: "light" | "dark";
 };
 
-export function MobileSheet({ id, open, onClose, links, active, onToggleLang }: MobileSheetProps) {
+export function MobileSheet({ id, open, onClose, links, active, onToggleLang, onToggleTheme, theme }: MobileSheetProps) {
   const { t } = useLanguage();
   const panelRef = useRef<HTMLDivElement>(null);
   const previousFocusRef = useRef<HTMLElement | null>(null);
@@ -120,17 +122,31 @@ export function MobileSheet({ id, open, onClose, links, active, onToggleLang }: 
           ))}
         </nav>
 
-        {/* Language toggle */}
+        {/* Language + theme toggles */}
         <div className="px-6 pt-2 pb-4 border-t border-cream-200 dark:border-[#1E293B] mt-auto transition-colors duration-500">
-          <button
-            type="button"
-            onClick={() => { onToggleLang(); onClose(); }}
-            aria-label={t("nav.switch_language")}
-            className="flex w-full items-center justify-center gap-2 h-11 rounded-xl border border-cream-200 dark:border-[#1E293B] text-[14px] font-semibold text-plum-700 dark:text-[#94A3B8] transition-colors duration-300 hover:bg-cream-100 dark:hover:bg-[#1E293B] hover:text-plum-900 dark:hover:text-[#F8FAFC] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-500"
-          >
-            <Globe className="h-4 w-4" aria-hidden="true" />
-            {t("nav.switch_language")}
-          </button>
+          <div className="flex gap-2">
+            <button
+              type="button"
+              onClick={() => { onToggleLang(); onClose(); }}
+              aria-label={t("nav.switch_language")}
+              className="flex flex-1 items-center justify-center gap-2 h-11 rounded-xl border border-cream-200 dark:border-[#1E293B] text-[14px] font-semibold text-plum-700 dark:text-[#94A3B8] transition-colors duration-300 hover:bg-cream-100 dark:hover:bg-[#1E293B] hover:text-plum-900 dark:hover:text-[#F8FAFC] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-500"
+            >
+              <Globe className="h-4 w-4" aria-hidden="true" />
+              {t("nav.switch_language")}
+            </button>
+            <button
+              type="button"
+              onClick={() => { onToggleTheme(); onClose(); }}
+              aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
+              className="grid h-11 w-11 shrink-0 place-items-center rounded-xl border border-cream-200 dark:border-[#1E293B] text-plum-700 dark:text-[#94A3B8] transition-colors duration-300 hover:bg-cream-100 dark:hover:bg-[#1E293B] hover:text-plum-900 dark:hover:text-[#F8FAFC] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-500"
+            >
+              {theme === "dark" ? (
+                <Sun className="h-4 w-4" aria-hidden="true" />
+              ) : (
+                <Moon className="h-4 w-4" aria-hidden="true" />
+              )}
+            </button>
+          </div>
         </div>
 
         {/* Email CTA */}

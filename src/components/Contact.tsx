@@ -154,9 +154,9 @@ export function Contact() {
               </h3>
 
               <form className="space-y-10" onSubmit={handleSubmit}>
-                <input type="hidden" name="botcheck" className="hidden" />
+                <input type="checkbox" name="botcheck" className="hidden" tabIndex={-1} aria-hidden="true" />
 
-                <div className="flex flex-col sm:flex-row gap-10">
+                <div className="flex flex-col sm:flex-row gap-6 sm:gap-10">
                   <FloatingField id="name" name="name" type="text" label={t("contact.name_label")} />
                   <FloatingField id="email" name="email" type="email" label={t("contact.email_label")} />
                 </div>
@@ -174,7 +174,7 @@ export function Contact() {
                     htmlFor="message"
                     className="absolute left-0 transition-all duration-300 pointer-events-none text-[#8C7A78] dark:text-[#94A3B8]
                                top-0 text-[10px] font-bold tracking-[0.2em] uppercase
-                               peer-placeholder-shown:top-6 peer-placeholder-shown:text-base peer-placeholder-shown:font-light peer-placeholder-shown:normal-case peer-placeholder-shown:tracking-normal peer-placeholder-shown:text-[#8C7A78]/70 dark:peer-placeholder-shown:text-[#475569]/70
+                               peer-placeholder-shown:top-6 peer-placeholder-shown:text-base peer-placeholder-shown:font-light peer-placeholder-shown:normal-case peer-placeholder-shown:tracking-normal peer-placeholder-shown:text-[#8C7A78] dark:peer-placeholder-shown:text-[#64748B]
                                peer-focus:top-0 peer-focus:text-[10px] peer-focus:font-bold peer-focus:tracking-[0.2em] peer-focus:uppercase peer-focus:text-[#C28C88] dark:peer-focus:text-[#38BDF8]"
                   >
                     {t("contact.message_label")}
@@ -345,7 +345,7 @@ function FloatingField({
         htmlFor={id}
         className="absolute left-0 transition-all duration-300 pointer-events-none text-[#8C7A78] dark:text-[#94A3B8]
                    top-0 text-[10px] font-bold tracking-[0.2em] uppercase
-                   peer-placeholder-shown:top-6 peer-placeholder-shown:text-base peer-placeholder-shown:font-light peer-placeholder-shown:normal-case peer-placeholder-shown:tracking-normal peer-placeholder-shown:text-[#8C7A78]/70 dark:peer-placeholder-shown:text-[#475569]/70
+                   peer-placeholder-shown:top-6 peer-placeholder-shown:text-base peer-placeholder-shown:font-light peer-placeholder-shown:normal-case peer-placeholder-shown:tracking-normal peer-placeholder-shown:text-[#8C7A78] dark:peer-placeholder-shown:text-[#64748B]
                    peer-focus:top-0 peer-focus:text-[10px] peer-focus:font-bold peer-focus:tracking-[0.2em] peer-focus:uppercase peer-focus:text-[#C28C88] dark:peer-focus:text-[#38BDF8]"
       >
         {label}

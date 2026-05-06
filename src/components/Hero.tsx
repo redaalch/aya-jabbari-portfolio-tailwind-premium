@@ -10,6 +10,7 @@ import {
 import { profile } from "../data/profile";
 import { useLanguage } from "../contexts/LanguageContext";
 import heroBg from "../assets/hero/steptodown.com759992.jpg";
+import darkHeroBg from "../assets/hero/pexels-incrediblerafa-4737484.jpg";
 
 export function Hero() {
   const { t } = useLanguage();
@@ -36,9 +37,19 @@ export function Hero() {
   return (
     <section
       id="top"
-      className="relative flex min-h-screen flex-col overflow-hidden bg-cover bg-center bg-no-repeat px-6 pb-12 pt-24 md:px-8 md:pb-8 md:pt-28 transition-colors duration-500"
-      style={{ backgroundImage: `url(${heroBg})` }}
+      className="relative flex min-h-screen flex-col overflow-hidden px-6 pb-12 pt-24 transition-colors duration-500 md:px-8 md:pb-8 md:pt-28"
     >
+      <div
+        className="pointer-events-none absolute inset-0 bg-cover bg-center bg-no-repeat opacity-100 transition-opacity duration-500 dark:opacity-0"
+        style={{ backgroundImage: `url(${heroBg})` }}
+        aria-hidden="true"
+      />
+      <div
+        className="pointer-events-none absolute inset-0 bg-cover bg-center bg-no-repeat opacity-0 transition-opacity duration-500 dark:opacity-100"
+        style={{ backgroundImage: `url(${darkHeroBg})` }}
+        aria-hidden="true"
+      />
+
       {/* Light mode gradient overlays */}
       <div
         className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#FBF7F2]/95 via-[#FBF7F2]/72 to-[#FBF7F2]/8 dark:from-[#050A15]/97 dark:via-[#050A15]/80 dark:to-[#050A15]/20 transition-colors duration-500"

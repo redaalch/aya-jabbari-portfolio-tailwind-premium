@@ -153,7 +153,9 @@ export function Certifications() {
                 return (
                   <article
                     key={item.org}
-                    className="group flex cursor-default flex-col items-center rounded-3xl border border-[#E8D5D4] dark:border-[#1E293B] bg-white dark:bg-[#0F172A] p-8 text-center shadow-[0_5px_15px_-10px_rgba(225,205,205,0.4)] dark:shadow-none transition-all duration-500 hover:-translate-y-2 hover:border-[#C28C88] hover:shadow-[0_20px_40px_-10px_rgba(225,205,205,0.6)] dark:hover:shadow-[0_20px_40px_-10px_rgba(56,189,248,0.08)] dark:hover:border-[#334155]"
+                    className={`group flex cursor-default flex-col items-center rounded-3xl border border-[#E8D5D4] dark:border-[#1E293B] bg-white dark:bg-[#0F172A] p-8 text-center shadow-[0_5px_15px_-10px_rgba(225,205,205,0.4)] dark:shadow-none transition-all duration-500 hover:-translate-y-2 hover:border-[#C28C88] hover:shadow-[0_20px_40px_-10px_rgba(225,205,205,0.6)] dark:hover:shadow-[0_20px_40px_-10px_rgba(56,189,248,0.08)] dark:hover:border-[#334155] ${
+                      item.id === "iklyl" ? "lg:col-start-3" : ""
+                    }`}
                   >
                     <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-[#FFF5F5] dark:bg-[#1E293B] text-[#A67571] dark:text-[#94A3B8] transition-all duration-500 group-hover:scale-110 group-hover:bg-[#C28C88] dark:group-hover:bg-[#38BDF8] group-hover:text-white dark:group-hover:text-[#050A15]">
                       <Icon className="h-7 w-7" strokeWidth={1.5} />

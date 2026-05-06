@@ -133,20 +133,19 @@ function ArchiveCard({ item }: { item: WorkItem }) {
       id={item.id}
       className="scroll-mt-28 overflow-hidden rounded-[2rem] border border-[#E8D5D4] dark:border-[#1E293B] bg-white dark:bg-[#0F172A] shadow-[0_10px_40px_-10px_rgba(225,205,205,0.3)] dark:shadow-none transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_20px_50px_-10px_rgba(225,205,205,0.48)] dark:hover:shadow-none dark:hover:border-[#334155]"
     >
-      <a
-        href={`/projects/${item.id}`}
-        className="block h-48 overflow-hidden border-b border-[#F2EAE9] dark:border-[#1E293B] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-500 transition-colors duration-500"
-        aria-label={`${t("work.view_details")} ${item.title}`}
+      <div
+        className="block h-48 overflow-hidden border-b border-[#F2EAE9] dark:border-[#1E293B] transition-colors duration-500"
+        aria-hidden="true"
       >
         <img
           src={item.image}
           alt=""
-          className="h-full w-full object-cover opacity-90 transition-all duration-700 hover:scale-105 dark:brightness-90 dark:contrast-110"
+          className="h-full w-full object-cover opacity-90 transition-all duration-700 dark:brightness-90 dark:contrast-110"
           loading="lazy"
         />
-      </a>
+      </div>
 
-      <div className="flex min-h-[430px] flex-col p-6">
+      <div className="flex flex-col p-6">
         <div className="mb-4 flex flex-wrap items-center gap-2 text-[10px] font-bold uppercase tracking-[0.15em] text-[#A67571] dark:text-[#94A3B8] transition-colors duration-500">
           <span>{typeLabel}</span>
           <span className="h-1 w-1 rounded-full bg-[#E8D5D4] dark:bg-[#1E293B]" aria-hidden="true" />
@@ -158,7 +157,9 @@ function ArchiveCard({ item }: { item: WorkItem }) {
         <h2 className="font-display text-2xl leading-tight text-[#3A2B29] dark:text-[#F8FAFC] transition-colors duration-500">
           <a
             href={`/projects/${item.id}`}
-            className="transition-colors hover:text-[#C28C88] dark:hover:text-[#38BDF8] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-500"
+            aria-hidden="true"
+            tabIndex={-1}
+            className="transition-colors hover:text-[#C28C88] dark:hover:text-[#38BDF8]"
           >
             {item.title}
           </a>
@@ -203,6 +204,7 @@ function ArchiveCard({ item }: { item: WorkItem }) {
         <div className="mt-auto flex flex-wrap gap-3 pt-8">
           <a
             href={`/projects/${item.id}`}
+            aria-label={`${t("work.view_details")}: ${item.title}`}
             className="inline-flex items-center gap-2 rounded-full bg-[#3A2B29] dark:bg-[#38BDF8] px-4 py-2 text-sm font-bold text-white dark:text-[#050A15] transition-colors hover:bg-[#C28C88] dark:hover:bg-[#0284C7] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-500"
           >
             {t("work.view_details")}

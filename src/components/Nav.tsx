@@ -171,6 +171,8 @@ export function Nav() {
         links={navLinks}
         active={isProjectArchive ? "" : active}
         onToggleLang={toggleLang}
+        onToggleTheme={toggleTheme}
+        theme={theme}
       />
     </>
   );

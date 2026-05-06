@@ -64,7 +64,7 @@ export function ProjectDetail({ projectId }: ProjectDetailProps) {
         </a>
 
         <div className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
-          <div>
+          <div className="order-last lg:order-first">
             <p className="mb-6 flex items-center gap-4 text-xs font-bold uppercase tracking-[0.2em] text-[#C28C88] dark:text-[#38BDF8] transition-colors duration-500">
               <span className="h-px w-8 bg-[#C28C88] dark:bg-[#38BDF8]" aria-hidden="true" />
               {typeLabel} {t("detail.eyebrow_suffix")}
@@ -91,7 +91,7 @@ export function ProjectDetail({ projectId }: ProjectDetailProps) {
             </div>
           </div>
 
-          <aside className="overflow-hidden rounded-[2rem] border border-[#E8D5D4] dark:border-[#1E293B] bg-white dark:bg-[#0F172A] shadow-[0_10px_40px_-10px_rgba(225,205,205,0.35)] dark:shadow-none transition-colors duration-500">
+          <aside className="order-first lg:order-last overflow-hidden rounded-[2rem] border border-[#E8D5D4] dark:border-[#1E293B] bg-white dark:bg-[#0F172A] shadow-[0_10px_40px_-10px_rgba(225,205,205,0.35)] dark:shadow-none transition-colors duration-500">
             <img
               src={project.image}
               alt=""
@@ -202,6 +202,17 @@ export function ProjectDetail({ projectId }: ProjectDetailProps) {
             ))}
           </div>
         </section>
+      </div>
+
+      {/* Sticky bottom back button — mobile only */}
+      <div className="sticky bottom-0 z-20 mt-8 border-t border-[#E8D5D4] dark:border-[#1E293B] bg-[#FAF7F5]/90 dark:bg-[#050A15]/90 px-6 py-4 backdrop-blur-md transition-colors duration-500 lg:hidden">
+        <a
+          href="/projects"
+          className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-[0.15em] text-[#8C7A78] dark:text-[#94A3B8] transition-colors hover:text-[#3A2B29] dark:hover:text-[#F8FAFC] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-500"
+        >
+          <ArrowLeft className="h-4 w-4" aria-hidden="true" />
+          {t("detail.back")}
+        </a>
       </div>
     </article>
   );
