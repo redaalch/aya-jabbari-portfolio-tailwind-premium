@@ -2,10 +2,16 @@ import { Github, ExternalLink, ShieldAlert } from "lucide-react";
 import { Card } from "../primitives/Card";
 import { Chip } from "../primitives/Chip";
 import { ButtonLink } from "../primitives/Button";
-import type { Project } from "../../data/profile";
+import type { LinkDef, WorkItem, WorkType } from "../../data/work";
+
+type ProjectCardData = Omit<WorkItem, "tier" | "type"> & {
+  type?: WorkType;
+  links: LinkDef;
+  summary?: string;
+};
 
 type ProjectCardProps = {
-  project: Project;
+  project: ProjectCardData;
   variant?: "featured" | "secondary";
 };
 
@@ -14,6 +20,9 @@ export function ProjectCard({
   variant = "featured",
 }: ProjectCardProps) {
   const isFeatured = variant === "featured";
+  const meta = [project.type, project.period, project.category]
+    .filter(Boolean)
+    .join(" · ");
 
   return (
     <Card
@@ -26,8 +35,7 @@ export function ProjectCard({
       <div className="flex flex-wrap items-center justify-between gap-4">
         <div>
           <p className="text-eyebrow uppercase tracking-[0.18em] text-plum-500">
-            {project.period}
-            {project.category && ` · ${project.category}`}
+            {meta}
           </p>
         </div>
       </div>
@@ -40,6 +48,12 @@ export function ProjectCard({
       <p className="mt-1 text-body-sm font-medium text-plum-700">
         {project.role}
       </p>
+      {project.organization && (
+        <p className="mt-1 text-body-xs leading-[1.45] text-plum-500">
+          {project.organization}
+          {project.location ? ` · ${project.location}` : ""}
+        </p>
+      )}
 
       {/* Body lines */}
       <div className="mt-4 flex flex-col gap-3">

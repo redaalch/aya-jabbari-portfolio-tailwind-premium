@@ -5,11 +5,9 @@ import logo from "../assets/logo.png";
 
 const links = [
   { href: "#about", label: "About" },
-  { href: "#skills", label: "Skills" },
-  { href: "#experience", label: "Experience" },
-  { href: "#hackathons", label: "Hackathons" },
-  { href: "#projects", label: "Projects" },
-  { href: "#education", label: "Education" },
+  { href: "#capabilities", label: "Capabilities" },
+  { href: "#work", label: "Work" },
+  { href: "#background", label: "Background" },
   { href: "#contact", label: "Contact" },
 ];
 

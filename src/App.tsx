@@ -1,14 +1,10 @@
 import { Nav } from "./components/Nav";
 import { Hero } from "./components/Hero";
 import { About } from "./components/About";
-import { Skills } from "./components/Skills";
-import { Experience } from "./components/Experience";
-import { Hackathons } from "./components/Hackathons";
-import { FeaturedProjects } from "./components/sections/FeaturedProjects";
-import { MoreProjects } from "./components/sections/MoreProjects";
-import { Education } from "./components/sections/Education";
-import { Certifications } from "./components/Certifications";
-import { LanguagesVolunteering } from "./components/sections/LanguagesVolunteering";
+import { Capabilities } from "./components/sections/Capabilities";
+import { Work } from "./components/sections/Work";
+import { ProjectArchive } from "./components/sections/ProjectArchive";
+import { Background } from "./components/sections/Background";
 import { Contact, Footer } from "./components/Contact";
 
 export default function App() {
@@ -27,14 +23,10 @@ export default function App() {
       <main id="main-content">
         <Hero />
         <About />
-        <Skills />
-        <Experience />
-        <Hackathons />
-        <FeaturedProjects />
-        <MoreProjects />
-        <Education />
-        <Certifications />
-        <LanguagesVolunteering />
+        <Capabilities />
+        <Work />
+        <ProjectArchive />
+        <Background />
         <Contact />
       </main>
 

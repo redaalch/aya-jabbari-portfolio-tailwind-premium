@@ -3,13 +3,6 @@ import { ArrowRight, Download, MapPin } from "lucide-react";
 import { profile } from "../data/profile";
 import heroBg from "../assets/hero/steptodown.com980201.jpg";
 
-const proofItems = [
-  "ENSA Fès",
-  "ONDA internship",
-  "AI hackathons",
-  "Full-stack projects",
-];
-
 const highlights = [
   {
     icon: (
@@ -189,10 +182,10 @@ export function Hero() {
               className="mt-6 flex flex-col items-center gap-3 sm:flex-row sm:justify-center lg:justify-start"
             >
               <a
-                href="#projects"
+                href="#work"
                 className="inline-flex h-12 w-full min-w-[160px] items-center justify-center gap-2.5 rounded-full border-2 border-[#36172A] bg-[#36172A] px-7 text-[15px] font-semibold text-cream-50 shadow-[0_10px_24px_rgba(54,23,42,0.20)] transition-all duration-300 ease-out hover:bg-white hover:text-[#36172A] hover:shadow-[0_14px_32px_rgba(54,23,42,0.14)] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-500 focus-visible:ring-offset-2 sm:w-auto"
               >
-                View Projects
+                View Work
                 <ArrowRight className="h-4 w-4" aria-hidden="true" />
               </a>
               {profile.resumeUrl && (
@@ -207,27 +200,6 @@ export function Hero() {
               )}
             </motion.div>
 
-            {/* Trust row — hero footer */}
-            <motion.div
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.32, ease: [0.2, 0, 0, 1] }}
-              className="mt-7 border-t border-[#36172A]/10 pt-5 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 lg:justify-start"
-            >
-              {proofItems.map((label, i) => (
-                <span key={label} className="flex items-center gap-5">
-                  <span className="text-[12.5px] font-bold text-[#5B2A45]">
-                    {label}
-                  </span>
-                  {i < proofItems.length - 1 && (
-                    <span
-                      className="h-1 w-1 rounded-full bg-[#A35C72]/60"
-                      aria-hidden="true"
-                    />
-                  )}
-                </span>
-              ))}
-            </motion.div>
           </div>
 
           {/* Portrait — overlapping card edge */}
@@ -253,7 +225,7 @@ export function Hero() {
               </div>
               {/* Availability badge */}
               <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full border border-[#36172A]/10 bg-[#FBF7F1]/92 px-4 py-1.5 text-[11px] font-bold text-[#5B2A45] shadow-[0_8px_20px_rgba(54,23,42,0.10)] backdrop-blur-sm">
-                Open to Internship · PFE 2026
+                {profile.availabilityBadge}
               </div>
             </motion.div>
           </div>
