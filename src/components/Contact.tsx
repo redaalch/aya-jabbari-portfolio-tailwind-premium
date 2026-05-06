@@ -15,6 +15,7 @@ function useCopyToClipboard() {
     navigator.clipboard.writeText(text);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
+    window.dispatchEvent(new CustomEvent("cat-peek", { detail: "Email copied!" }));
   };
   return { copied, copy };
 }
@@ -91,7 +92,7 @@ export function Contact() {
   }
 
   return (
-    <div
+    <section
       id="contact"
       className="min-h-screen bg-[#FAF7F5] dark:bg-[#050A15] flex flex-col font-sans selection:bg-rose-300 text-[#3A2B29] dark:text-[#F8FAFC] overflow-hidden transition-colors duration-500"
     >
@@ -319,7 +320,7 @@ export function Contact() {
           </p>
         </div>
       </footer>
-    </div>
+    </section>
   );
 }
 
@@ -390,6 +391,3 @@ function SocialLink({
   );
 }
 
-export function Footer() {
-  return null;
-}

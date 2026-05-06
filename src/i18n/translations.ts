@@ -3,6 +3,11 @@ export type Lang = "en" | "fr";
 const en = {
   /* ── Nav ── */
   "nav.email": "Email Aya",
+  "nav.about": "About",
+  "nav.capabilities": "Capabilities",
+  "nav.work": "Work",
+  "nav.certifications": "Certifications",
+  "nav.contact": "Contact",
 
   /* ── Profile strings ── */
   "profile.role": "Computer Engineering Student",
@@ -82,6 +87,7 @@ const en = {
   "work.view_demo": "View Live Demo",
   "work.private": "Code available on request",
   "work.empty": "No projects found for this category.",
+  "work.swipe_hint": "Swipe to explore",
 
   /* ── Certifications ── */
   "certs.eyebrow": "Certifications",
@@ -143,6 +149,11 @@ const en = {
 const fr: typeof en = {
   /* ── Nav ── */
   "nav.email": "Contacter Aya",
+  "nav.about": "À propos",
+  "nav.capabilities": "Compétences",
+  "nav.work": "Travaux",
+  "nav.certifications": "Certifications",
+  "nav.contact": "Contact",
 
   /* ── Profile strings ── */
   "profile.role": "Étudiante en Génie Informatique",
@@ -223,6 +234,7 @@ const fr: typeof en = {
   "work.view_demo": "Voir la démo",
   "work.private": "Code disponible sur demande",
   "work.empty": "Aucun projet trouvé pour cette catégorie.",
+  "work.swipe_hint": "Glisser pour explorer",
 
   /* ── Certifications ── */
   "certs.eyebrow": "Certifications",

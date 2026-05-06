@@ -154,7 +154,7 @@ export function Capabilities() {
                       {t(cap.titleKey)}
                     </h3>
                     <p className="text-sm font-light leading-relaxed text-[#8C7A78] dark:text-[#94A3B8] transition-all duration-300 group-hover:opacity-0">
-                      {t("cap.hover_hint")}
+                      {t(cap.descKey)}
                     </p>
                   </div>
                 </div>

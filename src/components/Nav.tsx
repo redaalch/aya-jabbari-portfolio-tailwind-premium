@@ -6,13 +6,13 @@ import { profile } from "../data/profile";
 import { useLanguage } from "../contexts/LanguageContext";
 import { useTheme } from "../contexts/ThemeContext";
 
-const links = [
-  { href: "#about", label: "About" },
-  { href: "#capabilities", label: "Capabilities" },
-  { href: "#work", label: "Work" },
-  { href: "#certifications", label: "Certifications" },
-  { href: "#contact", label: "Contact" },
-];
+const linkDefs = [
+  { href: "#about", labelKey: "nav.about" },
+  { href: "#capabilities", labelKey: "nav.capabilities" },
+  { href: "#work", labelKey: "nav.work" },
+  { href: "#certifications", labelKey: "nav.certifications" },
+  { href: "#contact", labelKey: "nav.contact" },
+] as const;
 
 export function Nav() {
   const [scrolled, setScrolled] = useState(false);
@@ -24,6 +24,7 @@ export function Nav() {
   const isProjectArchive =
     typeof window !== "undefined" &&
     window.location.pathname.replace(/\/$/, "").startsWith("/projects");
+  const links = linkDefs.map((link) => ({ href: link.href, label: t(link.labelKey) }));
   const navLinks = links.map((link) => ({
     ...link,
     href: isProjectArchive ? `/${link.href}` : link.href,
@@ -33,10 +34,10 @@ export function Nav() {
     const onScroll = () => {
       setScrolled(window.scrollY > 12);
       const checkpoint = window.scrollY + 100;
-      for (let i = links.length - 1; i >= 0; i--) {
-        const el = document.querySelector(links[i].href) as HTMLElement | null;
+      for (let i = linkDefs.length - 1; i >= 0; i--) {
+        const el = document.querySelector(linkDefs[i].href) as HTMLElement | null;
         if (el && el.offsetTop <= checkpoint) {
-          setActive(links[i].href);
+          setActive(linkDefs[i].href);
           return;
         }
       }
@@ -85,7 +86,7 @@ export function Nav() {
             }`}
           >
             {navLinks.map((link, index) => {
-              const isActive = !isProjectArchive && active === links[index].href;
+              const isActive = !isProjectArchive && active === linkDefs[index].href;
               return (
                 <a
                   key={link.href}

@@ -4,7 +4,8 @@ import { About } from "./components/About";
 import { Capabilities } from "./components/sections/Capabilities";
 import { Work } from "./components/sections/Work";
 import { Certifications } from "./components/sections/Certifications";
-import { Contact, Footer } from "./components/Contact";
+import { Contact } from "./components/Contact";
+import { EasterEggCat } from "./components/EasterEggCat";
 import { ProjectArchive } from "./components/pages/ProjectArchive";
 import { ProjectDetail } from "./components/pages/ProjectDetail";
 
@@ -48,7 +49,7 @@ export default function App() {
         )}
       </main>
 
-      <Footer />
+      <EasterEggCat />
     </>
   );
 }

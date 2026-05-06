@@ -155,6 +155,11 @@ export function Work() {
         </div>
       </div>
 
+      <p className="mt-1 flex items-center justify-center gap-1.5 text-[10px] font-bold uppercase tracking-widest text-[#A67571] dark:text-[#94A3B8] opacity-60 transition-colors duration-500 lg:hidden">
+        <ArrowRight className="h-3 w-3" aria-hidden="true" />
+        {t("work.swipe_hint")}
+      </p>
+
       <div className="mt-4 flex w-full justify-center px-6 pb-8 lg:hidden">
         <a
           href="/projects"
