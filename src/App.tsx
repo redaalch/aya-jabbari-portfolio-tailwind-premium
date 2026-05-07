@@ -10,7 +10,7 @@ import { EasterEggCat } from "./components/EasterEggCat";
 import { MeshAurora } from "./components/MeshAurora";
 import { WatercolorMesh } from "./components/WatercolorMesh";
 import { ProjectArchive } from "./components/pages/ProjectArchive";
-import { ProjectDetail } from "./components/pages/ProjectDetail";
+import { ProjectCaseStudy } from "./components/pages/ProjectCaseStudy";
 
 export default function App() {
   const currentPath = currentAppPath().replace(/\/$/, "") || "/";
@@ -34,7 +34,7 @@ export default function App() {
 
       <main id="main-content">
         {projectId ? (
-          <ProjectDetail projectId={projectId} />
+          <ProjectCaseStudy projectId={projectId} />
         ) : isProjectArchive ? (
           <ProjectArchive />
         ) : (
