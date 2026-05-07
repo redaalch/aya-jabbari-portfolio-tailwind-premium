@@ -54,11 +54,11 @@ export function ProjectArchive() {
   }, []);
 
   return (
-    <section className="min-h-screen bg-[#FAF7F5] dark:bg-[#050A15] px-6 pb-20 pt-32 text-[#3A2B29] dark:text-[#F8FAFC] transition-colors duration-500 md:px-12 lg:px-24">
+    <section className="min-h-screen bg-warm-50 dark:bg-abyssal-base px-6 pb-20 pt-32 text-warm-900 dark:text-abyssal-text transition-colors duration-500 md:px-12 lg:px-24">
       <div className="mx-auto max-w-7xl">
         <a
           href={toHref("/#work")}
-          className="mb-10 inline-flex items-center gap-2 text-sm font-bold uppercase tracking-[0.15em] text-[#8C7A78] dark:text-[#94A3B8] transition-colors hover:text-[#3A2B29] dark:hover:text-[#F8FAFC] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-500"
+          className="mb-10 inline-flex items-center gap-2 text-sm font-bold uppercase tracking-[0.15em] text-warm-500 dark:text-abyssal-text-muted transition-colors hover:text-warm-900 dark:hover:text-abyssal-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-500"
         >
           <ArrowLeft className="h-4 w-4" aria-hidden="true" />
           {t("archive.back")}
@@ -66,16 +66,16 @@ export function ProjectArchive() {
 
         <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
           <div>
-            <p className="mb-6 flex items-center gap-4 text-xs font-bold uppercase tracking-[0.2em] text-[#C28C88] dark:text-[#38BDF8] transition-colors duration-500">
-              <span className="h-px w-8 bg-[#C28C88] dark:bg-[#38BDF8]" aria-hidden="true" />
+            <p className="mb-6 flex items-center gap-4 text-xs font-bold uppercase tracking-[0.2em] text-warm-300 dark:text-abyssal-accent transition-colors duration-500">
+              <span className="h-px w-8 bg-warm-300 dark:bg-abyssal-accent" aria-hidden="true" />
               {t("archive.eyebrow")}
             </p>
-            <h1 className="font-display text-5xl leading-[1.05] tracking-tight text-[#3A2B29] dark:text-[#F8FAFC] transition-colors duration-500 md:text-6xl">
+            <h1 className="font-display text-5xl leading-[1.05] tracking-tight text-warm-900 dark:text-abyssal-text transition-colors duration-500 md:text-6xl">
               {t("archive.heading")}
             </h1>
           </div>
 
-          <p className="max-w-2xl border-l-2 border-[#E8D5D4] dark:border-[#1E293B] pl-6 text-lg font-light leading-relaxed text-[#5C4D4B] dark:text-[#94A3B8] transition-colors duration-500">
+          <p className="max-w-2xl border-l-2 border-warm-200 dark:border-abyssal-border pl-6 text-lg font-light leading-relaxed text-warm-700 dark:text-abyssal-text-muted transition-colors duration-500">
             {t("archive.desc")}
           </p>
         </div>
@@ -95,8 +95,8 @@ export function ProjectArchive() {
                 onClick={() => setActiveFilter(filter.id)}
                 className={`rounded-full border px-5 py-2.5 text-xs font-bold tracking-wide transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-500 ${
                   isActive
-                    ? "border-[#3A2B29] dark:border-[#38BDF8] bg-[#3A2B29] dark:bg-[#38BDF8] text-white dark:text-[#050A15] shadow-md"
-                    : "border-[#E8D5D4] dark:border-[#1E293B] bg-white dark:bg-[#0F172A] text-[#5C4D4B] dark:text-[#94A3B8] hover:border-[#C28C88] dark:hover:border-[#38BDF8] hover:text-[#3A2B29] dark:hover:text-[#F8FAFC]"
+                    ? "border-warm-900 dark:border-abyssal-accent bg-warm-900 dark:bg-abyssal-accent text-white dark:text-abyssal-base shadow-md"
+                    : "border-warm-200 dark:border-abyssal-border bg-white dark:bg-abyssal-surface text-warm-700 dark:text-abyssal-text-muted hover:border-warm-300 dark:hover:border-abyssal-accent hover:text-warm-900 dark:hover:text-abyssal-text"
                 }`}
               >
                 {filter.label}
@@ -114,7 +114,7 @@ export function ProjectArchive() {
           ))}
 
           {filteredWork.length === 0 && (
-            <div className="col-span-full flex min-h-[280px] flex-col items-center justify-center rounded-3xl border-2 border-dashed border-[#E8D5D4] dark:border-[#1E293B] bg-white/60 dark:bg-[#0F172A]/60 p-12 text-center text-[#A67571] dark:text-[#94A3B8] transition-colors duration-500">
+            <div className="col-span-full flex min-h-[280px] flex-col items-center justify-center rounded-3xl border-2 border-dashed border-warm-200 dark:border-abyssal-border bg-white/60 dark:bg-abyssal-surface/60 p-12 text-center text-warm-400 dark:text-abyssal-text-muted transition-colors duration-500">
               <Search className="mb-4 h-8 w-8 opacity-50" aria-hidden="true" />
               <p className="font-display text-2xl">{t("archive.empty")}</p>
             </div>
@@ -132,10 +132,10 @@ function ArchiveCard({ item }: { item: WorkItem }) {
   return (
     <article
       id={item.id}
-      className="scroll-mt-28 overflow-hidden rounded-[2rem] border border-[#E8D5D4] dark:border-[#1E293B] bg-white dark:bg-[#0F172A] shadow-[0_10px_40px_-10px_rgba(225,205,205,0.3)] dark:shadow-none transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_20px_50px_-10px_rgba(225,205,205,0.48)] dark:hover:shadow-none dark:hover:border-[#334155]"
+      className="scroll-mt-28 overflow-hidden rounded-[2rem] border border-warm-200 dark:border-abyssal-border bg-white dark:bg-abyssal-surface shadow-[0_10px_40px_-10px_rgba(225,205,205,0.3)] dark:shadow-none transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_20px_50px_-10px_rgba(225,205,205,0.48)] dark:hover:shadow-none dark:hover:border-abyssal-border-hover"
     >
       <div
-        className="block h-48 overflow-hidden border-b border-[#F2EAE9] dark:border-[#1E293B] transition-colors duration-500"
+        className="block h-48 overflow-hidden border-b border-warm-150 dark:border-abyssal-border transition-colors duration-500"
         aria-hidden="true"
       >
         <img
@@ -147,45 +147,45 @@ function ArchiveCard({ item }: { item: WorkItem }) {
       </div>
 
       <div className="flex flex-col p-6">
-        <div className="mb-4 flex flex-wrap items-center gap-2 text-[10px] font-bold uppercase tracking-[0.15em] text-[#A67571] dark:text-[#94A3B8] transition-colors duration-500">
+        <div className="mb-4 flex flex-wrap items-center gap-2 text-[10px] font-bold uppercase tracking-[0.15em] text-warm-400 dark:text-abyssal-text-muted transition-colors duration-500">
           <span>{typeLabel}</span>
-          <span className="h-1 w-1 rounded-full bg-[#E8D5D4] dark:bg-[#1E293B]" aria-hidden="true" />
+          <span className="h-1 w-1 rounded-full bg-warm-200 dark:bg-abyssal-border" aria-hidden="true" />
           <span>{item.period}</span>
-          <span className="h-1 w-1 rounded-full bg-[#E8D5D4] dark:bg-[#1E293B]" aria-hidden="true" />
-          <span className="text-[#C28C88] dark:text-[#38BDF8]">{item.category}</span>
+          <span className="h-1 w-1 rounded-full bg-warm-200 dark:bg-abyssal-border" aria-hidden="true" />
+          <span className="text-warm-300 dark:text-abyssal-accent">{item.category}</span>
         </div>
 
-        <h2 className="font-display text-2xl leading-tight text-[#3A2B29] dark:text-[#F8FAFC] transition-colors duration-500">
+        <h2 className="font-display text-2xl leading-tight text-warm-900 dark:text-abyssal-text transition-colors duration-500">
           <a
             href={toHref(`/projects/${item.id}`)}
             aria-hidden="true"
             tabIndex={-1}
-            className="transition-colors hover:text-[#C28C88] dark:hover:text-[#38BDF8]"
+            className="transition-colors hover:text-warm-300 dark:hover:text-abyssal-accent"
           >
             {item.title}
           </a>
         </h2>
-        <p className="mt-2 text-sm font-semibold text-[#3A2B29] dark:text-[#F8FAFC] transition-colors duration-500">{item.role}</p>
+        <p className="mt-2 text-sm font-semibold text-warm-900 dark:text-abyssal-text transition-colors duration-500">{item.role}</p>
         {(item.organization || item.location) && (
-          <p className="mt-1 text-sm font-light italic text-[#8C7A78] dark:text-[#94A3B8] transition-colors duration-500">
+          <p className="mt-1 text-sm font-light italic text-warm-500 dark:text-abyssal-text-muted transition-colors duration-500">
             {[item.organization, item.location].filter(Boolean).join(" · ")}
           </p>
         )}
 
         <div className="mt-6 space-y-4">
-          <div className="border-l-2 border-[#F2EAE9] dark:border-[#1E293B] pl-4 transition-colors duration-500">
-            <span className="mb-1 block text-[10px] font-bold uppercase tracking-wider text-[#A67571] dark:text-[#94A3B8] transition-colors duration-500">
+          <div className="border-l-2 border-warm-150 dark:border-abyssal-border pl-4 transition-colors duration-500">
+            <span className="mb-1 block text-[10px] font-bold uppercase tracking-wider text-warm-400 dark:text-abyssal-text-muted transition-colors duration-500">
               {t("work.problem")}
             </span>
-            <p className="text-sm leading-relaxed text-[#5C4D4B] dark:text-[#94A3B8] transition-colors duration-500">
+            <p className="text-sm leading-relaxed text-warm-700 dark:text-abyssal-text-muted transition-colors duration-500">
               {item.problem}
             </p>
           </div>
-          <div className="border-l-2 border-[#C28C88] dark:border-[#38BDF8] pl-4 transition-colors duration-500">
-            <span className="mb-1 block text-[10px] font-bold uppercase tracking-wider text-[#A67571] dark:text-[#94A3B8] transition-colors duration-500">
+          <div className="border-l-2 border-warm-300 dark:border-abyssal-accent pl-4 transition-colors duration-500">
+            <span className="mb-1 block text-[10px] font-bold uppercase tracking-wider text-warm-400 dark:text-abyssal-text-muted transition-colors duration-500">
               {t("work.built")}
             </span>
-            <p className="text-sm font-medium leading-relaxed text-[#3A2B29] dark:text-[#F8FAFC] transition-colors duration-500">
+            <p className="text-sm font-medium leading-relaxed text-warm-900 dark:text-abyssal-text transition-colors duration-500">
               {item.contribution}
             </p>
           </div>
@@ -195,7 +195,7 @@ function ArchiveCard({ item }: { item: WorkItem }) {
           {item.stack.map((tag) => (
             <span
               key={tag}
-              className="rounded-full border border-[#E8D5D4] dark:border-[#1E293B] bg-[#FAF7F5] dark:bg-[#050A15] px-3 py-1.5 text-[11px] font-medium text-[#5C4D4B] dark:text-[#94A3B8] transition-colors duration-500"
+              className="rounded-full border border-warm-200 dark:border-abyssal-border bg-warm-50 dark:bg-abyssal-base px-3 py-1.5 text-[11px] font-medium text-warm-700 dark:text-abyssal-text-muted transition-colors duration-500"
             >
               {tag}
             </span>
@@ -206,7 +206,7 @@ function ArchiveCard({ item }: { item: WorkItem }) {
           <a
             href={toHref(`/projects/${item.id}`)}
             aria-label={`${t("work.view_details")}: ${item.title}`}
-            className="inline-flex items-center gap-2 rounded-full bg-[#3A2B29] dark:bg-[#38BDF8] px-4 py-2 text-sm font-bold text-white dark:text-[#050A15] transition-colors hover:bg-[#C28C88] dark:hover:bg-[#0284C7] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-500"
+            className="inline-flex items-center gap-2 rounded-full bg-warm-900 dark:bg-abyssal-accent px-4 py-2 text-sm font-bold text-white dark:text-abyssal-base transition-colors hover:bg-warm-300 dark:hover:bg-abyssal-accent-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-500"
           >
             {t("work.view_details")}
           </a>
@@ -214,7 +214,7 @@ function ArchiveCard({ item }: { item: WorkItem }) {
           {item.links.repoUrl ? (
             <a
               href={item.links.repoUrl}
-              className="inline-flex items-center gap-2 rounded-full border border-[#E8D5D4] dark:border-[#1E293B] bg-[#FAF7F5] dark:bg-[#0F172A] px-4 py-2 text-sm font-bold text-[#3A2B29] dark:text-[#F8FAFC] transition-colors hover:border-[#C28C88] dark:hover:border-[#38BDF8] hover:text-[#C28C88] dark:hover:text-[#38BDF8] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-500"
+              className="inline-flex items-center gap-2 rounded-full border border-warm-200 dark:border-abyssal-border bg-warm-50 dark:bg-abyssal-surface px-4 py-2 text-sm font-bold text-warm-900 dark:text-abyssal-text transition-colors hover:border-warm-300 dark:hover:border-abyssal-accent hover:text-warm-300 dark:hover:text-abyssal-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-500"
               target="_blank"
               rel="noreferrer"
             >
@@ -224,7 +224,7 @@ function ArchiveCard({ item }: { item: WorkItem }) {
           ) : item.links.demoUrl ? (
             <a
               href={item.links.demoUrl}
-              className="inline-flex items-center gap-2 rounded-full border border-[#E8D5D4] dark:border-[#1E293B] bg-[#FAF7F5] dark:bg-[#0F172A] px-4 py-2 text-sm font-bold text-[#3A2B29] dark:text-[#F8FAFC] transition-colors hover:border-[#C28C88] dark:hover:border-[#38BDF8] hover:text-[#C28C88] dark:hover:text-[#38BDF8] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-500"
+              className="inline-flex items-center gap-2 rounded-full border border-warm-200 dark:border-abyssal-border bg-warm-50 dark:bg-abyssal-surface px-4 py-2 text-sm font-bold text-warm-900 dark:text-abyssal-text transition-colors hover:border-warm-300 dark:hover:border-abyssal-accent hover:text-warm-300 dark:hover:text-abyssal-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-500"
               target="_blank"
               rel="noreferrer"
             >
@@ -232,8 +232,8 @@ function ArchiveCard({ item }: { item: WorkItem }) {
               {t("work.view_demo")}
             </a>
           ) : (
-            <span className="inline-flex items-center gap-2 rounded-full border border-[#E8D5D4] dark:border-[#1E293B] bg-[#FAF7F5] dark:bg-[#0F172A] px-4 py-2 text-sm font-bold text-[#5C4D4B] dark:text-[#94A3B8] transition-colors duration-500">
-              <Lock className="h-4 w-4 text-[#A67571] dark:text-[#94A3B8]" aria-hidden="true" />
+            <span className="inline-flex items-center gap-2 rounded-full border border-warm-200 dark:border-abyssal-border bg-warm-50 dark:bg-abyssal-surface px-4 py-2 text-sm font-bold text-warm-700 dark:text-abyssal-text-muted transition-colors duration-500">
+              <Lock className="h-4 w-4 text-warm-400 dark:text-abyssal-text-muted" aria-hidden="true" />
               {t("work.private")}
             </span>
           )}

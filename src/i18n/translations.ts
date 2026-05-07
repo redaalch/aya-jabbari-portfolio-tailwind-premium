@@ -175,6 +175,9 @@ const en = {
   "detail.decisions": "Technical Decisions",
   "detail.outcomes": "Outcomes",
   "detail.next": "Next Improvements",
+  "detail.section_overview": "Overview & Problem Space",
+  "detail.section_architecture": "Architecture & Dependencies",
+  "detail.section_implementation": "Implementation & Key Decisions",
 };
 
 const fr: typeof en = {
@@ -355,6 +358,9 @@ const fr: typeof en = {
   "detail.decisions": "Choix techniques",
   "detail.outcomes": "Résultats",
   "detail.next": "Améliorations prévues",
+  "detail.section_overview": "Vue d'ensemble et problématique",
+  "detail.section_architecture": "Architecture et dépendances",
+  "detail.section_implementation": "Mise en œuvre et choix techniques",
 };
 
 export const translations: Record<Lang, typeof en> = { en, fr };

@@ -15,6 +15,21 @@
   --color-abyssal-text-faint: #475569;
   --color-abyssal-accent: #38BDF8;
   --color-abyssal-accent-hover: #0284C7;
+  /* ── Warm section palette (mahogany tones used in content sections) ── */
+  --color-warm-975: #2F1730;
+  --color-warm-950: #36172A;
+  --color-warm-925: #2A1B19;
+  --color-warm-900: #3A2B29;
+  --color-warm-800: #4A3B45;
+  --color-warm-700: #5C4D4B;
+  --color-warm-500: #8C7A78;
+  --color-warm-400: #A67571;
+  --color-warm-300: #C28C88;
+  --color-warm-200: #E8D5D4;
+  --color-warm-150: #F2EAE9;
+  --color-warm-100: #FFF5F5;
+  --color-warm-50: #FAF7F5;
+
   /* ── Colors ── */
   --color-cream-50: #FBF7F2;
   --color-cream-100: #F5EFE7;

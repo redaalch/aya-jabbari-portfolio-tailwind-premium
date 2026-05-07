@@ -62,7 +62,7 @@ export function EasterEggCat() {
     >
       {/* Speech bubble */}
       <div
-        className={`mb-3 whitespace-nowrap rounded-2xl rounded-br-none border border-[#E8D5D4] dark:border-[#334155] bg-white dark:bg-[#1E293B] px-4 py-2 text-xs font-bold text-[#3A2B29] dark:text-[#F8FAFC] shadow-[0_10px_30px_rgba(0,0,0,0.1)] dark:shadow-cyan-900/20 transition-all duration-300 origin-bottom-right ${
+        className={`mb-3 whitespace-nowrap rounded-2xl rounded-br-none border border-warm-200 dark:border-abyssal-border-hover bg-white dark:bg-abyssal-border px-4 py-2 text-xs font-bold text-warm-900 dark:text-abyssal-text shadow-[0_10px_30px_rgba(0,0,0,0.1)] dark:shadow-cyan-900/20 transition-all duration-300 origin-bottom-right ${
           isHovered || forceShow ? "scale-100 opacity-100" : "scale-50 opacity-0"
         }`}
       >
@@ -70,7 +70,7 @@ export function EasterEggCat() {
       </div>
 
       {/* Cat body */}
-      <div className="cursor-pointer rounded-t-[2rem] border-t border-l border-r border-[#E8D5D4]/20 dark:border-white/20 bg-[#3A2B29] dark:bg-[#38BDF8] p-5 text-[#FAF7F5] dark:text-[#050A15] shadow-2xl transition-colors duration-300 hover:bg-[#C28C88] dark:hover:bg-[#0284C7]">
+      <div className="cursor-pointer rounded-t-[2rem] border-t border-l border-r border-warm-200/20 dark:border-white/20 bg-warm-900 dark:bg-abyssal-accent p-5 text-warm-50 dark:text-abyssal-base shadow-2xl transition-colors duration-300 hover:bg-warm-300 dark:hover:bg-abyssal-accent-hover">
         <Cat size={32} strokeWidth={1.5} />
       </div>
     </div>

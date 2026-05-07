@@ -40,7 +40,7 @@ export default function App() {
         ) : (
           <>
             <Hero />
-            <div className="relative bg-[#FAF7F5] dark:bg-[#050A15]">
+            <div className="relative bg-warm-50 dark:bg-abyssal-base">
               <WatercolorMesh />
               <MeshAurora />
               <About />

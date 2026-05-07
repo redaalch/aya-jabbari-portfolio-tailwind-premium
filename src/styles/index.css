@@ -21,7 +21,7 @@
   h2,
   h3,
   h4 {
-    @apply font-display text-plum-900 dark:text-[#F8FAFC];
+    @apply font-display text-plum-900 dark:text-abyssal-text;
   }
 
   *,
@@ -71,7 +71,6 @@
 
 .animate-blob {
   animation: blob 15s infinite;
-  will-change: transform;
 }
 
 .animation-delay-2000 {
